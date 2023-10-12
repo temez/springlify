@@ -1,0 +1,42 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'Buktify'
+            url = 'https://repo.crazylegend.space/public'
+        }
+        maven {
+            name = 'Paper'
+            url = 'https://repo.papermc.io/repository/maven-public/'
+        }
+    }
+}
+
+rootProject.name = 'springlify'
+[
+        'springlify-commons',
+        'springlify-velocity',
+        'springlify-bukkit',
+        'springlify-data-jpa',
+
+].forEach {
+    include it
+}
+
+rootProject.children.each { project ->
+    {
+        project.buildFileName = "${project.name}.gradle"
+        project.children.each { subproject ->
+            {
+                subproject.buildFileName = "${subproject.name}.gradle"
+            }
+        }
+    }
+}
+
