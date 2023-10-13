@@ -26,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'dev.temez.springlify:springlify-bukkit:0.5.8dev'
+    implementation 'dev.temez.springlify:springlify-bukkit:0.5.8.1dev'
 
     //rest of dependencies...
 }

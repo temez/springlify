@@ -45,7 +45,7 @@ public class BukkitServerPlatformAdapter implements ServerPlatformAdapter {
    */
   @Override
   public void unregisterListener(@NotNull Object listener) {
-    HandlerList.unregisterAll((Plugin) listener);
+    HandlerList.unregisterAll((Listener) listener);
     log.info("Unregistered event listener: {}", listener.getClass().getSimpleName());
   }
 
