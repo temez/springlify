@@ -1,7 +1,7 @@
 # springlify
 
-  <a href="https://github.com/dzikoysk/reposilite/releases">
-   <img src="https://repo.star-mc.ru/api/badge/latest/public/dev/temez/springlify/springlify-bukkit?color=40c14a&name=Lastest version&prefix=v" />
+  <a href="https://repo.star-mc.ru/#/public/dev/temez/springlify">
+   <img src="https://repo.star-mc.ru/api/badge/latest/public/dev/temez/springlify/springlify-bukkit?color=40c14a&name=Lastest version&prefix=v"  alt=""/>
   </a>
 
 This library enables the use of `Spring Framework` for developing on Bukkit and Velocity platforms.
