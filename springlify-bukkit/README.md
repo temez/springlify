@@ -24,7 +24,7 @@ public class SpringlifyDemoApplication {
 Then, the main class of your plugin.
 
 ```java
-public class SpringlifyDemoPlugin extends SpringlifyBukkitPlugin {
+public final class SpringlifyDemoPlugin extends SpringlifyBukkitPlugin {
 
     @Override
     public @NotNull Class<?> getApplicationClass() {

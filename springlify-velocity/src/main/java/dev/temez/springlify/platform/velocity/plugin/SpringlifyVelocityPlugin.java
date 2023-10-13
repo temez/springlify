@@ -3,7 +3,6 @@ package dev.temez.springlify.platform.velocity.plugin;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.event.proxy.ProxyShutdownEvent;
-import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import dev.temez.springlify.commons.initializer.SpringlifyInitializer;
 import dev.temez.springlify.commons.plugin.SpringlifyPlugin;
@@ -34,11 +33,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 @FieldDefaults(makeFinal = true, level = AccessLevel.PROTECTED)
 public abstract class SpringlifyVelocityPlugin implements SpringlifyPlugin {
 
-  @MonotonicNonNull
+  @NotNull
   ProxyServer server;
 
-  @DataDirectory
-  @MonotonicNonNull
+  @NotNull
   Path dataFolder;
 
   @NonFinal
@@ -51,7 +49,7 @@ public abstract class SpringlifyVelocityPlugin implements SpringlifyPlugin {
    * @param server     The Velocity proxy server.
    * @param dataFolder The data folder for the plugin.
    */
-  protected SpringlifyVelocityPlugin(ProxyServer server, Path dataFolder) {
+  public SpringlifyVelocityPlugin(@NotNull ProxyServer server, @NotNull Path dataFolder) {
     this.server = server;
     this.dataFolder = dataFolder;
   }

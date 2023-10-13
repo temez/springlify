@@ -20,13 +20,29 @@ public class SpringlifyDemoApplication {
 Then, the main class of your plugin.
 
 ```java
-public class SpringlifyDemoPlugin extends SpringlifyVelocityPlugin {
+@Plugin(
+    id = "springlify-demo",
+    name = "springlify-demo",
+    version = "0.0.1",
+    authors = {"temez"}
+)
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public final class UniverseWrapperPlugin extends SpringlifyVelocityPlugin {
+
+
+  @Inject
+  public UniverseWrapperPlugin(@NotNull ProxyServer server,
+                               @NotNull @DataDirectory Path dataFolder
+  ) {
+    super(server, dataFolder);
+  }
 
   @Override
   public @NotNull Class<?> getApplicationClass() {
-    return SpringlifyDemoApplication.class;
+    return UniverseWrapperApplication.class;
   }
 }
+
 ```
 
 To build your project, use `./gradlew shadowJar` task.
