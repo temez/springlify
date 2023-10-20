@@ -1,9 +1,12 @@
 package dev.temez.springlify.platform.velocity.iniitalizer.event;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import org.springframework.core.annotation.AliasFor;
+import org.springframework.stereotype.Component;
 
 /**
  * The {@code VelocityEventHandler} annotation is a custom annotation used to mark classes as event
@@ -32,5 +35,17 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @SuppressWarnings("unused")
+@Documented
+@Component
 public @interface VelocityEventHandler {
+
+
+  /**
+   * Alias for the {@link Component} annotation's value attribute.
+   * Specifies the name of the bean.
+   *
+   * @return The primary bean name.
+   */
+  @AliasFor(annotation = Component.class)
+  String value() default "";
 }

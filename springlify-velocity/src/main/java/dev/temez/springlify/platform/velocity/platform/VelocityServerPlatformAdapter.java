@@ -28,7 +28,7 @@ public class VelocityServerPlatformAdapter implements ServerPlatformAdapter {
    */
   @Override
   public void registerListener(@NotNull Object listener) {
-    plugin.getServer().getEventManager().register(this, listener);
+    plugin.getServer().getEventManager().register(plugin, listener);
     log.debug("Registered {} as an event listener.", listener.getClass().getSimpleName());
   }
 
@@ -39,7 +39,7 @@ public class VelocityServerPlatformAdapter implements ServerPlatformAdapter {
    */
   @Override
   public void unregisterListener(@NotNull Object listener) {
-    plugin.getServer().getEventManager().unregisterListener(this, listener);
+    plugin.getServer().getEventManager().unregisterListener(plugin, listener);
     log.debug("Unregistered event listener: {}", listener.getClass().getSimpleName());
   }
 
