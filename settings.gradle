@@ -20,8 +20,6 @@ dependencyResolutionManagement {
             credentials(HttpHeaderCredentials) {
                 name = isCiTask ? 'Job-Token' : 'Private-Token'
                 value = isCiTask ? System.getenv("CI_JOB_TOKEN") : System.getenv("GITLAB_PRIVATE_TOKEN") //Ваш GitLab токен
-                println name
-                println value
             }
             authentication {
                 header(HttpHeaderAuthentication)
