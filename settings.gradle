@@ -5,7 +5,6 @@ pluginManagement {
     }
 }
 
-boolean isCiTask = System.getenv("CI_JOB_TOKEN") != null;
 
 dependencyResolutionManagement {
     repositories {
@@ -17,15 +16,10 @@ dependencyResolutionManagement {
         maven {
             url = "https://gitlab.com/api/v4/groups/76713909/-/packages/maven"
             name = "GitLab"
-//            if (!isCiTask) {
-//                credentials(HttpHeaderCredentials) {
-//                    name = 'Private-Token'
-//                    value = System.getenv("GITLAB_PRIVATE_TOKEN") //Ваш GitLab токен
-//                }
-//            } else {
+            boolean isCiTask = System.getenv("CI_JOB_TOKEN") != null;
             credentials(HttpHeaderCredentials) {
-                name = 'Job-Token'
-                value = System.getenv("CI_JOB_TOKEN") //Ваш GitLab токен
+                name = isCiTask ? 'Job-Token' : 'Private-Token'
+                value = isCiTask ? System.getenv("CI_JOB_TOKEN") : System.getenv("GITLAB_PRIVATE_TOKEN") //Ваш GitLab токен
             }
             authentication {
                 header(HttpHeaderAuthentication)
