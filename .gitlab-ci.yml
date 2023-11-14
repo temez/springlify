@@ -13,5 +13,5 @@ stages:
 Publish:
   stage: deploy
   script:
-    - gradle publishAllPublicationsToMavenRepository
+    - gradle publish
 
