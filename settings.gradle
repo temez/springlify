@@ -11,10 +11,6 @@ dependencyResolutionManagement {
     repositories {
         mavenCentral()
         maven {
-            name = 'Buktify'
-            url = 'https://repo.crazylegend.space/public'
-        }
-        maven {
             name = 'Paper'
             url = 'https://repo.papermc.io/repository/maven-public/'
         }
