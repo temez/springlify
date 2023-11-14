@@ -14,7 +14,7 @@ subprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
-    version = '0.5.8.2dev'
+    version = '0.5.9.0dev'
     group = 'dev.temez.springlify'
 
     sourceCompatibility = '17'
@@ -60,15 +60,15 @@ checkstyle {
     configFile file("$rootDir/config/checkstyle/checkstyle.xml")
 }
 
-publishing {
-    repositories {
-        maven {
-            name = 'StarMC'
-            url = 'https://repo.star-mc.ru/public'
-            credentials {
-                username = System.getenv('STARMC_REPO_USER')
-                password = System.getenv('STARMC_REPO_PASSWORD')
-            }
+repositories {
+    maven {
+        url = "https://gitlab.com/api/v4/projects/52181025/packages/maven"
+        credentials(HttpHeaderCredentials) {
+            name = 'Job-Token'
+            value = System.getenv("CI_JOB_TOKEN")
+        }
+        authentication {
+            header(HttpHeaderAuthentication)
         }
     }
 }

@@ -15,6 +15,28 @@ dependencyResolutionManagement {
             name = 'Paper'
             url = 'https://repo.papermc.io/repository/maven-public/'
         }
+        maven {
+            url = "https://gitlab.com/api/v4/groups/76713909/-/packages/maven"
+            name "GitLab"
+            credentials(HttpHeaderCredentials) {
+                name = 'Private-Token'
+                value = System.getenv("GITLAB_PRIVATE_TOKEN") //Ваш GitLab токен
+            }
+            authentication {
+                header(HttpHeaderAuthentication)
+            }
+        }
+        maven {
+            url = "https://gitlab.com/api/v4/groups/76713909/-/packages/maven"
+            name "GitLab"
+            credentials(HttpHeaderCredentials) {
+                name = 'Job-Token'
+                value = System.getenv("CI_JOB_TOKEN") //Ваш GitLab токен
+            }
+            authentication {
+                header(HttpHeaderAuthentication)
+            }
+        }
     }
 }
 
