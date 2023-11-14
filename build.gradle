@@ -6,6 +6,7 @@ plugins {
     id 'org.springframework.boot' version '3.1.1'
     id 'io.spring.dependency-management' version '1.1.0'
     id 'checkstyle'
+    id "io.freefair.lombok" version "8.4"
 }
 
 subprojects {
@@ -37,6 +38,18 @@ subprojects {
     }
 
     publishing {
+        repositories {
+            maven {
+                url = "https://gitlab.com/api/v4/projects/52181025/packages/maven"
+                credentials(HttpHeaderCredentials) {
+                    name = 'Job-Token'
+                    value = System.getenv("CI_JOB_TOKEN")
+                }
+                authentication {
+                    header(HttpHeaderAuthentication)
+                }
+            }
+        }
         publications {
             "$project.name"(MavenPublication) {
                 from components.java
@@ -61,18 +74,6 @@ checkstyle {
     configFile file("$rootDir/config/checkstyle/checkstyle.xml")
 }
 
-repositories {
-    maven {
-        url = "https://gitlab.com/api/v4/projects/52181025/packages/maven"
-        credentials(HttpHeaderCredentials) {
-            name = 'Job-Token'
-            value = System.getenv("CI_JOB_TOKEN")
-        }
-        authentication {
-            header(HttpHeaderAuthentication)
-        }
-    }
-}
 
 
 
