@@ -23,11 +23,10 @@ dependencyResolutionManagement {
 //                    value = System.getenv("GITLAB_PRIVATE_TOKEN") //Ваш GitLab токен
 //                }
 //            } else {
-                credentials(HttpHeaderCredentials) {
-                    name = 'Job-Token'
-                    value = System.getenv("CI_JOB_TOKEN")
-                }
-//            }
+            credentials(HttpHeaderCredentials) {
+                name = 'Job-Token'
+                value = System.getenv("CI_JOB_TOKEN") //Ваш GitLab токен
+            }
             authentication {
                 header(HttpHeaderAuthentication)
             }
