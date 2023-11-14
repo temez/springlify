@@ -38,18 +38,6 @@ subprojects {
     }
 
     publishing {
-        repositories {
-            maven {
-                url = "https://gitlab.com/api/v4/projects/52181025/packages/maven"
-                credentials(HttpHeaderCredentials) {
-                    name = 'Job-Token'
-                    value = System.getenv("CI_JOB_TOKEN")
-                }
-                authentication {
-                    header(HttpHeaderAuthentication)
-                }
-            }
-        }
         publications {
             "$project.name"(MavenPublication) {
                 from components.java
@@ -73,6 +61,23 @@ subprojects {
 checkstyle {
     configFile file("$rootDir/config/checkstyle/checkstyle.xml")
 }
+
+publishing {
+    repositories {
+        maven {
+            url = "https://gitlab.com/api/v4/projects/52181025/packages/maven"
+            boolean isCiTask = System.getenv("CI_DEPLOY_PASSWORD") != null;
+            credentials(HttpHeaderCredentials) {
+                name = isCiTask ? 'Job-Token' : 'Private-Token'
+                value = isCiTask ? System.getenv("CI_DEPLOY_PASSWORD") : System.getenv("GITLAB_PRIVATE_TOKEN") //Ваш GitLab токен
+            }
+            authentication {
+                header(HttpHeaderAuthentication)
+            }
+        }
+    }
+}
+
 
 
 
