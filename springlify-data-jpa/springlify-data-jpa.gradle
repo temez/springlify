@@ -1,5 +1,5 @@
 dependencies {
-    api 'org.buktify:configurate:1.2.7'
+    api 'org.buktify:configurate:1.2.8'
     api project(":springlify-commons")
     api 'org.springframework.boot:spring-boot-starter-data-jpa'
 }
