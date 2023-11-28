@@ -3,10 +3,7 @@ package dev.temez.springlify.commons.plugin;
 import dev.temez.springlify.commons.initializer.SpringlifyInitializer;
 import dev.temez.springlify.commons.server.ServerPlatformAdapter;
 import java.io.File;
-import java.util.Collections;
-import java.util.List;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.config.BeanPostProcessor;
 
 /**
  * The {@code SpringlifyPlugin} interface defines methods that must be implemented by classes
@@ -20,15 +17,6 @@ public interface SpringlifyPlugin {
    * @return The main application class.
    */
   @NotNull Class<?> getApplicationClass();
-
-  /**
-   * Gets the list of bean post processors to be registered with the Spring application context.
-   *
-   * @return A list of bean post processor classes.
-   */
-  default @NotNull List<Class<? extends BeanPostProcessor>> getPostProcessors() {
-    return Collections.emptyList();
-  }
 
   /**
    * Initializes the plugin. This method should be called during plugin startup.

@@ -50,7 +50,6 @@ public abstract class AbstractSpringlifyInitializer implements SpringlifyInitial
       @NotNull SpringlifyPlugin plugin) {
     return applicationContext -> {
       if (applicationContext instanceof AnnotationConfigApplicationContext context) {
-        context.register(getPostProcessors(plugin).toArray(new Class[0]));
         applicationContext.getBeanFactory().registerSingleton("springlifyPlugin", plugin);
       }
     };

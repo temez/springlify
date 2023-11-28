@@ -34,8 +34,7 @@ rootProject.name = 'springlify'
         'springlify-commons',
         'springlify-velocity',
         'springlify-bukkit',
-        'springlify-data-jpa',
-
+        'springlify-data-jpa'
 ].forEach {
     include it
 }

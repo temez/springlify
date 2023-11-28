@@ -16,7 +16,7 @@ subprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
-    version = '0.5.9.1dev'
+    version = '0.5.9.2dev'
     group = 'dev.temez.springlify'
 
     sourceCompatibility = '17'
@@ -65,21 +65,15 @@ checkstyle {
 publishing {
     repositories {
         maven {
-            url = "https://gitlab.com/api/v4/projects/52181025/packages/maven"
-            boolean isCiTask = System.getenv("CI_JOB_TOKEN") != null;
-            credentials(HttpHeaderCredentials) {
-                name = isCiTask ? 'Job-Token' : 'Private-Token'
-                value = isCiTask ? System.getenv("CI_JOB_TOKEN") : System.getenv("GITLAB_PRIVATE_TOKEN") //Ваш GitLab токен
-            }
-            authentication {
-                header(HttpHeaderAuthentication)
+            name = 'StarMC'
+            url = 'https://repo.star-mc.ru/public'
+            credentials {
+                username = System.getenv('STARMC_REPO_USER')
+                password = System.getenv('STARMC_REPO_PASSWORD')
             }
         }
     }
 }
-
-
-
 
 
 

@@ -8,8 +8,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 /**
  * The {@code BukkitCommandInitializer} class is a Spring {@link BeanPostProcessor}
@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Lazy;
  * them as command executors with the Bukkit plugin.
  */
 @Log4j2
-@Configuration
+@Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class BukkitCommandInitializer implements BeanPostProcessor {
 
@@ -26,7 +26,6 @@ public class BukkitCommandInitializer implements BeanPostProcessor {
   SpringlifyPlugin plugin;
 
   @Lazy
-  @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
   public BukkitCommandInitializer(@NotNull SpringlifyPlugin plugin) {
     this.plugin = plugin;
   }

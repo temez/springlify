@@ -8,8 +8,8 @@ import org.bukkit.event.Listener;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.DestructionAwareBeanPostProcessor;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 /**
  * The {@code ListenableServiceInitializer} class is a Spring
@@ -18,18 +18,18 @@ import org.springframework.context.annotation.Lazy;
  * It registers and unregisters them as event listeners with the associated Bukkit plugin.
  */
 @Log4j2
-@Configuration
+@Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class ListenableServiceInitializer implements DestructionAwareBeanPostProcessor {
 
   /**
    * The Springlify platform plugin associated with the initializer.
    */
+  @NotNull
   SpringlifyPlugin plugin;
 
   @Lazy
-  @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-  public ListenableServiceInitializer(SpringlifyPlugin plugin) {
+  public ListenableServiceInitializer(@NotNull SpringlifyPlugin plugin) {
     this.plugin = plugin;
   }
 

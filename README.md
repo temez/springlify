@@ -1,21 +1,8 @@
 # springlify
 
-```groovy
-maven {
-    url = "https://gitlab.com/api/v4/groups/76713909/-/packages/maven"
-    name = "GitLab"
-    boolean isCiTask = System.getenv("CI_JOB_TOKEN") != null
-    credentials(HttpHeaderCredentials) {
-        name = isCiTask ? 'Job-Token' : 'Private-Token'
-        value = isCiTask ? System.getenv("CI_JOB_TOKEN") : System.getenv("GITLAB_PRIVATE_TOKEN") //Ваш GitLab токен
-    }
-    authentication {
-        header(HttpHeaderAuthentication)
-    }
-}
 ```
 ```groovy
-    implementation 'dev.temez.springlify:springlify-bukkit:0.5.9.1dev'
+    implementation 'dev.temez.springlify:springlify-bukkit:0.5.9.2dev'
 ```
 
 

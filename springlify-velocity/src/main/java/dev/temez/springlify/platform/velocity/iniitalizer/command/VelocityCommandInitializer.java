@@ -9,8 +9,8 @@ import lombok.extern.log4j.Log4j2;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 /**
  * {@code VelocityCommandInitializer} is a Spring BeanPostProcessor responsible for initializing
@@ -26,14 +26,13 @@ import org.springframework.context.annotation.Lazy;
  * but not annotated with {@link VelocityCommand}.
  */
 @Log4j2
-@Configuration
+@Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class VelocityCommandInitializer implements BeanPostProcessor {
 
   SpringlifyPlugin plugin;
 
   @Lazy
-  @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
   public VelocityCommandInitializer(SpringlifyPlugin plugin) {
     this.plugin = plugin;
   }

@@ -1,10 +1,8 @@
 package dev.temez.springlify.commons.initializer;
 
 import dev.temez.springlify.commons.plugin.SpringlifyPlugin;
-import java.util.List;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -15,16 +13,6 @@ import org.springframework.context.support.GenericApplicationContext;
  * a Spring application context within a Springlify plugin.
  */
 public interface SpringlifyInitializer {
-
-  /**
-   * Gets the list of bean post processors to be registered with the Spring application context.
-   *
-   * @param plugin The Springlify plugin for which post processors are needed.
-   * @return A list of bean post processor classes.
-   */
-  @NotNull List<Class<? extends BeanPostProcessor>> getPostProcessors(
-      @NotNull SpringlifyPlugin plugin
-  );
 
   /**
    * Gets the class loader to be used by the Spring application context.

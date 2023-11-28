@@ -6,8 +6,8 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.config.DestructionAwareBeanPostProcessor;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 /**
  * The {@code ListenableServiceInitializer} class is a Spring DestructionAwareBeanPostProcessor.
@@ -21,14 +21,13 @@ import org.springframework.context.annotation.Lazy;
  * - Logs debug messages when registering and unregistering event listeners.
  */
 @Log4j2
-@Configuration
+@Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class EventHandlerInitializer implements DestructionAwareBeanPostProcessor {
 
   SpringlifyPlugin plugin;
 
   @Lazy
-  @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
   public EventHandlerInitializer(SpringlifyPlugin plugin) {
     this.plugin = plugin;
   }
