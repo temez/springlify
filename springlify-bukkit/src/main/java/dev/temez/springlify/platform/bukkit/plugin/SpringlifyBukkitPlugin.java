@@ -1,12 +1,13 @@
 package dev.temez.springlify.platform.bukkit.plugin;
 
 import dev.temez.springlify.commons.initializer.SpringlifyInitializer;
+import dev.temez.springlify.commons.initializer.SpringlifyInitializerImpl;
 import dev.temez.springlify.commons.plugin.SpringlifyPlugin;
 import dev.temez.springlify.commons.server.ServerPlatformAdapter;
-import dev.temez.springlify.platform.bukkit.initializer.SpringlifyBukkitInitializer;
 import dev.temez.springlify.platform.bukkit.server.BukkitServerPlatformAdapter;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,7 +22,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  */
 @Getter
 @FieldDefaults(makeFinal = true, level = AccessLevel.PROTECTED)
-public abstract class SpringlifyBukkitPlugin extends JavaPlugin implements SpringlifyPlugin {
+public class SpringlifyBukkitPlugin extends JavaPlugin implements SpringlifyPlugin {
 
   /**
    * The Spring application context associated with the plugin.
@@ -31,15 +32,6 @@ public abstract class SpringlifyBukkitPlugin extends JavaPlugin implements Sprin
   @MonotonicNonNull
   private ConfigurableApplicationContext context;
 
-  /**
-   * Get the spring application initializer.
-   *
-   * @return The spring application initializer.
-   */
-  @Override
-  public @NotNull SpringlifyInitializer getInitializer() {
-    return new SpringlifyBukkitInitializer();
-  }
 
   /**
    * Gets the server platform implementation.
@@ -49,6 +41,12 @@ public abstract class SpringlifyBukkitPlugin extends JavaPlugin implements Sprin
   @Override
   public @NotNull ServerPlatformAdapter getServerPlatformAdapter() {
     return new BukkitServerPlatformAdapter(this);
+  }
+
+  @Override
+  @SneakyThrows
+  public @NotNull Class<?> getApplicationClass() {
+    return Class.forName("dev.temez.springlify.test.SpringlifyTestPlugin");
   }
 
   /**

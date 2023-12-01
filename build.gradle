@@ -15,8 +15,9 @@ subprojects {
     apply plugin: 'java-library'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'com.github.johnrengelman.shadow'
 
-    version = '0.5.9.2dev'
+    version = '0.5.9.3dev'
     group = 'dev.temez.springlify'
 
     sourceCompatibility = '17'

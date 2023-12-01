@@ -52,3 +52,4 @@ bin/
 .DS_Store
 /.idea/
 /api-gateway-service/build/
+/test-plugin/

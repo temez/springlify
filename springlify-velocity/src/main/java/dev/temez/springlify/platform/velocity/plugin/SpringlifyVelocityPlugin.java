@@ -7,7 +7,6 @@ import com.velocitypowered.api.proxy.ProxyServer;
 import dev.temez.springlify.commons.initializer.SpringlifyInitializer;
 import dev.temez.springlify.commons.plugin.SpringlifyPlugin;
 import dev.temez.springlify.commons.server.ServerPlatformAdapter;
-import dev.temez.springlify.platform.velocity.iniitalizer.SpringlifyVelocityInitializer;
 import dev.temez.springlify.platform.velocity.platform.VelocityServerPlatformAdapter;
 import java.io.File;
 import java.nio.file.Path;
@@ -88,11 +87,6 @@ public abstract class SpringlifyVelocityPlugin implements SpringlifyPlugin {
   @Override
   public @NotNull ServerPlatformAdapter getServerPlatformAdapter() {
     return new VelocityServerPlatformAdapter(this);
-  }
-
-  @Override
-  public @NotNull SpringlifyInitializer getInitializer() {
-    return new SpringlifyVelocityInitializer();
   }
 
   /**

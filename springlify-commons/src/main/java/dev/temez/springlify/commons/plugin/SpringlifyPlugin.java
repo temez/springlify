@@ -1,6 +1,7 @@
 package dev.temez.springlify.commons.plugin;
 
 import dev.temez.springlify.commons.initializer.SpringlifyInitializer;
+import dev.temez.springlify.commons.initializer.SpringlifyInitializerImpl;
 import dev.temez.springlify.commons.server.ServerPlatformAdapter;
 import java.io.File;
 import org.jetbrains.annotations.NotNull;
@@ -10,6 +11,13 @@ import org.jetbrains.annotations.NotNull;
  * representing plugins that integrate with the Spring framework.
  */
 public interface SpringlifyPlugin {
+
+  /**
+   * Returns plugin name.
+   *
+   * @return plugin name.
+   */
+  @NotNull String getName();
 
   /**
    * Gets the main application class for the plugin.
@@ -47,5 +55,7 @@ public interface SpringlifyPlugin {
    *
    * @return The spring application initializer.
    */
-  @NotNull SpringlifyInitializer getInitializer();
+  default @NotNull SpringlifyInitializer getInitializer() {
+    return new SpringlifyInitializerImpl();
+  }
 }

@@ -9,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface ServerPlatformAdapter {
 
-
   /**
    * Registers a listener with the platform (e.g., a server) associated with the plugin.
    *
