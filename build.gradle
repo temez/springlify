@@ -17,7 +17,7 @@ subprojects {
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'com.github.johnrengelman.shadow'
 
-    version = '0.5.9.3dev'
+    version = '0.5.9.4dev'
     group = 'dev.temez.springlify'
 
     sourceCompatibility = '17'
@@ -38,19 +38,21 @@ subprojects {
         compileOnlyApi 'org.projectlombok:lombok:1.18.22'
     }
 
-    publishing {
-        publications {
-            "$project.name"(MavenPublication) {
-                from components.java
-                artifactId = project.name
-                groupId = project.group
-                version = project.version
-                pom {
-                    developers {
-                        developer {
-                            id = 'temez'
-                            name = 'Artem I.'
-                            email = 'temezf@gmail.com'
+    if (project.name != 'test-plugin') {
+        publishing {
+            publications {
+                "$project.name"(MavenPublication) {
+                    from components.java
+                    artifactId = project.name
+                    groupId = project.group
+                    version = project.version
+                    pom {
+                        developers {
+                            developer {
+                                id = 'temez'
+                                name = 'Artem I.'
+                                email = 'temezf@gmail.com'
+                            }
                         }
                     }
                 }

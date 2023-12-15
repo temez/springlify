@@ -1,13 +1,10 @@
 package dev.temez.springlify.platform.bukkit.plugin;
 
-import dev.temez.springlify.commons.initializer.SpringlifyInitializer;
-import dev.temez.springlify.commons.initializer.SpringlifyInitializerImpl;
 import dev.temez.springlify.commons.plugin.SpringlifyPlugin;
 import dev.temez.springlify.commons.server.ServerPlatformAdapter;
 import dev.temez.springlify.platform.bukkit.server.BukkitServerPlatformAdapter;
 import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,7 +19,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  */
 @Getter
 @FieldDefaults(makeFinal = true, level = AccessLevel.PROTECTED)
-public class SpringlifyBukkitPlugin extends JavaPlugin implements SpringlifyPlugin {
+public abstract class SpringlifyBukkitPlugin extends JavaPlugin implements SpringlifyPlugin {
 
   /**
    * The Spring application context associated with the plugin.
@@ -44,10 +41,7 @@ public class SpringlifyBukkitPlugin extends JavaPlugin implements SpringlifyPlug
   }
 
   @Override
-  @SneakyThrows
-  public @NotNull Class<?> getApplicationClass() {
-    return Class.forName("dev.temez.springlify.test.SpringlifyTestPlugin");
-  }
+  public abstract @NotNull Class<?> getApplicationClass();
 
   /**
    * Initializes the Bukkit plugin. This method should be called during plugin startup.

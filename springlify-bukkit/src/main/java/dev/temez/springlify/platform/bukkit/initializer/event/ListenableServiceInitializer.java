@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 @Log4j2
 @Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class ListenableServiceInitializer implements DestructionAwareBeanPostProcessor {
+public final class ListenableServiceInitializer implements DestructionAwareBeanPostProcessor {
 
   /**
    * The Springlify platform plugin associated with the initializer.

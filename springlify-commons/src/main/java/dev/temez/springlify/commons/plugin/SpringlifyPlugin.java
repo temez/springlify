@@ -11,14 +11,6 @@ import org.jetbrains.annotations.NotNull;
  * representing plugins that integrate with the Spring framework.
  */
 public interface SpringlifyPlugin {
-
-  /**
-   * Returns plugin name.
-   *
-   * @return plugin name.
-   */
-  @NotNull String getName();
-
   /**
    * Gets the main application class for the plugin.
    *

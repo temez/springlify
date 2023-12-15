@@ -16,7 +16,7 @@ import java.util.Optional;
  * finds everything it's looking for.
  */
 @SuppressWarnings("all")
-public class CompoundClassLoader extends ClassLoader {
+public final class CompoundClassLoader extends ClassLoader {
 
   /**
    * Загрузчики которые чекаем в первую очередь, так же отсюда можем тянуть ресурсы

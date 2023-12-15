@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 @Log4j2
 @Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class BukkitCommandInitializer implements BeanPostProcessor {
+public final class BukkitCommandInitializer implements BeanPostProcessor {
 
   @NotNull
   SpringlifyPlugin plugin;

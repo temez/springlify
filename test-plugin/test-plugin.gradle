@@ -1,0 +1,17 @@
+dependencies {
+    compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation project(":springlify-bukkit")
+    runtimeOnly 'com.h2database:h2:2.2.224'
+    runtimeOnly 'org.postgresql:postgresql:42.7.1'
+    runtimeOnly 'com.mysql:mysql-connector-j:8.2.0'
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}

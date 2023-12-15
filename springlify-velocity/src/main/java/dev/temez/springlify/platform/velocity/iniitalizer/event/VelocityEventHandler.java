@@ -1,6 +1,5 @@
 package dev.temez.springlify.platform.velocity.iniitalizer.event;
 
-import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -34,8 +33,6 @@ import org.springframework.stereotype.Component;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
-@SuppressWarnings("unused")
-@Documented
 @Component
 public @interface VelocityEventHandler {
 
