@@ -2,7 +2,8 @@
 
 Here is the documentation for developing for the Velocity platform.
 
-First, you need to create a Spring application class. Notice, spring application class and plugin main are not the same things.
+First, you need to create a Spring application class. Notice, spring application class and plugin main are not the same
+things.
 Specify base `scanBasePackages` for scanning through the library classes and our application ones.
 
 ```java

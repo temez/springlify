@@ -4,7 +4,6 @@ import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.event.proxy.ProxyShutdownEvent;
 import com.velocitypowered.api.proxy.ProxyServer;
-import dev.temez.springlify.commons.initializer.SpringlifyInitializer;
 import dev.temez.springlify.commons.plugin.SpringlifyPlugin;
 import dev.temez.springlify.commons.server.ServerPlatformAdapter;
 import dev.temez.springlify.platform.velocity.platform.VelocityServerPlatformAdapter;
