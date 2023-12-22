@@ -78,4 +78,9 @@ public abstract class SpringlifyBukkitPlugin extends JavaPlugin implements Sprin
   public void onEnable() {
     initialize();
   }
+
+  @Override
+  public void saveResource(@NotNull String resourcePath, boolean replace) {
+    super.saveResource(resourcePath, replace);
+  }
 }

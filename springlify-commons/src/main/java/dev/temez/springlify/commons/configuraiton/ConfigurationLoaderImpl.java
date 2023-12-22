@@ -115,7 +115,7 @@ public final class ConfigurationLoaderImpl implements ConfigurationLoader {
         ));
   }
 
-  @SuppressWarnings("ResultOfMethodCallIgnored")
+  @SuppressWarnings({"ResultOfMethodCallIgnored", "resource"})
   private void saveDefaultsConfigurations(
       @NotNull SpringlifyPlugin plugin
   ) {
@@ -125,6 +125,7 @@ public final class ConfigurationLoaderImpl implements ConfigurationLoader {
     }
     new Reflections(Scanners.Resources).getResources(".*\\.yml")
         .stream()
+        .filter(name -> getClass().getClassLoader().getResourceAsStream(name) != null)
         .filter(name -> !name.equals("plugin.yml"))
         .filter(name -> !new File(dataFolder, name).exists())
         .forEach(resourceName -> saveDefaultConfiguration(resourceName, plugin));
