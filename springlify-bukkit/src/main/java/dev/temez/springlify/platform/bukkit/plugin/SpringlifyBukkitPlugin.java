@@ -1,5 +1,7 @@
 package dev.temez.springlify.platform.bukkit.plugin;
 
+import dev.temez.springlify.commons.event.SpringlifyEventPublisher;
+import dev.temez.springlify.commons.event.impl.ContextPreShutdownEvent;
 import dev.temez.springlify.commons.plugin.SpringlifyPlugin;
 import dev.temez.springlify.commons.server.ServerPlatformAdapter;
 import dev.temez.springlify.platform.bukkit.server.BukkitServerPlatformAdapter;
@@ -59,6 +61,8 @@ public abstract class SpringlifyBukkitPlugin extends JavaPlugin implements Sprin
   @Override
   public void shutdown() {
     if (context != null) {
+      context.getBean(SpringlifyEventPublisher.class)
+          .publish(new ContextPreShutdownEvent(this));
       context.close();
     }
   }

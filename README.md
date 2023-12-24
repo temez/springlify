@@ -5,7 +5,7 @@
 </a>
 
 ```groovy
-implementation 'dev.temez.springlify:springlify-bukkit:0.5.9.5dev'
+implementation 'dev.temez.springlify:springlify-bukkit:0.5.9.6dev'
 ```
 
 This library enables the use of `Spring Framework` for developing on Bukkit and Velocity platforms.

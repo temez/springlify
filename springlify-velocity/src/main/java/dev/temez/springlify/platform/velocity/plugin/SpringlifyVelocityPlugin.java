@@ -4,6 +4,8 @@ import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.event.proxy.ProxyShutdownEvent;
 import com.velocitypowered.api.proxy.ProxyServer;
+import dev.temez.springlify.commons.event.SpringlifyEventPublisher;
+import dev.temez.springlify.commons.event.impl.ContextPreShutdownEvent;
 import dev.temez.springlify.commons.plugin.SpringlifyPlugin;
 import dev.temez.springlify.commons.server.ServerPlatformAdapter;
 import dev.temez.springlify.platform.velocity.platform.VelocityServerPlatformAdapter;
@@ -79,6 +81,8 @@ public abstract class SpringlifyVelocityPlugin implements SpringlifyPlugin {
   @Override
   public void shutdown() {
     if (context != null) {
+      context.getBean(SpringlifyEventPublisher.class)
+          .publish(new ContextPreShutdownEvent(this));
       context.close();
     }
   }
