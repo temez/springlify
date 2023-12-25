@@ -3,3 +3,6 @@ spring:
     url: jdbc:h2:mem:database
     username: username
     password: password
+  jpa:
+    hibernate:
+      ddl-auto:
