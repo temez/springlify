@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: dev
+
+springlify:
+  platform:
+    text-converter: LEGACY
+
+configuration:
+  localization:
+    items:
+      "test-skull":
+        material: PLAYER_HEAD
+        meta:
+          display-name: "&#f2edaaБошка темеза"
+          lore:
+            - ""
+            - "&7Стоимость: <worth>"
+          skull-meta:
+            skin:
+              texture: "ewogICJ0aW1lc3RhbXAiIDogMTcwMzY0Nzc2NTI0NSwKICAicHJvZmlsZUlkIiA6ICI0MWZlYzZlMWQzNWM0ZDIyOWYxOGQ3OGRkZjk3ZGQzNiIsCiAgInByb2ZpbGVOYW1lIiA6ICJDb3VuZXRyYW0iLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmUxMDkzMDZlNzI5YjA4OGNkZTdkNmNlN2I3NDdiYjM1NDE5MzZiNjg4ZmY1OTUwOTJiY2MzMTFhODQ5NDVhYiIsCiAgICAgICJtZXRhZGF0YSIgOiB7CiAgICAgICAgIm1vZGVsIiA6ICJzbGltIgogICAgICB9CiAgICB9CiAgfQp9"
+              signature: "vDeOZXr+xBlf8oWfkuGzPcOPlDhFmmPS5Xa6Wxd2wJSlN02HWUUTyMUDfZUwNiJwnCRX4h1IDEHqUV1I7MuNp6rN0LnqUV55RZTKXzypdK/sk3Mc4mVosAxmJjSwp5IBU5tge8sMeCgGldYiLGhc4s8m8UtXzQWzgihrGTQX9d8kd7Fv/hTzGPDJ9gZ5fDxNvgK/p5NKFmr7vwbhZM/e6hZDPhzhkIpzNSMTQKfxJ07xpwStDOw2tSnxaRq6242H3jGlGk7mRU8UTYipV/7zcyfaRQlLly34rOvoEL922yVZ1kJ5mxK+no4OfAphWTg0hdV+mTHGpLEz1dVl79MmxkGe18J4EO45AbKR2S2pDuDj+tNJqiyjPQpu60TMeNk5oORUx3MQZyWs5UaPvWdddVLXrGgdsS/WH8sGxhd5F3FjxpT8K0G8O8kkWl99dsam0oMhnsV0dE9x2P28azUZZXE3tLCjHkIv3SaEtmKkO9078NREEr+E6Y8emku/1R5COaFWvDFsRJjrigBm3Zx6k3+tvdZKNaw+YPKVBA+i1liUE9jaSv2WI3T+qLHBpAiiYcF6ik/Hw0oi47jU8umgHddI3BKHA8C9mlWqPtKjujVtQQEm3/bSL5L4jQhRPy+czjYhLBlo4HRu+83zgyMyQiV9WTkT2SDh0i+lA3ZDuwg="
+    messages:
+      system:
+        join-message: "&#f2edaaАУЕ ТАРАКАНЫ БРАТ"
+

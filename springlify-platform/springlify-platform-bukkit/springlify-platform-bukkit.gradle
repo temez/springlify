@@ -1,0 +1,8 @@
+dependencies {
+    compileOnly 'com.mojang:authlib:1.5.25'
+    compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
+
+    implementation 'de.tr7zw:item-nbt-api:2.11.3'
+
+    api project(":springlify-platform:springlify-platform-commons")
+}

@@ -1,18 +1,8 @@
-
-### Gradle ###
 .gradle
-**/build/
-*/build
+build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-
-# logs
-/stacktrace.log
-/test/reports
-/logs
-*.log
-*.log.*
 
 ### IntelliJ IDEA ###
 .idea/modules.xml

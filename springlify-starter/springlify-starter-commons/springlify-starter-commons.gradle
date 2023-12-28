@@ -1,0 +1,3 @@
+dependencies {
+    api "org.reflections:reflections:0.10.2"
+}

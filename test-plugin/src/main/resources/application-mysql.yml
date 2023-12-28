@@ -1,5 +1,0 @@
-spring:
-  datasource:
-    username: username
-    password: password
-    url: jdbc:mysql://localhost:3306/database

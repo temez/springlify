@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: dev
+
+springlify:
+  platform:
+    text-converter: MINI_MESSAGE
+
+configuration:
+  localization:
+    messages:
+      system:
+        join-message: "&#f2edaaАУЕ ТАРАКАНЫ БРАТ"
+

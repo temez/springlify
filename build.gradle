@@ -9,7 +9,7 @@ plugins {
     id "io.freefair.lombok" version "8.4"
 }
 
-subprojects {
+allprojects {
 
     apply plugin: 'checkstyle'
     apply plugin: 'java-library'
@@ -17,7 +17,7 @@ subprojects {
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'com.github.johnrengelman.shadow'
 
-    version = '0.5.9.7dev'
+    version = '0.5.9.8dev'
     group = 'dev.temez.springlify'
 
     sourceCompatibility = '17'
@@ -34,11 +34,14 @@ subprojects {
         annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
         api 'org.jetbrains:annotations:24.0.1'
+        api 'org.springframework.boot:spring-boot-starter'
+
+        implementation "net.kyori:adventure-api:4.14.0"
 
         compileOnlyApi 'org.projectlombok:lombok:1.18.22'
     }
 
-    if (project.name != 'test-plugin') {
+    if (!project.name.contains('plugin')) {
         publishing {
             publications {
                 "$project.name"(MavenPublication) {
