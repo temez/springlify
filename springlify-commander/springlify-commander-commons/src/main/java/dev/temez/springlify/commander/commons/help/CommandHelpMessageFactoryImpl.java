@@ -14,6 +14,11 @@ import lombok.experimental.FieldDefaults;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implementation of {@link CommandHelpMessageFactory} that generates help messages for commands.
+ *
+ * @since 0.5.8.9dev
+ */
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -23,6 +28,9 @@ public final class CommandHelpMessageFactoryImpl implements CommandHelpMessageFa
 
   @NotNull CommandFilterService commandFilterService;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull List<String> getHelpMessage(
       @NotNull Sender<?> sender,
@@ -51,12 +59,19 @@ public final class CommandHelpMessageFactoryImpl implements CommandHelpMessageFa
         localizationService.localizeString(sender, "commander.help.subcommands-section")
     );
     accessibleSubcommands
-        .forEach(subcommand -> result.add(getCommandUsage(sender, subcommand))
-        );
+        .forEach(subcommand -> result.add(getCommandUsage(sender, subcommand)));
     return result;
   }
 
-  private @NotNull String getParameterDescription(
+
+  /**
+   * Get the description for the specified command parameter.
+   *
+   * @param sender    The sender requesting the help.
+   * @param parameter The command parameter.
+   * @return The description for the parameter.
+   */
+  public @NotNull String getParameterDescription(
       @NotNull Sender<?> sender,
       @NotNull Parameter parameter
   ) {
@@ -67,7 +82,14 @@ public final class CommandHelpMessageFactoryImpl implements CommandHelpMessageFa
     return localizationService.localizeString(sender, hintAnnotation.value());
   }
 
-  private @NotNull String getCommandUsage(
+  /**
+   * Get the usage string for the specified command.
+   *
+   * @param sender  The sender requesting the help.
+   * @param command The registered command.
+   * @return The command usage string.
+   */
+  public @NotNull String getCommandUsage(
       @NotNull Sender<?> sender,
       @NotNull RegisteredCommand command
   ) {

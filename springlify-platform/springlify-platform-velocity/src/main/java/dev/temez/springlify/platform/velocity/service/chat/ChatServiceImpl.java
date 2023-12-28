@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 /**
  * Simple {@link ChatService} implementation.
+ *
+ * @since 0.5.9.8dev
  */
 @Service
 @RequiredArgsConstructor

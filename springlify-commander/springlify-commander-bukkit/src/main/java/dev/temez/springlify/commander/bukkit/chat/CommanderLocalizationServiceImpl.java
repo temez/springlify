@@ -11,6 +11,12 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implementation of {@link CommanderLocalizationService} that delegates
+ * to a {@link LocalizationService} for localization functionality.
+ *
+ * @since 0.5.8.9dev
+ */
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -18,6 +24,9 @@ public final class CommanderLocalizationServiceImpl implements CommanderLocaliza
 
   @NotNull LocalizationService localizationService;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull Component localizeComponent(
       @NotNull Sender<?> sender,
@@ -31,6 +40,9 @@ public final class CommanderLocalizationServiceImpl implements CommanderLocaliza
     );
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull String localizeString(
       @NotNull Sender<?> sender,
@@ -44,3 +56,4 @@ public final class CommanderLocalizationServiceImpl implements CommanderLocaliza
     );
   }
 }
+

@@ -1,13 +1,13 @@
 package dev.temez.springlify.commander.commons.command.factory;
 
 import dev.temez.springlify.commander.commons.annotation.Command;
-import dev.temez.springlify.commander.commons.annotation.CommandRoot;
+import dev.temez.springlify.commander.commons.annotation.RootCommand;
 import dev.temez.springlify.commander.commons.annotation.SubCommand;
 import dev.temez.springlify.commander.commons.command.CommandExecutionContext;
 import dev.temez.springlify.commander.commons.command.CommandValidationContext;
 import dev.temez.springlify.commander.commons.command.RegisteredCommand;
-import dev.temez.springlify.commander.commons.exception.FormattedException;
 import dev.temez.springlify.commander.commons.validaiton.factory.CommandFilterFactory;
+import dev.temez.springlify.platform.commons.exception.FormattedException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import lombok.AccessLevel;
@@ -17,6 +17,12 @@ import lombok.extern.log4j.Log4j2;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of {@link CommandFactory} that creates {@link RegisteredCommand}
+ * instances from annotated command classes.
+ *
+ * @since 0.5.8.9dev
+ */
 @Log4j2
 @Component
 @RequiredArgsConstructor
@@ -25,6 +31,9 @@ public final class CommandFactoryImpl implements CommandFactory {
 
   @NotNull CommandFilterFactory commandFilterFactory;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull RegisteredCommand get(@NotNull Object command) throws FormattedException {
     Command commandAnnotation = command.getClass().getAnnotation(Command.class);
@@ -34,7 +43,7 @@ public final class CommandFactoryImpl implements CommandFactory {
 
     log.info("Discovered {} command", commandAnnotation.name());
     Method rootCommandMethod = Arrays.stream(command.getClass().getDeclaredMethods())
-        .filter(method -> method.isAnnotationPresent(CommandRoot.class))
+        .filter(method -> method.isAnnotationPresent(RootCommand.class))
         .findFirst()
         .orElseThrow(
             () -> new FormattedException("No root command method found in %s",

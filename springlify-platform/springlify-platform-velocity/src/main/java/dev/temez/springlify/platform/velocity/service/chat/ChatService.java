@@ -5,6 +5,8 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * A service interface for sending chat messages to players in a Minecraft plugin.
+ *
+ * @since 0.5.9.8dev
  */
 @SuppressWarnings("unused")
 public interface ChatService {

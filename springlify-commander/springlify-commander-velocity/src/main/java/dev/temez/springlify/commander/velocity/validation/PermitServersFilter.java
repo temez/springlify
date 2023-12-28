@@ -13,13 +13,25 @@ import java.util.Optional;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of {@link CommandFilter} for the {@link PermitServers} annotation.
+ *
+ * @since 0.5.8.9dev
+ */
 @Component
 public final class PermitServersFilter implements CommandFilter<PermitServers> {
+
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull Class<PermitServers> getFilterAnnotationType() {
     return PermitServers.class;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void filter(
       @NotNull Sender<?> sender,

@@ -98,7 +98,7 @@ public class ConfigurableItemMeta
   ConfigurablePotionMeta potionMeta;
 
   @Override
-  public ItemBuilder.MaterialItemBuilder apply(
+  public ItemBuilder.@NotNull MaterialItemBuilder apply(
       @NotNull ItemBuilder.MaterialItemBuilder builder,
       Object @NotNull ... params
   ) {

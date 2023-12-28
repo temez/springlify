@@ -14,8 +14,15 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.stereotype.Service;
 
 
+/**
+ * The {@code LegacyTextConverter} class is an implementation of the {@code TextConverter} interface
+ * that uses the LegacyComponentSerializer to parse and format text using legacy formatting codes.
+ *
+ * @since 0.5.9.8dev
+ */
 @Log4j2
 @Service
+@SuppressWarnings("all")
 @ConditionalOnExpression(
     "'${springlify.platform.text-converter}'.equals('LEGACY') || '${springlify.platform.text-converter}' == null"
 )
@@ -43,7 +50,7 @@ public final class LegacyTextConverter implements TextConverter {
   }
 
   @Override
-  public @NotNull Component resetComponent() {
+  public @NotNull Component getResetComponent() {
     return serializer.deserialize("&r")
         .decoration(TextDecoration.ITALIC, TextDecoration.State.FALSE);
   }

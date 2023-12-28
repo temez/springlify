@@ -23,21 +23,34 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of the CommandExecutor interface for executing commands.
+ *
+ * @since 0.5.8.9dev
+ */
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public final class CommandExecutorImpl implements CommandExecutor {
 
-  @NotNull ApplicationContext applicationContext;
+  @NotNull
+  ApplicationContext applicationContext;
 
-  @NotNull ArgumentAdapterFactory argumentAdapterFactory;
+  @NotNull
+  ArgumentAdapterFactory argumentAdapterFactory;
 
-  @NotNull ExecutionPreprocessorChain preprocessorChain;
+  @NotNull
+  ExecutionPreprocessorChain preprocessorChain;
 
-  @NotNull CommanderChatService chatService;
+  @NotNull
+  CommanderChatService chatService;
 
-  @NotNull CommandHelpService commandHelpService;
+  @NotNull
+  CommandHelpService commandHelpService;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   @SneakyThrows
   public void execute(@NotNull CommandExecution execution) throws ConformableException {
@@ -96,3 +109,4 @@ public final class CommandExecutorImpl implements CommandExecutor {
     return sender.getPlatformSender();
   }
 }
+

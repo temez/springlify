@@ -9,13 +9,22 @@ import lombok.experimental.FieldDefaults;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of CommanderExceptionHandler for handling exceptions during command execution.
+ *
+ * @since 0.5.8.9dev
+ */
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public final class CommanderExceptionHandlerImpl implements CommanderExceptionHandler {
 
-  @NotNull CommanderChatService chatService;
+  @NotNull
+  CommanderChatService chatService;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void handle(@NotNull CommandExecution execution, @NotNull ConformableException exception) {
     chatService.sendErrorMessage(

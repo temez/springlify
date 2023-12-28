@@ -13,6 +13,11 @@ import lombok.experimental.FieldDefaults;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of {@link PlatformCommandFactory} for the Velocity platform.
+ *
+ * @since 0.5.8.9dev
+ */
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -26,6 +31,9 @@ public final class VelocityCommandFactory implements PlatformCommandFactory {
 
   @NotNull CommanderExceptionHandler exceptionHandler;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull PlatformCommand create(@NotNull RegisteredCommand registeredCommand) {
     return CommanderVelocityCommand.builder()

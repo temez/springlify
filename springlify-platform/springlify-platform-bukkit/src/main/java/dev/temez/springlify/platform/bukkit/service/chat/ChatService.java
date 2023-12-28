@@ -4,19 +4,23 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A service interface for sending chat messages to players in a Minecraft plugin.
+ * The {@code ChatService} interface provides methods for sending messages to {@link CommandSender}.
+ *
+ * @since 0.5.9.8dev
  */
 @SuppressWarnings("unused")
 public interface ChatService {
 
   /**
-   * Send a success message to a sender with optional text replacers.
+   * Sends a formatted message to the specified {@link CommandSender}.
    *
-   * @param sender    The sender who will receive the success message.
-   * @param message   The success message to send.
-   * @param replacers Optional text replacers to apply to the message.
+   * @param sender    The command sender to receive the message.
+   * @param message   The message to be sent.
+   * @param replacers Objects used to replace placeholders in the message.
    */
-  void sendMessage(@NotNull CommandSender sender, @NotNull String message,
-                   @NotNull Object... replacers);
+  void sendMessage(@NotNull CommandSender sender,
+                   @NotNull String message,
+                   Object @NotNull ... replacers
+  );
 
 }

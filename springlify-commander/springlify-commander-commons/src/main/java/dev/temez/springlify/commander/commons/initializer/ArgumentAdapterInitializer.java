@@ -7,23 +7,38 @@ import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-
+/**
+ * Bean post-processor for initializing and registering ArgumentAdapters.
+ *
+ * @since 0.5.8.9dev
+ */
 @Log4j2
 @Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class ArgumentAdapterInitializer implements BeanPostProcessor {
 
-  @NotNull ArgumentAdapterFactory argumentAdapterFactory;
+  @NotNull
+  ArgumentAdapterFactory argumentAdapterFactory;
 
+  /**
+   * Lazy-initialized constructor for ArgumentAdapterInitializer.
+   *
+   * @param argumentAdapterFactory The factory for creating ArgumentAdapters.
+   */
   @Lazy
+  @Autowired
   public ArgumentAdapterInitializer(@NotNull ArgumentAdapterFactory argumentAdapterFactory) {
     this.argumentAdapterFactory = argumentAdapterFactory;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public Object postProcessBeforeInitialization(@NotNull Object bean, @NotNull String beanName) {
     if (bean instanceof ArgumentAdapter<?> argumentAdapter) {

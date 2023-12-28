@@ -4,7 +4,6 @@ import dev.temez.springlify.starter.commons.CompoundClassLoader;
 import dev.temez.springlify.starter.commons.annotation.EnableSpringlifyStarter;
 import dev.temez.springlify.starter.commons.configuraiton.ConfigurationLoader;
 import dev.temez.springlify.starter.commons.configuraiton.ConfigurationLoaderImpl;
-import dev.temez.springlify.starter.commons.exception.SpringlifyException;
 import dev.temez.springlify.starter.commons.plugin.SpringlifyPlugin;
 import java.util.ArrayList;
 import java.util.List;
@@ -103,11 +102,11 @@ public class SpringlifyInitializerImpl implements SpringlifyInitializer {
   }
 
   private @NotNull Class<?> getApplicationClass(@NotNull SpringlifyPlugin plugin)
-      throws SpringlifyException {
+      throws IllegalStateException {
     EnableSpringlifyStarter annotation =
         plugin.getClass().getAnnotation(EnableSpringlifyStarter.class);
     if (annotation == null) {
-      throw new SpringlifyException("Missing @EnableSpringlifyStarter annotation!");
+      throw new IllegalStateException("Missing @EnableSpringlifyStarter annotation!");
     }
     return annotation.applicationClass();
   }

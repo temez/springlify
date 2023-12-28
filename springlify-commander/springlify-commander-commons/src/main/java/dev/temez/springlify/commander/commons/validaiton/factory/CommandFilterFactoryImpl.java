@@ -10,9 +10,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import lombok.AccessLevel;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
@@ -20,14 +19,23 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of {@link CommandFilterFactory} for discovering filter
+ * annotations and simple command filters.
+ *
+ * @since 0.5.8.9dev
+ */
 @Log4j2
 @Component
 @RequiredArgsConstructor
-@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public final class CommandFilterFactoryImpl implements CommandFilterFactory {
 
-  @NotNull ApplicationContext applicationContext;
+  @NotNull
+  ApplicationContext applicationContext;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull List<Annotation> getFilterAnnotations(@NotNull Method commandMethod) {
     List<Annotation> annotations = Arrays.stream(commandMethod.getAnnotations())
@@ -38,7 +46,7 @@ public final class CommandFilterFactoryImpl implements CommandFilterFactory {
                 .map(Order::value)
                 .orElse(0)
         ))
-        .toList();
+        .collect(Collectors.toList());
 
     log.info(
         "Successfully discovered {} filters for {}",
@@ -48,6 +56,9 @@ public final class CommandFilterFactoryImpl implements CommandFilterFactory {
     return annotations;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull @Unmodifiable List<? extends SimpleCommandFilter> getSimpleFilters(
       @NotNull Method commandMethod) {

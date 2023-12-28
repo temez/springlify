@@ -12,6 +12,13 @@ import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
+/**
+ * The {@code LocalizationServiceImpl} class implements the {@link LocalizationService} interface
+ * and provides methods for retrieving localized messages and formatting them as {@link Component}
+ * or {@link String}.
+ *
+ * @since 0.5.9.8dev
+ */
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)

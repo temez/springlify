@@ -14,16 +14,24 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of the ExecutionPreprocessorChain interface for managing a chain of preprocessors.
+ *
+ * @since 0.5.8.9dev
+ */
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public final class ExecutionPreprocessorChainImpl implements ExecutionPreprocessorChain {
 
-  @NotNull List<ExecutionPreprocessor> preprocessorList = new ArrayList<>();
+  @NotNull
+  List<ExecutionPreprocessor> preprocessorList = new ArrayList<>();
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
-  public void register(
-      @NotNull ExecutionPreprocessor executionPreprocessor) {
+  public void register(@NotNull ExecutionPreprocessor executionPreprocessor) {
     preprocessorList.add(executionPreprocessor);
     preprocessorList.sort(Comparator.comparingInt(
         preprocessor -> Optional
@@ -33,6 +41,9 @@ public final class ExecutionPreprocessorChainImpl implements ExecutionPreprocess
     ));
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void process(@NotNull CommandExecution execution) throws ConformableException {
     preprocessorList.forEach(preprocessor -> preprocessor.process(execution));

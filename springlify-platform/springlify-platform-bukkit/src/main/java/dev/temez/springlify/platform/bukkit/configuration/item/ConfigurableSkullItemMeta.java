@@ -39,7 +39,7 @@ public class ConfigurableSkullItemMeta
   Skin skin;
 
   @Override
-  public ItemBuilder.MaterialItemBuilder apply(
+  public ItemBuilder.@NotNull MaterialItemBuilder apply(
       @NotNull ItemBuilder.MaterialItemBuilder.SkullBuilder builder,
       Object @NotNull ... params
   ) {

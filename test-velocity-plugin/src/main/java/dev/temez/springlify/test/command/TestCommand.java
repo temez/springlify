@@ -2,7 +2,7 @@ package dev.temez.springlify.test.command;
 
 import com.velocitypowered.api.proxy.Player;
 import dev.temez.springlify.commander.commons.annotation.Command;
-import dev.temez.springlify.commander.commons.annotation.CommandRoot;
+import dev.temez.springlify.commander.commons.annotation.RootCommand;
 import dev.temez.springlify.commander.commons.validaiton.annotation.RequirePermission;
 import dev.temez.springlify.commander.velocity.validation.annotation.PermitServers;
 import org.jetbrains.annotations.NotNull;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 )
 public class TestCommand {
 
-  @CommandRoot
+  @RootCommand
   @PermitServers("auth")
   @RequirePermission("test.command")
   public void execute(@NotNull Player player) {

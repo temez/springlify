@@ -66,7 +66,7 @@ public abstract class ItemBuilder<B extends ItemBuilder<?>> {
 
   public @NotNull B setName(@NotNull String name) {
     metaModifications.add(
-        meta -> meta.displayName(converter.resetComponent().append(converter.parse(name))));
+        meta -> meta.displayName(converter.getResetComponent().append(converter.parse(name))));
     return getThis();
   }
 
@@ -78,7 +78,7 @@ public abstract class ItemBuilder<B extends ItemBuilder<?>> {
   public @NotNull B lore(@NotNull Collection<String> lore) {
     List<Component> componentLore = lore
         .stream()
-        .map(s -> converter.resetComponent().append(converter.parse(s)))
+        .map(s -> converter.getResetComponent().append(converter.parse(s)))
         .toList();
     metaModifications.add(meta -> meta.lore(componentLore));
     return getThis();
@@ -86,7 +86,7 @@ public abstract class ItemBuilder<B extends ItemBuilder<?>> {
 
   public @NotNull B appendLore(String @NotNull ... lines) {
     List<Component> componentLore = Arrays.stream(lines)
-        .map(s -> converter.resetComponent().append(converter.parse(s)))
+        .map(s -> converter.getResetComponent().append(converter.parse(s)))
         .toList();
     metaModifications.add(meta -> {
       List<Component> lore = getLore(meta);

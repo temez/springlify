@@ -22,7 +22,6 @@ public class MessagesConfiguration implements LocalizationConfiguration {
 
   @NotNull Map<String, String> messages;
 
-
   @Override
   public @Nullable String getMessage(@NotNull String key) {
     return messages.get(key);

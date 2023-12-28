@@ -11,6 +11,11 @@ import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implementation of {@link CommandHelpService} that sends help messages to the command sender.
+ *
+ * @since 0.5.8.9dev
+ */
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -20,6 +25,9 @@ public final class CommandHelpServiceImpl implements CommandHelpService {
 
   @NotNull CommandHelpMessageFactory messageFactory;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void sendHelpMessage(@NotNull Sender<?> sender, @NotNull RegisteredCommand command) {
     command = command.getRootCommand();

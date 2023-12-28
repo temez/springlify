@@ -1,6 +1,5 @@
 package dev.temez.springlify.starter.commons.configuraiton;
 
-import dev.temez.springlify.starter.commons.exception.SpringlifyException;
 import dev.temez.springlify.starter.commons.plugin.SpringlifyPlugin;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -49,12 +48,12 @@ public final class ConfigurationLoaderImpl implements ConfigurationLoader {
   public void load(
       @NotNull ConfigurableApplicationContext context,
       @NotNull SpringlifyPlugin plugin
-  ) throws SpringlifyException {
+  ) throws IllegalStateException {
     saveDefaultsConfigurations(plugin);
 
     File rootConfiguration = new File(plugin.getDataFolder(), "application.yml");
     if (!rootConfiguration.exists()) {
-      throw new SpringlifyException("application.yml not found in plugin directory!");
+      throw new IllegalStateException("application.yml not found in plugin directory!");
     }
 
     List<Resource> resourcesList = new ArrayList<>();

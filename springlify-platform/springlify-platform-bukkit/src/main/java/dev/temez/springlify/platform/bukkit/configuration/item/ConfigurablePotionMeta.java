@@ -50,7 +50,7 @@ public class ConfigurablePotionMeta
   ConfigurableColor color;
 
   @Override
-  public ItemBuilder.MaterialItemBuilder apply(
+  public ItemBuilder.@NotNull MaterialItemBuilder apply(
       @NotNull ItemBuilder.MaterialItemBuilder.PotionBuilder builder,
       Object @NotNull ... params
   ) {

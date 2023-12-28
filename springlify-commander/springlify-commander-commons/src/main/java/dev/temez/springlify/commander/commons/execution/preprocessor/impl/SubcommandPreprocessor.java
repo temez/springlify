@@ -13,14 +13,23 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of the ExecutionPreprocessor interface for handling subcommands.
+ *
+ * @since 0.5.8.9dev
+ */
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public final class SubcommandPreprocessor implements ExecutionPreprocessor {
 
-  private @Nullable RegisteredCommand getSubCommand(
-      @NotNull CommandExecution execution
-  ) {
+  /**
+   * Gets the subcommand that matches the given command execution.
+   *
+   * @param execution The command execution context.
+   * @return The matched subcommand, or null if none is found.
+   */
+  private @Nullable RegisteredCommand getSubCommand(@NotNull CommandExecution execution) {
     List<String> args = execution.getArguments();
     String argumentsString = String.join(" ", args);
 
@@ -33,6 +42,9 @@ public final class SubcommandPreprocessor implements ExecutionPreprocessor {
         .orElse(null);
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void process(@NotNull CommandExecution execution) throws ConformableException {
     RegisteredCommand subCommand = getSubCommand(execution);

@@ -15,6 +15,12 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implementation of the {@link LocalizationService} interface that retrieves localized messages,
+ * strings, and ItemStacks using a {@link LocalizationConfiguration} and {@link TextConverter}.
+ *
+ * @since 0.5.9.8dev
+ */
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)

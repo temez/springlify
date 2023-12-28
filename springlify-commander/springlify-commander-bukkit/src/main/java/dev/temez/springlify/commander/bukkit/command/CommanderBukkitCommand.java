@@ -23,6 +23,14 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * Implementation of {@link PlatformCommand} for the Bukkit platform.
+ *
+ * <p>This class represents a Bukkit command that implements the
+ * {@link PlatformCommand} interface.</p>
+ *
+ * @since 0.5.8.9dev
+ */
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class CommanderBukkitCommand extends Command implements PlatformCommand {
 
@@ -38,6 +46,17 @@ public class CommanderBukkitCommand extends Command implements PlatformCommand {
 
   @NotNull CommanderExceptionHandler exceptionHandler;
 
+  /**
+   * Constructs a new instance of {@code CommanderBukkitCommand} using the builder pattern.
+   *
+   * @param command              The registered command associated with this Bukkit command.
+   * @param commandFilterService The command filter service for handling command
+   *                             accessibility and validation.
+   * @param commandCompleter     The command completer for handling tab completions.
+   * @param commandExecutor      The command executor for executing command logic.
+   * @param exceptionHandler     The exception handler for handling exceptions during
+   *                             command execution.
+   */
   @Builder
   protected CommanderBukkitCommand(
       @NotNull RegisteredCommand command,
@@ -55,10 +74,13 @@ public class CommanderBukkitCommand extends Command implements PlatformCommand {
     this.exceptionHandler = exceptionHandler;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean execute(@NotNull CommandSender sender, @NotNull String commandLabel,
                          @NotNull String[] args) {
-    CommandExecution execution = executionFactory.createExecution(
+    CommandExecution execution = executionFactory.create(
         command,
         sender,
         Arrays.stream(args).toList()
@@ -72,6 +94,9 @@ public class CommanderBukkitCommand extends Command implements PlatformCommand {
     return true;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull List<String> tabComplete(
       @NotNull CommandSender sender,
@@ -79,7 +104,7 @@ public class CommanderBukkitCommand extends Command implements PlatformCommand {
       @NotNull String[] args,
       @Nullable Location location
   ) throws IllegalArgumentException {
-    CommandExecution execution = executionFactory.createExecution(
+    CommandExecution execution = executionFactory.create(
         command,
         sender,
         Arrays.stream(args).toList()
@@ -87,11 +112,17 @@ public class CommanderBukkitCommand extends Command implements PlatformCommand {
     return commandCompleter.completeSorted(execution);
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void register(Object @NotNull ... args) {
     Bukkit.getCommandMap().register("commander", this);
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean testPermissionSilent(@NotNull CommandSender target) {
     return commandFilterService.isAccessible(

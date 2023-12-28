@@ -21,6 +21,11 @@ import lombok.experimental.FieldDefaults;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 
+/**
+ * Implementation of {@link SimpleCommand} and {@link PlatformCommand} for the Velocity platform.
+ *
+ * @since 0.5.8.9dev
+ */
 @Builder
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -38,6 +43,9 @@ public final class CommanderVelocityCommand implements SimpleCommand, PlatformCo
 
   @NotNull CommanderExceptionHandler exceptionHandler;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void register(Object @NotNull ... args) {
     ((ProxyServer) args[0]).getCommandManager().register(
@@ -47,9 +55,12 @@ public final class CommanderVelocityCommand implements SimpleCommand, PlatformCo
     );
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void execute(@NotNull Invocation invocation) {
-    CommandExecution execution = executionFactory.createExecution(
+    CommandExecution execution = executionFactory.create(
         command,
         invocation
     );
@@ -61,15 +72,21 @@ public final class CommanderVelocityCommand implements SimpleCommand, PlatformCo
     }
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull @Unmodifiable List<String> suggest(Invocation invocation) {
-    CommandExecution execution = executionFactory.createExecution(
+    CommandExecution execution = executionFactory.create(
         command,
         invocation
     );
     return commandCompleter.completeSorted(execution);
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean hasPermission(@NotNull Invocation invocation) {
     return commandFilterService.isAccessible(

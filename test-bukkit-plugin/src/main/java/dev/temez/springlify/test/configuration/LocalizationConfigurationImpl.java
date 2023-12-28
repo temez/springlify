@@ -21,7 +21,7 @@ import org.springframework.context.event.EventListener;
 @Configuration
 @ConfigurationProperties(prefix = "configuration.localization")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class MessagesConfiguration implements LocalizationConfiguration {
+public class LocalizationConfigurationImpl implements LocalizationConfiguration {
 
   @NotNull Map<String, String> messages;
 

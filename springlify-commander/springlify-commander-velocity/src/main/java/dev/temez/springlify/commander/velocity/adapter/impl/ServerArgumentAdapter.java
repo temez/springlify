@@ -13,6 +13,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of {@link ArgumentAdapter} for the BungeeCord platform, adapting
+ * arguments to {@link RegisteredServer}.
+ *
+ * @since 0.5.8.9dev
+ */
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -20,18 +26,28 @@ public final class ServerArgumentAdapter implements ArgumentAdapter<RegisteredSe
 
   @NotNull ProxyServer proxyServer;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @Unmodifiable @NotNull List<String> complete(@NotNull Sender<?> commandSender) {
     return proxyServer.getAllServers()
-        .stream().map(s -> s.getServerInfo().getName())
+        .stream()
+        .map(server -> server.getServerInfo().getName())
         .toList();
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull Class<RegisteredServer> getTargetClass() {
     return RegisteredServer.class;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull RegisteredServer parse(
       @NotNull Sender<?> commandSender,
@@ -39,7 +55,6 @@ public final class ServerArgumentAdapter implements ArgumentAdapter<RegisteredSe
   ) throws ConformableException {
     return proxyServer.getServer(rawArgument)
         .orElseThrow(
-            () -> new ConformableException("commander.arguments.no-such-server-registered")
-        );
+            () -> new ConformableException("commander.arguments.no-such-server-registered"));
   }
 }

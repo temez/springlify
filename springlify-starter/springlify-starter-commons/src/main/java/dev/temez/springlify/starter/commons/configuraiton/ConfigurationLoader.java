@@ -1,6 +1,5 @@
 package dev.temez.springlify.starter.commons.configuraiton;
 
-import dev.temez.springlify.starter.commons.exception.SpringlifyException;
 import dev.temez.springlify.starter.commons.plugin.SpringlifyPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -23,10 +22,10 @@ public interface ConfigurationLoader {
    *
    * @param context The Spring application context to which the configuration should be loaded.
    * @param plugin  The Springlify plugin associated with the configuration loading process.
-   * @throws SpringlifyException If an error occurs during the configuration loading process.
+   * @throws IllegalStateException If an error occurs during the configuration loading process.
    */
   void load(
       @NotNull ConfigurableApplicationContext context,
       @NotNull SpringlifyPlugin plugin
-  ) throws SpringlifyException;
+  ) throws IllegalStateException;
 }

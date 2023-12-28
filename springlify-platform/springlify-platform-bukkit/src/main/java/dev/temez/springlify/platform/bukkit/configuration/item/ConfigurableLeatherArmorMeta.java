@@ -33,7 +33,7 @@ public class ConfigurableLeatherArmorMeta
   ConfigurableColor color;
 
   @Override
-  public ItemBuilder.MaterialItemBuilder apply(
+  public ItemBuilder.@NotNull MaterialItemBuilder apply(
       @NotNull ItemBuilder.MaterialItemBuilder.LeatherArmorBuilder builder,
       Object @NotNull ... params
   ) {

@@ -11,6 +11,11 @@ import lombok.experimental.FieldDefaults;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 
+/**
+ * Represents a context for validating commands.
+ *
+ * @since 0.5.8.9dev
+ */
 @Getter
 @Builder
 @RequiredArgsConstructor

@@ -12,43 +12,71 @@ import lombok.experimental.FieldDefaults;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service implementation for handling command filters and validation.
+ */
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public final class CommandFilterServiceImpl implements CommandFilterService {
 
-  @NotNull CommandFilterRegistry filterRegistry;
+  @NotNull
+  CommandFilterRegistry filterRegistry;
 
-  @NotNull GlobalFilterRegistry globalFilterRegistry;
+  @NotNull
+  GlobalFilterRegistry globalFilterRegistry;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean isAccessible(@NotNull Sender<?> sender, @NotNull RegisteredCommand command) {
     try {
       validate(command, sender);
+      return true;
     } catch (ValidationException ignored) {
       return false;
     }
-    return true;
   }
 
+  /**
+   * {@inheritDoc}
+   *
+   * <p>Applies global and command-specific filters for validation.</p>
+   */
   @Override
   public void validate(
       @NotNull RegisteredCommand command,
       @NotNull Sender<?> sender
   ) throws ValidationException {
+    applyGlobalFilters(command, sender);
+    applyCommandFilters(command, sender);
+  }
+
+  private void applyGlobalFilters(
+      @NotNull RegisteredCommand command,
+      @NotNull Sender<?> sender
+  ) throws ValidationException {
     globalFilterRegistry
         .getRegisteredFilters()
-        .forEach(scf -> scf.filter(command, sender));
+        .forEach(globalFilter -> globalFilter.filter(command, sender));
+  }
+
+  private void applyCommandFilters(
+      @NotNull RegisteredCommand command,
+      @NotNull Sender<?> sender
+  ) throws ValidationException {
     command.getValidationContext()
         .getSimpleCommandFilters()
-        .forEach(scf -> scf.filter(command, sender));
+        .forEach(commandFilter -> commandFilter.filter(command, sender));
+
     command.getValidationContext()
         .getFilterAnnotations()
-        .forEach(annotation -> doFilter(annotation, sender));
+        .forEach(annotation -> applyFilter(annotation, sender));
   }
 
   @SuppressWarnings("unchecked")
-  private <T extends Annotation> void doFilter(
+  private <T extends Annotation> void applyFilter(
       @NotNull T filterAnnotation,
       @NotNull Sender<?> sender
   ) throws ValidationException {

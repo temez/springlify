@@ -20,23 +20,33 @@ import org.jetbrains.annotations.Unmodifiable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of the CommandCompleter interface for completing command-related tasks.
+ *
+ * @since 0.5.8.9dev
+ */
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public final class CommandCompleterImpl implements CommandCompleter {
 
-  @NotNull ApplicationContext applicationContext;
+  @NotNull
+  ApplicationContext applicationContext;
 
-  @NotNull ArgumentAdapterFactory argumentAdapterFactory;
+  @NotNull
+  ArgumentAdapterFactory argumentAdapterFactory;
 
-  @NotNull CommandFilterService commandFilterService;
+  @NotNull
+  CommandFilterService commandFilterService;
 
-  @NotNull ExecutionPreprocessorChain preprocessorChain;
+  @NotNull
+  ExecutionPreprocessorChain preprocessorChain;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
-  public @NotNull @Unmodifiable List<String> complete(
-      @NotNull CommandExecution execution
-  ) {
+  public @NotNull List<String> complete(@NotNull CommandExecution execution) {
     preprocessorChain.process(execution);
     Sender<?> sender = execution.getCommandSender();
     RegisteredCommand command = execution.getCommand();
@@ -54,22 +64,23 @@ public final class CommandCompleterImpl implements CommandCompleter {
     return result;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull @Unmodifiable List<String> completeSorted(
-      @NotNull CommandExecution commandExecution) {
+      @NotNull CommandExecution commandExecution
+  ) {
     List<String> result = new ArrayList<>(complete(commandExecution));
     if (!commandExecution.getArguments().isEmpty()) {
       result.removeIf(
-          s -> !s.toLowerCase().startsWith(commandExecution.getLastArgument().toLowerCase())
-      );
+          s -> !s.toLowerCase().startsWith(commandExecution.getLastArgument().toLowerCase()));
     }
     Collections.sort(result);
     return List.copyOf(result);
   }
 
-  private @NotNull @Unmodifiable List<String> getExternalAdapterSuggestions(
-      @NotNull CommandExecution execution
-  ) {
+  private @NotNull List<String> getExternalAdapterSuggestions(@NotNull CommandExecution execution) {
     RegisteredCommand command = execution.getCommand();
     Parameter parameter = command
         .getExecutionContext()
@@ -83,9 +94,7 @@ public final class CommandCompleterImpl implements CommandCompleter {
         .complete(execution.getCommandSender());
   }
 
-  private @NotNull @Unmodifiable List<String> getAdapterSuggestions(
-      @NotNull CommandExecution execution
-  ) {
+  private @NotNull List<String> getAdapterSuggestions(@NotNull CommandExecution execution) {
     List<String> externalAdapterSuggestions = getExternalAdapterSuggestions(execution);
     if (!externalAdapterSuggestions.isEmpty()) {
       return externalAdapterSuggestions;
@@ -105,9 +114,7 @@ public final class CommandCompleterImpl implements CommandCompleter {
     return newResult;
   }
 
-  private @NotNull @Unmodifiable List<String> getSubcommandSuggestions(
-      @NotNull CommandExecution execution
-  ) {
+  private @NotNull List<String> getSubcommandSuggestions(@NotNull CommandExecution execution) {
     return execution.getCommand().getSubcommands()
         .stream()
         .filter(subcommand -> commandFilterService.isAccessible(
@@ -117,5 +124,4 @@ public final class CommandCompleterImpl implements CommandCompleter {
         .map(RegisteredCommand::getName)
         .toList();
   }
-
 }

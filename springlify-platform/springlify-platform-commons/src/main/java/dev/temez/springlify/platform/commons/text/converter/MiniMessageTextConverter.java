@@ -13,11 +13,16 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.stereotype.Service;
 
+/**
+ * The {@code MiniMessageTextConverter} class is an implementation
+ * of the {@code TextConverter} interface that uses the MiniMessage library
+ * to parse and format text.
+ *
+ * @since 0.5.9.8dev
+ */
 @Log4j2
 @Service
-@ConditionalOnExpression(
-    "'${springlify.platform.text-converter}'.equals('MINI_MESSAGE')"
-)
+@ConditionalOnExpression("'${springlify.platform.text-converter}'.equals('MINI_MESSAGE')")
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public final class MiniMessageTextConverter implements TextConverter {
 
@@ -41,8 +46,9 @@ public final class MiniMessageTextConverter implements TextConverter {
   }
 
   @Override
-  public @NotNull Component resetComponent() {
+  public @NotNull Component getResetComponent() {
     return serializer.deserialize("<reset>")
         .decoration(TextDecoration.ITALIC, TextDecoration.State.FALSE);
   }
 }
+

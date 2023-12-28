@@ -10,6 +10,11 @@ import lombok.experimental.FieldDefaults;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Implementation of {@link Sender} for the Velocity platform.
+ *
+ * @since 0.5.8.9dev
+ */
 @Getter
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -17,16 +22,25 @@ public final class VelocityCommandSender implements Sender<CommandSource> {
 
   @NotNull CommandSource platformSender;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean isConsoleSender() {
     return platformSender instanceof ConsoleCommandSource;
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public boolean hasPermission(@NotNull String permission) {
     return platformSender.hasPermission(permission);
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void sendMessage(@NotNull Component component) {
     platformSender.sendMessage(component);

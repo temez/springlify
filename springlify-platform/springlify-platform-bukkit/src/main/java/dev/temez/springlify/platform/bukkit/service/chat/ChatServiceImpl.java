@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 /**
  * Simple {@link ChatService} implementation.
+ *
+ * @since 0.5.9.8dev
  */
 @Service
 @RequiredArgsConstructor
@@ -23,7 +25,7 @@ public final class ChatServiceImpl implements ChatService {
   public void sendMessage(
       @NotNull CommandSender sender,
       @NotNull String message,
-      @NotNull Object... replacers
+      Object @NotNull ... replacers
   ) {
     sender.sendMessage(localizationService.getLocalizedMessage(sender, message, replacers));
   }

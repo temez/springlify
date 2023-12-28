@@ -13,6 +13,13 @@ import lombok.experimental.FieldDefaults;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of {@link PlatformCommandFactory} for Bukkit platform.
+ *
+ * <p>This factory creates instances of {@link PlatformCommand} for registered commands.</p>
+ *
+ * @since 0.5.8.9dev
+ */
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -26,8 +33,12 @@ public final class BukkitCommandFactory implements PlatformCommandFactory {
 
   @NotNull CommanderExceptionHandler exceptionHandler;
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public @NotNull PlatformCommand create(@NotNull RegisteredCommand registeredCommand) {
+
     return CommanderBukkitCommand.builder()
         .command(registeredCommand)
         .exceptionHandler(exceptionHandler)
@@ -37,3 +48,4 @@ public final class BukkitCommandFactory implements PlatformCommandFactory {
         .build();
   }
 }
+
