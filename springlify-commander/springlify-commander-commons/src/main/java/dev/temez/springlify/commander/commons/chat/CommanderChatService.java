@@ -1,6 +1,7 @@
 package dev.temez.springlify.commander.commons.chat;
 
 import dev.temez.springlify.commander.commons.sender.Sender;
+import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -21,5 +22,17 @@ public interface CommanderChatService {
       @NotNull Sender<?> sender,
       @NotNull String key,
       Object @NotNull ... replacers
+  );
+
+
+  /**
+   * Sends a message to the specified sender with the given key and replacers.
+   *
+   * @param sender    The sender to whom the error message will be sent.
+   * @param component The message component.
+   */
+  void sendMessage(
+      @NotNull Sender<?> sender,
+      @NotNull Component component
   );
 }

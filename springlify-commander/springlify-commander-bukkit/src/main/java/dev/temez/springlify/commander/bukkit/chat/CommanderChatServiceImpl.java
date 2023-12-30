@@ -1,10 +1,13 @@
-package dev.temez.springlify.commander.commons.chat;
+package dev.temez.springlify.commander.bukkit.chat;
 
+import dev.temez.springlify.commander.commons.chat.CommanderChatService;
+import dev.temez.springlify.commander.commons.chat.CommanderLocalizationService;
 import dev.temez.springlify.commander.commons.sender.Sender;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import net.kyori.adventure.text.Component;
+import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +31,14 @@ public final class CommanderChatServiceImpl implements CommanderChatService {
   public void sendErrorMessage(@NotNull Sender<?> sender, @NotNull String key,
                                Object @NotNull ... replacers) {
     Component localizedMessage = localizationService.localizeComponent(sender, key, replacers);
-    sender.sendMessage(localizedMessage);
+    sendMessage(sender, localizedMessage);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void sendMessage(@NotNull Sender<?> sender, @NotNull Component component) {
+    ((CommandSender) sender.getPlatformSender()).sendMessage(component);
   }
 }

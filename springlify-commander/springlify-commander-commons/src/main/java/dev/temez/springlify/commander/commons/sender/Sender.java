@@ -1,6 +1,5 @@
 package dev.temez.springlify.commander.commons.sender;
 
-import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -33,10 +32,4 @@ public interface Sender<T> {
    */
   boolean hasPermission(@NotNull String permission);
 
-  /**
-   * Sends a message to the sender.
-   *
-   * @param component The component representing the message.
-   */
-  void sendMessage(@NotNull Component component);
 }

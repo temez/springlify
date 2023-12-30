@@ -1,5 +1,6 @@
 package dev.temez.springlify.commander.commons.help;
 
+import dev.temez.springlify.commander.commons.chat.CommanderChatService;
 import dev.temez.springlify.commander.commons.command.RegisteredCommand;
 import dev.temez.springlify.commander.commons.sender.Sender;
 import dev.temez.springlify.platform.commons.text.converter.TextConverter;
@@ -25,6 +26,8 @@ public final class CommandHelpServiceImpl implements CommandHelpService {
 
   @NotNull CommandHelpMessageFactory messageFactory;
 
+  @NotNull CommanderChatService chatService;
+
   /**
    * {@inheritDoc}
    */
@@ -39,6 +42,6 @@ public final class CommandHelpServiceImpl implements CommandHelpService {
         component = component.append(Component.newline());
       }
     }
-    sender.sendMessage(component);
+    chatService.sendMessage(sender, component);
   }
 }

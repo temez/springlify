@@ -4,7 +4,7 @@ spring:
 
 springlify:
   platform:
-    text-converter: LEGACY
+    text-converter: MINI_MESSAGE
 
 configuration:
   localization:

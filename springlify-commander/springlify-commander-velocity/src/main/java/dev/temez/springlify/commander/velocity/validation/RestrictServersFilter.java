@@ -6,7 +6,6 @@ import com.velocitypowered.api.proxy.ServerConnection;
 import dev.temez.springlify.commander.commons.exception.ValidationException;
 import dev.temez.springlify.commander.commons.sender.Sender;
 import dev.temez.springlify.commander.commons.validaiton.CommandFilter;
-import dev.temez.springlify.commander.velocity.validation.annotation.PermitServers;
 import dev.temez.springlify.commander.velocity.validation.annotation.RestrictServers;
 import java.util.Arrays;
 import java.util.List;

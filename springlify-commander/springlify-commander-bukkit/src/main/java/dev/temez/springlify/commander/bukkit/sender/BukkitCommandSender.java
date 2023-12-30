@@ -5,7 +5,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import net.kyori.adventure.text.Component;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -41,13 +40,5 @@ public final class BukkitCommandSender implements Sender<CommandSender> {
   @Override
   public boolean hasPermission(@NotNull String permission) {
     return platformSender.hasPermission(permission);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void sendMessage(@NotNull Component component) {
-    platformSender.sendMessage(component);
   }
 }
