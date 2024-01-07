@@ -3,6 +3,7 @@ package dev.temez.springlify.commander.commons.executor;
 import dev.temez.springlify.commander.commons.adapter.ArgumentAdapterFactory;
 import dev.temez.springlify.commander.commons.annotation.Adapter;
 import dev.temez.springlify.commander.commons.annotation.EnableDetailsSupport;
+import dev.temez.springlify.commander.commons.annotation.Variadic;
 import dev.temez.springlify.commander.commons.chat.CommanderChatService;
 import dev.temez.springlify.commander.commons.command.RegisteredCommand;
 import dev.temez.springlify.commander.commons.exception.ConformableException;
@@ -58,7 +59,11 @@ public final class CommandExecutorImpl implements CommandExecutor {
     Sender<?> sender = execution.getCommandSender();
     RegisteredCommand command = execution.getCommand();
 
-    if (execution.getArguments().size() != command.getExecutionContext().getParametersCount()) {
+    Parameter lastParameter = command.getExecutionContext()
+        .getParameter(command.getExecutionContext().getParametersCount() - 1);
+    boolean hasVariadicParameter = lastParameter.isAnnotationPresent(Variadic.class);
+
+    if (execution.getArguments().size() < command.getExecutionContext().getParametersCount()) {
       chatService.sendErrorMessage(sender, "commander.help.invalid-command-usage");
       commandHelpService.sendHelpMessage(sender, command);
       return;
@@ -67,14 +72,26 @@ public final class CommandExecutorImpl implements CommandExecutor {
     List<Object> executionParameters = new ArrayList<>();
     executionParameters.add(getSenderDetails(sender, command));
 
-    Method commandMethod = command.getExecutionContext().getMethod();
-
-    for (int i = 0; i < command.getExecutionContext().getParametersCount(); i++) {
+    for (int i = 0;
+         i < command.getExecutionContext().getParametersCount() - (hasVariadicParameter ? 1 : 0);
+         i++) {
       Parameter parameter = command.getExecutionContext().getParameter(i);
       String rawArgument = execution.getArguments().get(i);
       executionParameters.add(parseArgument(parameter, rawArgument, execution.getCommandSender()));
     }
+    executionParameters.forEach(System.out::println);
+    List<String> variadicArguments = new ArrayList<>();
+    if (hasVariadicParameter) {
+      for (int i = command.getExecutionContext().getParametersCount() - 1;
+           i < execution.getArguments().size();
+           i++
+      ) {
+        variadicArguments.add(execution.getArguments().get(i));
+      }
+    }
 
+    Method commandMethod = command.getExecutionContext().getMethod();
+    executionParameters.add(variadicArguments.toArray(new String[0]));
     commandMethod.invoke(
         command.getExecutionContext().getCommandExecutor(),
         executionParameters.toArray()

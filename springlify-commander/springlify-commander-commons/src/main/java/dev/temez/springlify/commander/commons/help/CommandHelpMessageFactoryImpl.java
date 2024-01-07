@@ -41,6 +41,7 @@ public final class CommandHelpMessageFactoryImpl implements CommandHelpMessageFa
         localizationService.localizeString(
             sender,
             "commander.help.header-template",
+            "<name>",
             command.getName()
         )
     );
@@ -104,8 +105,11 @@ public final class CommandHelpMessageFactoryImpl implements CommandHelpMessageFa
     return localizationService.localizeString(
         sender,
         "commander.help.usage-template",
+        "<name>",
         command.getFullName(),
+        "<arguments>",
         argumentsHelpString,
+        "<description>",
         localizationService.localizeString(sender, command.getDescription())
     );
   }

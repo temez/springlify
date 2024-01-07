@@ -1,6 +1,7 @@
 package dev.temez.springlify.commander.bukkit.sender;
 
 import dev.temez.springlify.commander.commons.sender.Sender;
+import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,17 @@ public final class BukkitCommandSender implements Sender<CommandSender> {
    * The underlying Bukkit {@link CommandSender}.
    */
   @NotNull CommandSender platformSender;
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public @NotNull UUID getUuid() throws IllegalArgumentException{
+    if (isConsoleSender()) {
+      throw new IllegalStateException("Command sender is console!");
+    }
+    return ((Player) platformSender).getUniqueId();
+  }
 
   /**
    * {@inheritDoc}

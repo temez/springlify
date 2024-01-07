@@ -2,7 +2,9 @@ package dev.temez.springlify.commander.velocity.sender;
 
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.proxy.ConsoleCommandSource;
+import com.velocitypowered.api.proxy.Player;
 import dev.temez.springlify.commander.commons.sender.Sender;
+import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,17 @@ import org.jetbrains.annotations.NotNull;
 public final class VelocityCommandSender implements Sender<CommandSource> {
 
   @NotNull CommandSource platformSender;
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public @NotNull UUID getUuid() throws IllegalArgumentException {
+    if (isConsoleSender()) {
+      throw new IllegalStateException("Command sender is console!");
+    }
+    return ((Player) platformSender).getUniqueId();
+  }
 
   /**
    * {@inheritDoc}

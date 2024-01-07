@@ -1,5 +1,6 @@
 package dev.temez.springlify.commander.commons.sender;
 
+import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -16,6 +17,13 @@ public interface Sender<T> {
    * @return The platform-specific sender.
    */
   @NotNull T getPlatformSender();
+
+  /**
+   * Gets the platform-specific sender uuid.
+   *
+   * @return The platform-specific sender uuid.
+   */
+  @NotNull UUID getUuid() throws IllegalArgumentException;
 
   /**
    * Checks if the sender is a console sender.
