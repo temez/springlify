@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +33,7 @@ public class ConfigurableLocation implements Configurable<Location> {
    * The world of the location.
    */
   @NotNull
-  World world;
+  String world;
 
   /**
    * The x-coordinate of the location.
@@ -66,7 +67,7 @@ public class ConfigurableLocation implements Configurable<Location> {
    */
   @Override
   public @NotNull Location getPlatformObject(Object @NotNull ... params) {
-    return new Location(world, x, y, z, yaw, pitch);
+    return new Location(Bukkit.getWorld(world), x, y, z, yaw, pitch);
   }
 }
 
