@@ -65,10 +65,17 @@ public final class ConfigurationLoaderImpl implements ConfigurationLoader {
         Objects.requireNonNull(propertiesFactory.getObject()),
         context.getEnvironment()
     );
+    Arrays.stream(Objects.requireNonNull(plugin.getDataFolder().listFiles()))
+        .filter(file -> !getClearFileName(file).contains("application"))
+        .filter(file -> Files.isRegularFile(file.toPath()))
+        .filter(file -> getFileExtension(file).equals("yml"))
+        .map(FileSystemResource::new)
+        .forEach(resourcesList::add);
 
     Arrays.stream(Objects.requireNonNull(plugin.getDataFolder().listFiles()))
         .filter(file -> Files.isRegularFile(file.toPath()))
         .filter(file -> getFileExtension(file).equals("yml"))
+        .filter(file -> getClearFileName(file).contains("application"))
         .filter(file -> Arrays
             .stream(context.getEnvironment().getActiveProfiles())
             .anyMatch(profile -> getClearFileName(file).contains("-" + profile))

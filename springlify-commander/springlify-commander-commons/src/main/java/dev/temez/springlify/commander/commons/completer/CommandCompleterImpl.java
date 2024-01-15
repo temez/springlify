@@ -57,7 +57,7 @@ public final class CommandCompleterImpl implements CommandCompleter {
     if (!commandFilterService.isAccessible(sender, command)) {
       return result;
     }
-    if (execution.getArguments().size() > command.getExecutionContext().getParametersCount()) {
+    if (execution.getArguments().size() >= command.getExecutionContext().getParametersCount()) {
       return result;
     }
     result.addAll(getAdapterSuggestions(execution));
