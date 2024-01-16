@@ -16,7 +16,7 @@ public class TestCommand {
 
   @RootCommand
   public void executeRoot(@NotNull CommandSender sender) {
-
+    System.out.println("This is root command");
   }
 
   @SubCommand(
@@ -24,6 +24,6 @@ public class TestCommand {
       description = "commands.test.sub.description"
   )
   public void executeSub(@NotNull CommandSender sender, @NotNull Integer integer) {
-
+    System.out.println("This is subcommand!");
   }
 }
