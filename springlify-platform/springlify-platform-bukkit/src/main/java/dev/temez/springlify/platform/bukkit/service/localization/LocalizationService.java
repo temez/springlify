@@ -56,4 +56,30 @@ public interface LocalizationService {
       @NotNull String key,
       @NotNull Object... replacers
   );
+
+  /**
+   * Retrieves a localized string for the given key with optional replacement parameters.
+   *
+   * @param key       The key associated with the desired localized message.
+   * @param replacers Optional parameters to replace placeholders in the message.
+   * @return The localized string.
+   */
+  @NotNull
+  String getLocalizedMessageString(
+          @NotNull String key,
+          @NotNull Object... replacers
+  );
+
+  /**
+   * Retrieves a localized ItemStack for the given key with optional replacement parameters.
+   *
+   * @param key       The key associated with the desired localized item.
+   * @param replacers Optional parameters to replace placeholders in the item.
+   * @return The localized ItemStack.
+   */
+  @NotNull
+  ItemStack getLocalizedItemStack(
+          @NotNull String key,
+          @NotNull Object... replacers
+  );
 }

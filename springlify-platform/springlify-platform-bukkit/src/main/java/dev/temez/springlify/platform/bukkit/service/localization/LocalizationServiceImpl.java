@@ -40,15 +40,32 @@ public final class LocalizationServiceImpl implements LocalizationService {
   }
 
   @Override
+  public @NotNull String getLocalizedMessageString(@NotNull String key, @NotNull Object... replacers) {
+    String localizedMessage = Optional
+            .ofNullable(localizationConfiguration.getMessage(key))
+            .orElse("messages." + key);
+    return TextUtility.applyReplacers(localizedMessage, replacers);
+  }
+
+  @Override
+  public @NotNull ItemStack getLocalizedItemStack(@NotNull String key, @NotNull Object... replacers) {
+    return Optional.ofNullable(localizationConfiguration.getItem(key))
+            .map(item -> item.getPlatformObject(replacers))
+            .orElse(
+                    ItemBuilder
+                            .fromMaterial(Material.STONE)
+                            .setName("items." + key)
+                            .build()
+            );
+  }
+
+  @Override
   public @NotNull String getLocalizedMessageString(
       @NotNull CommandSender sender,
       @NotNull String key,
       @NotNull Object... replacers
   ) {
-    String localizedMessage = Optional
-        .ofNullable(localizationConfiguration.getMessage(key))
-        .orElse("messages." + key);
-    return TextUtility.applyReplacers(localizedMessage, replacers);
+    return this.getLocalizedMessageString(key, replacers);
   }
 
   @Override
@@ -57,13 +74,7 @@ public final class LocalizationServiceImpl implements LocalizationService {
       @NotNull String key,
       @NotNull Object... replacers
   ) {
-    return Optional.ofNullable(localizationConfiguration.getItem(key))
-        .map(item -> item.getPlatformObject(replacers))
-        .orElse(
-            ItemBuilder
-                .fromMaterial(Material.STONE)
-                .setName("items." + key)
-                .build()
-        );
+    return this.getLocalizedItemStack(key, replacers);
   }
+
 }
