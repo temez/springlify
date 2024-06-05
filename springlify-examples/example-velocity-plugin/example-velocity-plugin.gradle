@@ -1,0 +1,17 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version "$shadowPluginVersion"
+}
+
+dependencies {
+    implementation project(":springlify-starter:springlify-starter-velocity")
+    compileOnly "com.velocitypowered:velocity-api:$velocityPluginVersion"
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}

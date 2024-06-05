@@ -1,3 +1,4 @@
 dependencies {
-    api "org.reflections:reflections:0.10.2"
+    api 'org.springframework.boot:spring-boot-starter'
+    api "org.reflections:reflections:$reflectionsApiVersion"
 }

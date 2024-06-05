@@ -1,7 +1,0 @@
-name: test-plugin
-main: dev.temez.springlify.test.application.SpringlifyTestPlugin
-version: '${version}'
-api-version: 1.16
-
-authors:
-  - temez (temezf@gmail.com)
