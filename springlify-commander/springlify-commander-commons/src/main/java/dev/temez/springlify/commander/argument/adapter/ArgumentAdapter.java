@@ -2,7 +2,7 @@ package dev.temez.springlify.commander.argument.adapter;
 
 import dev.temez.springlify.commander.argument.completer.ArgumentCompleter;
 import dev.temez.springlify.commander.command.sender.Sender;
-import dev.temez.springlify.commander.exception.ArgumentException;
+import dev.temez.springlify.commander.exception.argument.ArgumentException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 

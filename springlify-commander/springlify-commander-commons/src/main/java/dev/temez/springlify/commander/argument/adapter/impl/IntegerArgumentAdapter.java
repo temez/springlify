@@ -3,7 +3,7 @@ package dev.temez.springlify.commander.argument.adapter.impl;
 
 import dev.temez.springlify.commander.argument.adapter.ArgumentAdapter;
 import dev.temez.springlify.commander.command.sender.Sender;
-import dev.temez.springlify.commander.exception.ArgumentException;
+import dev.temez.springlify.commander.exception.argument.ArgumentException;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

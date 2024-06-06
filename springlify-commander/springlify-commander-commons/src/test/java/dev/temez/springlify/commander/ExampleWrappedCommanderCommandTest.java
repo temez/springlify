@@ -2,12 +2,11 @@ package dev.temez.springlify.commander;
 
 import dev.temez.springlify.commander.annotation.CommandRoot;
 import dev.temez.springlify.commander.annotation.CommanderCommand;
-import dev.temez.springlify.commander.argument.adapter.ArgumentAdapterFactoryImpl;
 import dev.temez.springlify.commander.argument.adapter.impl.IntegerArgumentAdapter;
 import dev.temez.springlify.commander.argument.adapter.impl.StringArgumentAdapter;
-import dev.temez.springlify.commander.command.CommandType;
+import dev.temez.springlify.commander.argument.adapter.resolver.ContextArgumentAdapterResolver;
 import dev.temez.springlify.commander.command.Command;
-import dev.temez.springlify.commander.command.completer.CommandCompleter;
+import dev.temez.springlify.commander.command.CommandType;
 import dev.temez.springlify.commander.command.completer.ProviderCommandCompleter;
 import dev.temez.springlify.commander.command.completer.provider.impl.GenericCompletionProvider;
 import dev.temez.springlify.commander.command.completer.provider.impl.SubCommandCompletionProvider;
@@ -16,9 +15,11 @@ import dev.temez.springlify.commander.command.discoverer.CommandDiscoverer;
 import dev.temez.springlify.commander.command.discoverer.MethodBasedCommandDiscoverer;
 import dev.temez.springlify.commander.command.invocation.CommandInvocation;
 import dev.temez.springlify.commander.command.invocation.CommandInvocationImpl;
-import dev.temez.springlify.commander.command.preprocessor.ExecutionPreprocessor;
-import dev.temez.springlify.commander.command.preprocessor.SubcommandPreprocessor;
+import dev.temez.springlify.commander.command.preprocessor.ExecutionPreprocessorServiceImpl;
+import dev.temez.springlify.commander.command.preprocessor.impl.SubcommandPreprocessor;
 import dev.temez.springlify.commander.command.sender.Sender;
+import dev.temez.springlify.commander.service.CommandService;
+import dev.temez.springlify.commander.service.CommandServiceImpl;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.jetbrains.annotations.NotNull;
@@ -34,14 +35,16 @@ import static org.mockito.Mockito.mock;
 @SpringBootTest(classes = {
     StringArgumentAdapter.class,
     IntegerArgumentAdapter.class,
-    ArgumentAdapterFactoryImpl.class,
+    ContextArgumentAdapterResolver.class,
     ProviderCommandCompleter.class,
     ClassBasedCommandDiscoverer.class,
     MethodBasedCommandDiscoverer.class,
     ExampleWrappedCommanderCommandTest.TestCommand.class,
     SubCommandCompletionProvider.class,
     GenericCompletionProvider.class,
-    SubcommandPreprocessor.class
+    SubcommandPreprocessor.class,
+    ExecutionPreprocessorServiceImpl.class,
+    CommandServiceImpl.class
 }
 )
 @TestPropertySource(
@@ -54,10 +57,7 @@ public class ExampleWrappedCommanderCommandTest {
   CommandDiscoverer<Class<?>> commandDiscoverer;
 
   @Autowired
-  ExecutionPreprocessor executionPreprocessor;
-
-  @Autowired
-  CommandCompleter commandCompleter;
+  CommandService commandService;
 
   @Test
   void tst() {
@@ -65,11 +65,10 @@ public class ExampleWrappedCommanderCommandTest {
     CommandInvocation execution = new CommandInvocationImpl(
         mock(Sender.class),
         command,
-        List.of("othersub", "sub", "so", "<")
+        List.of("othersub")
     );
 
-    executionPreprocessor.process(execution);
-    System.out.println(commandCompleter.completeSorted(execution));
+    System.out.println(commandService.complete(execution));
   }
 
   @CommanderCommand(
@@ -99,7 +98,7 @@ public class ExampleWrappedCommanderCommandTest {
     public static class OtherSubCommand {
 
       @CommandRoot
-      public void execute(@NotNull Sender<?> sender, @NotNull String arg) {
+      public void execute(@NotNull Sender<?> sender) {
 
       }
 

@@ -8,5 +8,7 @@ import java.util.List;
 
 public interface CommandService {
 
-  @NotNull @Unmodifiable List<String> complete(@NotNull CommandInvocation execution);
+  @NotNull @Unmodifiable List<String> complete(@NotNull CommandInvocation commandInvocation);
+
+  void execute(@NotNull CommandInvocation commandInvocation);
 }

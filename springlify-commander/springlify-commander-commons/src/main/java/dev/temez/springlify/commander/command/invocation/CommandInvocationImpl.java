@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public final class CommandInvocationImpl implements CommandInvocation {
+public class CommandInvocationImpl implements CommandInvocation {
 
   @NotNull
   final Sender<?> sender;

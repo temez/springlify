@@ -9,7 +9,7 @@ public interface Sender<T> {
 
   @NotNull T getPlatformSender();
 
-  @NotNull UUID getUuid() throws IllegalArgumentException;
+  @NotNull UUID getUuid() throws UnsupportedOperationException;
 
   boolean isConsoleSender();
 

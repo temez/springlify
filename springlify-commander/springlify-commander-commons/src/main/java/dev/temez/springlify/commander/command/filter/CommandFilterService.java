@@ -2,12 +2,12 @@ package dev.temez.springlify.commander.command.filter;
 
 import dev.temez.springlify.commander.command.Command;
 import dev.temez.springlify.commander.command.sender.Sender;
-import dev.temez.springlify.commander.exception.CommandFilterException;
+import dev.temez.springlify.commander.exception.filter.CommandFilterException;
 import org.jetbrains.annotations.NotNull;
 
 public interface CommandFilterService {
 
-  boolean isAccessible(@NotNull Command command, @NotNull Sender<?> sender);
+  void filter(@NotNull Sender<?> sender, @NotNull Command command) throws CommandFilterException;
 
-  void filter(@NotNull Command command, @NotNull Sender<?> sender) throws CommandFilterException;
+  boolean isAccessible(@NotNull Sender<?> sender, @NotNull Command command);
 }

@@ -1,11 +1,10 @@
 package dev.temez.springlify.commander.command.platform;
 
 import dev.temez.springlify.commander.command.Command;
-import dev.temez.springlify.commander.command.completer.CommandCompleter;
 import dev.temez.springlify.commander.command.execution.BukkitInvocationFactory;
 import dev.temez.springlify.commander.command.invocation.CommandInvocation;
 import dev.temez.springlify.commander.command.invocation.CommandInvocationFactory;
-import dev.temez.springlify.commander.command.preprocessor.ExecutionPreprocessor;
+import dev.temez.springlify.commander.service.CommandService;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.bukkit.Bukkit;
@@ -28,26 +27,27 @@ public class CommanderBukkitCommand extends org.bukkit.command.Command implement
   Command command;
 
   @NotNull
-  CommandCompleter commandCompleter;
-
-  @NotNull
-  ExecutionPreprocessor executionPreprocessor;
+  CommandService commandService;
 
   protected CommanderBukkitCommand(
       @NotNull Command command,
-      @NotNull CommandCompleter commandCompleter,
-      @NotNull ExecutionPreprocessor executionPreprocessor
+      @NotNull CommandService commandService
   ) {
     super(command.getName());
-    this.executionPreprocessor = executionPreprocessor;
+    this.commandService = commandService;
     setAliases(command.getAlias());
     this.command = command;
-    this.commandCompleter = commandCompleter;
   }
 
   @Override
   public boolean execute(@NotNull CommandSender sender, @NotNull String commandLabel,
                          @NotNull String[] args) {
+    CommandInvocation execution = executionFactory.create(
+        command,
+        sender,
+        Arrays.stream(args).toList()
+    );
+    commandService.execute(execution);
     return true;
   }
 
@@ -63,8 +63,7 @@ public class CommanderBukkitCommand extends org.bukkit.command.Command implement
         sender,
         Arrays.stream(args).toList()
     );
-    executionPreprocessor.process(execution);
-    return commandCompleter.completeSorted(execution);
+    return commandService.complete(execution);
   }
 
   /**

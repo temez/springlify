@@ -24,7 +24,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = 'springlify-new'
+rootProject.name = 'springlify'
 
 [
         'springlify-commander:springlify-commander-bukkit',

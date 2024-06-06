@@ -8,7 +8,6 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
-import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -21,18 +20,16 @@ import java.util.*;
 public final class ProviderCommandCompleter implements CommandCompleter {
 
   @NotNull
-  ApplicationContext applicationContext;
+  List<CompletionProvider> providers;
 
   @Override
   public @NotNull @Unmodifiable List<String> complete(@NotNull CommandInvocation commandInvocation) {
-    return applicationContext.getBeansOfType(CompletionProvider.class).values()
-        .stream()
+    return providers.stream()
         .filter(completionProvider -> completionProvider.supports(commandInvocation))
-        .sorted(Comparator.comparingInt(
-            completionProvider -> Optional
-                .ofNullable(completionProvider.getClass().getAnnotation(Order.class))
-                .map(Order::value)
-                .orElse(0)
+        .sorted(Comparator.comparingInt(completionProvider -> Optional
+            .ofNullable(completionProvider.getClass().getAnnotation(Order.class))
+            .map(Order::value)
+            .orElse(0)
         ))
         .limit(2)
         .map(completionProvider -> completionProvider.complete(commandInvocation))
@@ -44,7 +41,7 @@ public final class ProviderCommandCompleter implements CommandCompleter {
   public @NotNull @Unmodifiable List<String> completeSorted(@NotNull CommandInvocation commandInvocation) {
     List<String> completions = new ArrayList<>(complete(commandInvocation));
     if (!commandInvocation.getArguments().isEmpty()) {
-      completions.removeIf(s -> !s.toLowerCase().startsWith(commandInvocation.getLastArgument().toLowerCase()));
+      completions.removeIf(completion -> !completion.toLowerCase().startsWith(commandInvocation.getLastArgument().toLowerCase()));
     }
     Collections.sort(completions);
     return Collections.unmodifiableList(completions);

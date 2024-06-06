@@ -1,8 +1,7 @@
 package dev.temez.springlify.commander.command.platform;
 
 import dev.temez.springlify.commander.command.Command;
-import dev.temez.springlify.commander.command.completer.CommandCompleter;
-import dev.temez.springlify.commander.command.preprocessor.ExecutionPreprocessor;
+import dev.temez.springlify.commander.service.CommandService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -15,16 +14,13 @@ import org.springframework.stereotype.Component;
 public final class BukkitCommandFactory implements PlatformCommandFactory {
 
   @NotNull
-  CommandCompleter commandCompleter;
-
-  @NotNull
-  ExecutionPreprocessor executionPreprocessor;
+  CommandService commandService;
 
   @Override
   public @NotNull PlatformCommand create(@NotNull Command registeredCommand) {
 
     return new CommanderBukkitCommand(
-        registeredCommand, commandCompleter, executionPreprocessor
+        registeredCommand, commandService
     );
   }
 }

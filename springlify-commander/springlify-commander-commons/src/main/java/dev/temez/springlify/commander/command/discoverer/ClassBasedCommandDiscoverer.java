@@ -1,7 +1,7 @@
 package dev.temez.springlify.commander.command.discoverer;
 
-import dev.temez.springlify.commander.annotation.CommanderCommand;
 import dev.temez.springlify.commander.annotation.CommandRoot;
+import dev.temez.springlify.commander.annotation.CommanderCommand;
 import dev.temez.springlify.commander.command.Command;
 import dev.temez.springlify.commander.command.CommandImpl;
 import dev.temez.springlify.commander.command.metadata.CommandInvocationMetadata;

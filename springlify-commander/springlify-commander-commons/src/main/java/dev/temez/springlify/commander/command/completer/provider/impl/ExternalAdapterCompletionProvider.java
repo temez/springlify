@@ -2,10 +2,10 @@ package dev.temez.springlify.commander.command.completer.provider.impl;
 
 import dev.temez.springlify.commander.annotation.parameter.Adapter;
 import dev.temez.springlify.commander.command.completer.provider.MethodParameterCompletionProvider;
+import dev.temez.springlify.commander.command.filter.CommandFilterService;
 import dev.temez.springlify.commander.command.sender.Sender;
 import jakarta.annotation.PostConstruct;
 import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
@@ -20,12 +20,19 @@ import java.util.List;
 @Slf4j
 @Order(1)
 @Component
-@RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public final class ExternalAdapterCompletionProvider extends MethodParameterCompletionProvider {
 
   @NotNull
   ApplicationContext applicationContext;
+
+  public ExternalAdapterCompletionProvider(
+      @NotNull CommandFilterService commandFilterService,
+      @NotNull ApplicationContext applicationContext
+  ) {
+    super(commandFilterService);
+    this.applicationContext = applicationContext;
+  }
 
   @PostConstruct
   private void initialize() {

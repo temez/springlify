@@ -13,7 +13,11 @@ public interface CommandInvocation {
 
   @NotNull Command getCommand();
 
+  void setCommand(@NotNull Command command);
+
   @NotNull @Unmodifiable List<String> getArguments();
+
+  void setArguments(@NotNull List<String> args);
 
   int getLastArgumentIndex();
 

@@ -1,12 +1,12 @@
 package dev.temez.springlify.commander.command.completer.provider.impl;
 
 import dev.temez.springlify.commander.argument.adapter.ArgumentAdapter;
-import dev.temez.springlify.commander.argument.adapter.ArgumentAdapterFactory;
+import dev.temez.springlify.commander.argument.adapter.resolver.ArgumentAdapterResolver;
 import dev.temez.springlify.commander.command.completer.provider.MethodParameterCompletionProvider;
+import dev.temez.springlify.commander.command.filter.CommandFilterService;
 import dev.temez.springlify.commander.command.sender.Sender;
 import jakarta.annotation.PostConstruct;
 import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
@@ -20,12 +20,19 @@ import java.util.List;
 @Slf4j
 @Order(0)
 @Component
-@RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public final class GenericCompletionProvider extends MethodParameterCompletionProvider {
 
   @NotNull
-  ArgumentAdapterFactory argumentAdapter;
+  ArgumentAdapterResolver argumentAdapter;
+
+  public GenericCompletionProvider(
+      @NotNull CommandFilterService commandFilterService,
+      @NotNull ArgumentAdapterResolver argumentAdapter
+  ) {
+    super(commandFilterService);
+    this.argumentAdapter = argumentAdapter;
+  }
 
   @PostConstruct
   private void initialize() {
@@ -40,10 +47,6 @@ public final class GenericCompletionProvider extends MethodParameterCompletionPr
   @Override
   protected @NotNull @Unmodifiable List<String> complete(@NotNull Parameter parameter, @NotNull Sender<?> sender) {
     ArgumentAdapter<?> adapter = argumentAdapter.getAdapter(parameter.getType());
-    List<String> result = adapter.complete(sender);
-    if (!result.isEmpty()) {
-      return result;
-    }
-    return List.of(String.format("<%s>", parameter.getName()));
+    return adapter.complete(sender);
   }
 }
