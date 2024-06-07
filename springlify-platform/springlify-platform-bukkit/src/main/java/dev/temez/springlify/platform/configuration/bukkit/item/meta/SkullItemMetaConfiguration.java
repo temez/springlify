@@ -9,13 +9,6 @@ import lombok.experimental.FieldDefaults;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.experimental.FieldDefaults;
-import org.jetbrains.annotations.Nullable;
-import org.springframework.boot.context.properties.NestedConfigurationProperty;
-
 /**
  * Configuration class representing the item meta properties for skulls.
  *
@@ -29,11 +22,15 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public final class SkullItemMetaConfiguration {
 
-  /** The owner of the skull. */
+  /**
+   * The owner of the skull.
+   */
   @Nullable
   String owner;
 
-  /** The skin texture configuration for the skull. */
+  /**
+   * The skin texture configuration for the skull.
+   */
   @Nullable
   @NestedConfigurationProperty
   SkinTextureConfiguration skin;

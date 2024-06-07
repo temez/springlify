@@ -9,13 +9,6 @@ import lombok.experimental.FieldDefaults;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.experimental.FieldDefaults;
-import org.jetbrains.annotations.NotNull;
-import org.springframework.boot.context.properties.NestedConfigurationProperty;
-
 /**
  * Configuration class representing the item meta properties for leather armor.
  *
@@ -29,7 +22,9 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public final class LeatherArmorItemMetaConfiguration {
 
-  /** The color configuration for the leather armor. */
+  /**
+   * The color configuration for the leather armor.
+   */
   @NotNull
   @NestedConfigurationProperty
   ColorConfiguration color;

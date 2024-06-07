@@ -6,9 +6,6 @@ import org.bukkit.potion.PotionEffect;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
-import org.bukkit.potion.PotionEffect;
-import org.jetbrains.annotations.NotNull;
-
 /**
  * Mapping schema for converting PotionEffectConfiguration to PotionEffect.
  *

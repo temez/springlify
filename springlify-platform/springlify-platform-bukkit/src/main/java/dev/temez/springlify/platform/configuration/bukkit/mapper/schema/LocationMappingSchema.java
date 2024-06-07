@@ -7,10 +7,6 @@ import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.jetbrains.annotations.NotNull;
-
 /**
  * Mapping schema for converting LocationConfiguration to Location.
  *

@@ -1,11 +1,6 @@
 package dev.temez.springlify.platform.configuration.bukkit;
 
-import lombok.*;
-import lombok.experimental.FieldDefaults;
-import org.bukkit.enchantments.Enchantment;
-import org.jetbrains.annotations.NotNull;
-
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -26,13 +21,19 @@ import org.jetbrains.annotations.NotNull;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public final class EnchantmentConfiguration {
 
-  /** The enchantment. */
+  /**
+   * The enchantment.
+   */
   @NotNull
   Enchantment enchantment;
 
-  /** The level of the enchantment. Default value is 1. */
+  /**
+   * The level of the enchantment. Default value is 1.
+   */
   int level = 1;
 
-  /** Indicates whether to ignore level restrictions. Default value is true. */
+  /**
+   * Indicates whether to ignore level restrictions. Default value is true.
+   */
   boolean ignoreLevelRestriction = true;
 }

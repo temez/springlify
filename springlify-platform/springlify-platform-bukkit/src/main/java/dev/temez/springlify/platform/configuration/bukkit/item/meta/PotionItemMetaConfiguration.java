@@ -15,18 +15,6 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.experimental.FieldDefaults;
-import org.bukkit.potion.PotionType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.springframework.boot.context.properties.NestedConfigurationProperty;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Configuration class representing the item meta properties for potions.
  *
@@ -40,15 +28,21 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public final class PotionItemMetaConfiguration {
 
-  /** The list of potion effects applied to the potion. */
+  /**
+   * The list of potion effects applied to the potion.
+   */
   @NotNull
   List<PotionEffectConfiguration> effects = new ArrayList<>();
 
-  /** The main effect type of the potion. */
+  /**
+   * The main effect type of the potion.
+   */
   @Nullable
   PotionType mainEffectType;
 
-  /** The color configuration for the potion. */
+  /**
+   * The color configuration for the potion.
+   */
   @Nullable
   @NestedConfigurationProperty
   ColorConfiguration color;
