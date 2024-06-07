@@ -35,7 +35,15 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-@SuppressWarnings("all")
+/**
+ * Abstract class representing an item builder.
+ *
+ * <p>This class provides methods for constructing ItemStack objects with various properties and modifications.</p>
+ *
+ * @param <B> the type of the item builder
+ * @since 0.7.0.0-RC1
+ */
+@SuppressWarnings({"unused", "UnusedReturnValue"})
 public abstract class ItemBuilder<B extends ItemBuilder<?>> {
   private static @NonFinal TextConverter converter;
   private final List<Function<ItemStack, ItemStack>> itemChangers = new ArrayList<>();
@@ -43,7 +51,10 @@ public abstract class ItemBuilder<B extends ItemBuilder<?>> {
   private final List<Consumer<ItemMeta>> metaModifications = new ArrayList<>();
   private final List<Consumer<NBTItem>> nbtModifications = new ArrayList<>();
 
-  public static void setConverter(@NotNull TextConverter converter) {
+  public static void setTextConverter(@NotNull TextConverter converter) throws UnsupportedOperationException {
+    if (ItemBuilder.converter != null) {
+      throw new UnsupportedOperationException("Text converter have already been initialized!");
+    }
     ItemBuilder.converter = converter;
   }
 
@@ -104,13 +115,13 @@ public abstract class ItemBuilder<B extends ItemBuilder<?>> {
     return getThis();
   }
 
-  public @NotNull B setdurability(short durability) {
+  public @NotNull B setDurability(short durability) {
     metaModifications.add(meta -> ((Damageable) meta).setDamage(durability));
     return getThis();
   }
 
-  public @NotNull B setdurability(int durability) {
-    return setdurability((short) durability);
+  public @NotNull B setDurability(int durability) {
+    return setDurability((short) durability);
   }
 
   public @NotNull B unbreakable(boolean unbreakable) {

@@ -6,8 +6,10 @@ import org.jetbrains.annotations.NotNull;
 
 public interface ItemBuilderFactory {
 
-  @NotNull ItemBuilder<ItemBuilder.MaterialItemBuilder> newBuilder(@NotNull Material material);
+  @NotNull
+  ItemBuilder<ItemBuilder.MaterialItemBuilder> newBuilder(@NotNull Material material);
 
-  @NotNull ItemBuilder<ItemBuilder.ItemStackItemBuilder> newBuilder(@NotNull ItemStack item);
+  @NotNull
+  ItemBuilder<ItemBuilder.ItemStackItemBuilder> newBuilder(@NotNull ItemStack item);
 
 }

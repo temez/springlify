@@ -19,20 +19,42 @@ import org.bukkit.potion.PotionEffect;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
+/**
+ * Mapping schema for converting ItemStackConfiguration to ItemStack.
+ *
+ * <p>This component is responsible for mapping properties from {@link ItemStackConfiguration} to {@link ItemStack} instances.</p>
+ *
+ * @since 0.7.0.0-RC1
+ */
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public final class ItemStackMappingSchema implements MappingSchema<ItemStackConfiguration, ItemStack> {
 
+  /**
+   * The mapping schema for ColorConfiguration to Color.
+   */
   @NotNull
   MappingSchema<ColorConfiguration, Color> colorMappingSchema;
 
+  /**
+   * The mapping schema for PotionEffectConfiguration to PotionEffect.
+   */
   @NotNull
   MappingSchema<PotionEffectConfiguration, PotionEffect> potionEffectMappingSchema;
 
+  /**
+   * The item builder factory.
+   */
   @NotNull
   ItemBuilderFactory itemBuilderFactory;
 
+  /**
+   * Maps an ItemStackConfiguration instance to an ItemStack instance.
+   *
+   * @param source The source ItemStackConfiguration to map from.
+   * @return The resulting ItemStack mapped from the configuration.
+   */
   @Override
   public @NotNull ItemStack map(@NotNull ItemStackConfiguration source) {
     ItemBuilder.MaterialItemBuilder builder = itemBuilderFactory.newBuilder(source.getMaterial())
@@ -48,7 +70,7 @@ public final class ItemStackMappingSchema implements MappingSchema<ItemStackConf
           .lore(itemMetaConfiguration.getLore())
           .enchantments(itemMetaConfiguration.getEnchantments())
           .customModelData(itemMetaConfiguration.getModelData())
-          .setdurability(itemMetaConfiguration.getDurability())
+          .setDurability(itemMetaConfiguration.getDurability())
           .itemFlag(itemMetaConfiguration.getItemFlags())
           .unbreakable(itemMetaConfiguration.isUnbreakable());
 
