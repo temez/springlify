@@ -1,4 +1,4 @@
-package dev.temez.springlify.starter.configuration;
+package dev.temez.springlify.starter.configuration.loader;
 
 import dev.temez.springlify.starter.plugin.SpringlifyPlugin;
 import lombok.AccessLevel;
@@ -70,7 +70,7 @@ public final class ConfigurationLoaderImpl implements ConfigurationLoader {
         .forEach(resourcesList::add);
 
     log.info(
-        "Configurations to proceed: {}",
+        "Processing configurations: {}",
         String.join(", ", resourcesList.stream().map(Resource::getFilename).toList()));
 
     propertiesFactory.setResources(
