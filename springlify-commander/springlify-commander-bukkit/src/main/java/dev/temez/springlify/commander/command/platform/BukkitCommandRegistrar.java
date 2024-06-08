@@ -3,6 +3,7 @@ package dev.temez.springlify.commander.command.platform;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
 import org.jetbrains.annotations.NotNull;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
  *
  * @since 0.7.0.0-RC1
  */
+@Slf4j
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
@@ -29,5 +31,6 @@ public final class BukkitCommandRegistrar implements PlatformCommandRegistrar<Co
   public void register(@NotNull CommanderBukkitCommand platformCommand) {
     CommandMap commandMap = Bukkit.getCommandMap();
     commandMap.register("commander", platformCommand);
+    log.debug("Registered {} as Bukkit command", platformCommand.getName());
   }
 }
