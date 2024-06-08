@@ -4,6 +4,9 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.PluginCommand;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
@@ -54,5 +57,28 @@ public final class BukkitServerPlatformAdapter implements ServerPlatformAdapter 
   public void unregisterEventListener(@NotNull Object listener) {
     HandlerList.unregisterAll((Listener) listener);
     log.debug("Unregistered event listener: {}", listener.getClass().getSimpleName());
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @param command         The command to register.
+   * @param commandExecutor The command executor.
+   * @param alias           The command aliases.
+   */
+  @Override
+  public void registerCommandExecutor(@NotNull String command, @NotNull Object commandExecutor, @NotNull String... alias) {
+    CommandExecutor executor = (CommandExecutor) commandExecutor;
+    PluginCommand pluginCommand = plugin.getCommand(command);
+    if (pluginCommand == null) {
+      log.warn("It seems, you forgot to add the command '{}' to plugin.yml", command);
+      return;
+    }
+    pluginCommand.setExecutor(executor);
+    log.debug("Registered {} as a command executor.", commandExecutor.getClass().getSimpleName());
+    if (executor instanceof TabCompleter tabCompleter) {
+      pluginCommand.setTabCompleter(tabCompleter);
+      log.debug("Registered {} as a tab completer.", commandExecutor.getClass().getSimpleName());
+    }
   }
 }

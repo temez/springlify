@@ -26,4 +26,13 @@ public interface ServerPlatformAdapter {
    * @param listener the event listener to be unregistered
    */
   void unregisterEventListener(@NotNull Object listener);
+
+  /**
+   * Registers a command executor with the platform (e.g., a server) associated with the plugin.
+   *
+   * @param command         The command to register.
+   * @param commandExecutor The command executor.
+   * @param alias           The command aliases.
+   */
+  void registerCommandExecutor(@NotNull String command, @NotNull Object commandExecutor, @NotNull String... alias);
 }
