@@ -1,34 +1,18 @@
 # springlify-starter
 
-First, you need to create a Spring application class. Notice, spring application class and plugin main are not the same things.
-Specify base `scanBasePackages` for scanning through the library classes and our application ones.
+A core module of the library that enables the usage of the `Spring Framework` with minor platform-specific improvements.
+It contains necessary abstractions and mechanisms to ensure compatibility with platforms such as `Bukkit`, `Velocity`
+and others.
 
-```java
-@SpringBootApplication(
-    scanBasePackages = {
-        "dev.temez.springlify",
-        "dev.temez.demo"
-    }
-)
-public class SpringlifyDemoApplication {
+The module includes a `Spring Boot` configuration loader and a platform adapter for registering event listeners.
 
-}
-```
+Features
 
-Then, the main class of your plugin. You should extend your class from `SpringlifyBukkitPlugin` or `SpringlifyVelocityPlugin`
-depending on your platform.
+- Spring Framework Integration: Seamlessly integrate Spring into your Minecraft plugin development.
+- Configuration Loader: Easily load and manage Spring configurations while developing plugins.
+- Platform Adapter: Easily register event listeners and command handlers specific to the platform.
 
-```java
-@SpringlifyApplication(
-    springApplicationClass = SpringlifyExampleApplication.class
-)
-public final class SpringlifyDemoPlugin extends SpringlifyBukkitPlugin {
+Select a link to the platform documentation.
 
-
-}
-```
-
-To build your project, use `./gradlew shadowJar` task.
-
-You are ready to implement the main functionality of your plugin. Look through examples provided in `springlify-examples:example-<platform>-plugin`
-and good luck. 
+- [springlify-starter-bukkit](/springlify-starter-bukkit/README.md)
+- [springlify-starter-commons](/springlify-starter-commons/README.md)
