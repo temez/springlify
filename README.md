@@ -39,7 +39,7 @@ An optional module, contains utility classes and abstraction level for localizat
 
 ### springlify-commander
 
-Library for fast annotation-based command implementation.
+Library for fast annotation-driven command implementation.
 
 Next, select a link to the module documentation.
 
