@@ -4,7 +4,7 @@ import dev.temez.springlify.starter.annotation.SpringlifyApplication;
 import dev.temez.springlify.starter.plugin.SpringlifyBukkitPlugin;
 
 @SpringlifyApplication(
-    applicationClass = SpringlifyExampleApplication.class
+    springApplicationClass = SpringlifyExampleApplication.class
 )
 public class SpringlifyExamplePlugin extends SpringlifyBukkitPlugin {
 

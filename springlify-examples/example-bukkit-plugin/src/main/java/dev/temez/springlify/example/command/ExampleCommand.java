@@ -3,47 +3,48 @@ package dev.temez.springlify.example.command;
 import dev.temez.springlify.commander.annotation.CommandRoot;
 import dev.temez.springlify.commander.annotation.CommanderCommand;
 import dev.temez.springlify.commander.command.CommandType;
+import lombok.extern.slf4j.Slf4j;
+import org.bukkit.World;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 @CommanderCommand(
     name = "example",
-    description = "commands.example.description",
     type = CommandType.SHARED
 )
+@Slf4j
 public class ExampleCommand {
 
-
   @CommandRoot
-  public void execute(@NotNull CommandSender commandSender, @NotNull Integer someInteger) {
-    System.out.println(commandSender);
-    System.out.println(someInteger);
+  public void execute(@NotNull CommandSender commandSender, @NotNull World world) {
+    log.info("This is example command!");
   }
 
   @CommanderCommand(
       name = "sub",
-      description = "commands.example.sub.description",
-      type = CommandType.INGAME
+      type = CommandType.SHARED
   )
-  public void executeSub(@NotNull Player player, @NotNull Integer someInteger) {
-
+  public void executeSub(@NotNull CommandSender player, @NotNull Integer someInteger) {
+    log.info("This is simple subcommand!");
   }
 
   @CommanderCommand(
       name = "othersub",
-      description = "commands.example.othersub.description",
       type = CommandType.SHARED
   )
   public static class SubExampleCommand {
 
+    @CommandRoot
+    public void execute(@NotNull CommandSender commandSender, @NotNull World world) {
+      log.info("This is othersub subcommand!");
+    }
+
     @CommanderCommand(
         name = "sub",
-        description = "commands.example.othersub.sub.description",
         type = CommandType.SHARED
     )
     public void executeSub(@NotNull CommandSender commandSender, @NotNull Integer someInteger) {
-      System.out.println(someInteger);
+      log.info("This is subcommand for othersub subcommand!");
     }
   }
 }

@@ -17,8 +17,8 @@ import org.springframework.stereotype.Component;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ExampleConfiguration {
 
-  @NestedConfigurationProperty
   @NotNull
+  @NestedConfigurationProperty
   ItemStackConfiguration itemStackConfiguration;
 
 

@@ -22,5 +22,5 @@ example:
           - hide_attributes
         unbreakable: true
         enchantments:
-          - level: 5
+          - level: 1
             enchantment: sharpness
