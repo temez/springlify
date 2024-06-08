@@ -5,27 +5,18 @@ import dev.temez.springlify.commander.exception.discovery.CommandDiscoveryExcept
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Interface for discovering commands from executor classes.
+ * Interface for discovering commands.
  *
  * @since 0.7.0.0-RC1
  */
 public interface CommandDiscoverer {
 
   /**
-   * Discovers and creates a {@link Command} from the given executor class.
+   * Discovers the command associated with the given executor.
    *
-   * @param executorClass The class containing the command execution logic.
-   * @return The discovered command.
-   * @throws CommandDiscoveryException If an error occurs during command discovery.
+   * @param executor the executor for which to discover the command
+   * @return the discovered command
+   * @throws CommandDiscoveryException if an error occurs during command discovery
    */
-  @NotNull
-  Command discoverCommand(@NotNull Class<?> executorClass) throws CommandDiscoveryException;
-
-  /**
-   * Checks if this discoverer supports the given executor class.
-   *
-   * @param executorClass The class to check.
-   * @return {@code true} if this discoverer supports the given class, {@code false} otherwise.
-   */
-  boolean supports(@NotNull Class<?> executorClass);
+  @NotNull Command discover(@NotNull Object executor) throws CommandDiscoveryException;
 }

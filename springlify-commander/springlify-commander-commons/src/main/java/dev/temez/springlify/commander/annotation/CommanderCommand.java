@@ -41,7 +41,7 @@ public @interface CommanderCommand {
    *
    * @return the description of the command
    */
-  @NotNull String description();
+  @NotNull String description() default "";
 
   /**
    * Specifies alias names for the command.

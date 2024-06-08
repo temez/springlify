@@ -53,7 +53,7 @@ public abstract class AbstractCommandInitializer<T> implements BeanPostProcessor
   public @NotNull Object postProcessAfterInitialization(@NotNull Object bean, @NotNull String beanName) {
     Class<?> beanClass = bean.getClass();
     if (beanClass.getDeclaringClass() == null && beanClass.isAnnotationPresent(CommanderCommand.class)) {
-      Command command = commandDiscoverer.discoverCommand(beanClass);
+      Command command = commandDiscoverer.discover(bean);
       T platformCommand = commandFactory.create(command);
       commandRegistrar.register(platformCommand);
       log.debug("Registered command {} for bean {}", command.getFullName(), beanName);
