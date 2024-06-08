@@ -1,6 +1,5 @@
 dependencies {
     compileOnlyApi "com.mojang:authlib:$authlibVersion"
-
     api "de.tr7zw:item-nbt-api:$nbtApiVersion"
     api project(":springlify-starter:springlify-starter-bukkit")
     api project(":springlify-platform:springlify-platform-commons")

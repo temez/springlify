@@ -6,14 +6,4 @@ dependencies {
     implementation project(":springlify-starter:springlify-starter-bukkit")
     implementation project(":springlify-platform:springlify-platform-bukkit")
     implementation project(":springlify-commander:springlify-commander-bukkit")
-    compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
-}
-
-processResources {
-    def props = [version: version]
-    inputs.properties props
-    filteringCharset 'UTF-8'
-    filesMatching('plugin.yml') {
-        expand props
-    }
 }

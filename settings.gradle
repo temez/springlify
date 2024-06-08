@@ -1,4 +1,3 @@
-//file:noinspection GroovyAssignabilityCheck
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -10,8 +9,8 @@ dependencyResolutionManagement {
         mavenCentral()
         mavenLocal()
         maven {
-            name = "StarMc"
-            url = uri("https://repo.star-mc.ru/public")
+            name = "StarMC"
+            url = "https://repo.star-mc.ru/public"
         }
         maven {
             name = 'CodeMC'
@@ -29,18 +28,14 @@ rootProject.name = 'springlify'
 [
         'springlify-commander:springlify-commander-bukkit',
         'springlify-commander:springlify-commander-commons',
-        'springlify-commander:springlify-commander-velocity',
 
         'springlify-starter:springlify-starter-bukkit',
         'springlify-starter:springlify-starter-commons',
-        'springlify-starter:springlify-starter-velocity',
 
         'springlify-platform:springlify-platform-bukkit',
         'springlify-platform:springlify-platform-commons',
-        'springlify-platform:springlify-platform-velocity',
 
         'springlify-examples:example-bukkit-plugin',
-        'springlify-examples:example-velocity-plugin',
 ].forEach {
     include it
 }

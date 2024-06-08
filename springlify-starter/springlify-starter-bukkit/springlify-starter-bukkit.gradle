@@ -1,6 +1,5 @@
 dependencies {
     compileOnlyApi "com.destroystokyo.paper:paper-api:$paperVersion"
-
     api project(":springlify-starter:springlify-starter-commons")
 
     testImplementation "com.destroystokyo.paper:paper-api:$paperVersion"

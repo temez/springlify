@@ -1,6 +1,7 @@
 //file:noinspection GroovyAssignabilityCheck
 plugins {
     id 'java-library'
+    id 'maven-publish'
     id 'org.springframework.boot' version "$springBootVersion"
     id 'io.spring.dependency-management' version "$springDependencyManagementPluginVersion"
 }
@@ -10,7 +11,7 @@ allprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
-    version = '0.0.0.1-SNAPSHOT'
+    version = '0.7.0.0-RC1'
     group = 'dev.temez'
 
     compileJava {
@@ -19,19 +20,51 @@ allprojects {
 
     dependencies {
         annotationProcessor "org.projectlombok:lombok"
-
+        compileOnlyApi "org.projectlombok:lombok"
         api "org.jetbrains:annotations:$jetbrainsAnnotationsVersion"
 
-        compileOnly "org.projectlombok:lombok"
-
-
+        testAnnotationProcessor "org.projectlombok:lombok"
         testCompileOnly "org.projectlombok:lombok"
-
         testImplementation "org.jetbrains:annotations:$jetbrainsAnnotationsVersion"
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
     }
 
     test {
         useJUnitPlatform()
+    }
+
+    if (!project.name.contains('example')) {
+        publishing {
+            publications {
+                "$project.name"(MavenPublication) {
+                    from components.java
+                    artifactId = project.name
+                    groupId = project.group
+                    version = project.version
+                    pom {
+                        developers {
+                            developer {
+                                id = 'temez'
+                                name = 'Artem I.'
+                                email = 'temezf@gmail.com'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = 'StarMC'
+            url = 'https://repo.star-mc.ru/public'
+            credentials {
+                username = System.getenv('STARMC_REPO_USER')
+                password = System.getenv('STARMC_REPO_PASSWORD')
+            }
+        }
     }
 }
