@@ -1,6 +1,0 @@
-dependencies {
-    compileOnly 'com.velocitypowered:velocity-api:3.1.1'
-
-    api project(":springlify-commander:springlify-commander-commons")
-    api project(":springlify-platform:springlify-platform-velocity")
-}

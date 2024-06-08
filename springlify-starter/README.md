@@ -19,8 +19,8 @@ Then, the main class of your plugin. You should extend your class from `Springli
 depending on your platform.
 
 ```java
-@EnableSpringlifyStarter(
-    applicationClass = SpringlifyTestApplication.class
+@SpringlifyApplication(
+    springApplicationClass = SpringlifyExampleApplication.class
 )
 public final class SpringlifyDemoPlugin extends SpringlifyBukkitPlugin {
 
@@ -30,5 +30,5 @@ public final class SpringlifyDemoPlugin extends SpringlifyBukkitPlugin {
 
 To build your project, use `./gradlew shadowJar` task.
 
-You are ready to implement the main functionality of your plugin. Look through examples provided in `test-<platform>-plugin` 
+You are ready to implement the main functionality of your plugin. Look through examples provided in `springlify-examples:example-<platform>-plugin`
 and good luck. 

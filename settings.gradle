@@ -1,45 +1,41 @@
-//file:noinspection GroovyAssignabilityCheck
 pluginManagement {
     repositories {
         gradlePluginPortal()
     }
 }
 
-
 dependencyResolutionManagement {
     repositories {
         mavenCentral()
+        mavenLocal()
         maven {
-            name = 'Paper'
-            url = 'https://repo.papermc.io/repository/maven-public/'
+            name = "StarMC"
+            url = "https://repo.star-mc.ru/public"
         }
         maven {
             name = 'CodeMC'
             url = 'https://repo.codemc.io/repository/maven-public/'
         }
         maven {
-            name = 'Jitpack'
-            url = 'https://jitpack.io'
+            name = 'Paper'
+            url = 'https://repo.papermc.io/repository/maven-public/'
         }
     }
 }
 
-rootProject.name = 'springlify-framework'
+rootProject.name = 'springlify'
+
 [
-        'test-bukkit-plugin',
-        'test-velocity-plugin',
-
-        'springlify-starter:springlify-starter-commons',
-        'springlify-starter:springlify-starter-bukkit',
-        'springlify-starter:springlify-starter-velocity',
-
-        'springlify-commander:springlify-commander-commons',
         'springlify-commander:springlify-commander-bukkit',
-        'springlify-commander:springlify-commander-velocity',
+        'springlify-commander:springlify-commander-commons',
+
+        'springlify-starter:springlify-starter-bukkit',
+        'springlify-starter:springlify-starter-commons',
 
         'springlify-platform:springlify-platform-bukkit',
         'springlify-platform:springlify-platform-commons',
-        'springlify-platform:springlify-platform-velocity',
+
+        'springlify-examples:example-bukkit-plugin',
 ].forEach {
     include it
 }

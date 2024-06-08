@@ -1,8 +1,10 @@
 dependencies {
-    compileOnly 'com.mojang:authlib:1.5.25'
-    compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
-
-    implementation 'de.tr7zw:item-nbt-api:2.11.3'
-
+    compileOnlyApi "com.mojang:authlib:$authlibVersion"
+    api "de.tr7zw:item-nbt-api:$nbtApiVersion"
+    api project(":springlify-starter:springlify-starter-bukkit")
     api project(":springlify-platform:springlify-platform-commons")
+
+    testImplementation "com.destroystokyo.paper:paper-api:$paperVersion"
+    testImplementation "com.mojang:authlib:$authlibVersion"
+    testImplementation "de.tr7zw:item-nbt-api:$nbtApiVersion"
 }

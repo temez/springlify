@@ -10,9 +10,9 @@
 
 ````groovy
 dependencies {
-    implementation 'dev.temez.springlify:springlify-platform-<platform>:0.6.0.2dev'
-    implementation 'dev.temez.springlify:springlify-commander-<platform>:0.6.0.2dev'
-    implementation 'dev.temez.springlify:springlify-starter-<platform>:0.6.0.2dev'
+    implementation 'dev.temez.springlify:springlify-platform-<platform>:0.7.0.0-RC1'
+    implementation 'dev.temez.springlify:springlify-commander-<platform>:0.7.0.0-RC1'
+    implementation 'dev.temez.springlify:springlify-starter-<platform>:0.7.0.0-RC1'
 }
 
 repositories {
@@ -37,7 +37,7 @@ A core module of library, which enables usage of `Spring Framework` and has mino
 
 An optional module, contains utility classes and abstraction level for localization and configuring your plugins.
 
-### springlify-commander 
+### springlify-commander
 
 Library for fast annotation-based command implementation.
 

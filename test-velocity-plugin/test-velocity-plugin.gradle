@@ -1,7 +1,0 @@
-dependencies {
-    implementation project(":springlify-starter:springlify-starter-velocity")
-    implementation project(":springlify-platform:springlify-platform-velocity")
-    implementation project(":springlify-commander:springlify-commander-velocity")
-    compileOnly 'com.velocitypowered:velocity-api:3.1.1'
-    annotationProcessor 'com.velocitypowered:velocity-api:3.1.1'
-}

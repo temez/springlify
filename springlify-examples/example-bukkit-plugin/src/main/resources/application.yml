@@ -1,0 +1,26 @@
+spring:
+
+  profiles:
+    active: dev
+
+springlify:
+  platform:
+    text-converter-mode: mini_message
+
+example:
+  plugin:
+    item-stack-configuration:
+      material: diamond_sword
+      amount: 1
+      item-meta:
+        display-name: "<gray>DOLBOYOB"
+        lore:
+          - ""
+          - "<gray>IDI NAHUI"
+        item-flags:
+          - hide_dye
+          - hide_attributes
+        unbreakable: true
+        enchantments:
+          - level: 1
+            enchantment: sharpness
