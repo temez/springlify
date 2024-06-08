@@ -15,6 +15,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Implementation of {@link ExecutionPreprocessorService} for pre-processing command executions.
+ * <p>
+ * This service orchestrates the pre-processing of command invocations by delegating to registered {@link InvocationPreprocessor} instances.
+ * </p>
+ *
+ * @since 0.7.0.0-RC1
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -24,6 +32,12 @@ public final class ExecutionPreprocessorServiceImpl implements ExecutionPreproce
   @NotNull
   List<InvocationPreprocessor> invocationPreprocessors;
 
+  /**
+   * Processes the given command invocation by executing pre-processing steps.
+   *
+   * @param commandInvocation The command invocation to preprocess.
+   * @throws CommandException If an error occurs during the pre-processing.
+   */
   @Override
   public void process(@NotNull CommandInvocation commandInvocation) throws CommandException {
     List<InvocationPreprocessor> invocationPreprocessors = this.invocationPreprocessors.stream()

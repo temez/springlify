@@ -13,6 +13,20 @@ import org.springframework.stereotype.Component;
 
 import java.util.*;
 
+/**
+ * A command completer that uses a list of {@link CompletionProvider} instances to generate
+ * completion suggestions for commands.
+ * <p>
+ * This class is annotated with {@link Component} to be managed by Spring and with
+ * {@link RequiredArgsConstructor} and {@link FieldDefaults} for automatic injection and
+ * field encapsulation.
+ * </p>
+ *
+ * @see CommandCompleter
+ * @see CompletionProvider
+ * @see CommandInvocation
+ * @since 0.7.0.0-RC1
+ */
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -22,6 +36,13 @@ public final class ProviderCommandCompleter implements CommandCompleter {
   @NotNull
   List<CompletionProvider> providers;
 
+  /**
+   * Generates a list of completion suggestions for the given command invocation by filtering and
+   * invoking the appropriate {@link CompletionProvider} instances.
+   *
+   * @param commandInvocation The current state of the command invocation.
+   * @return An unmodifiable list of completion suggestions.
+   */
   @Override
   public @NotNull @Unmodifiable List<String> complete(@NotNull CommandInvocation commandInvocation) {
     return providers.stream()
@@ -37,6 +58,13 @@ public final class ProviderCommandCompleter implements CommandCompleter {
         .toList();
   }
 
+  /**
+   * Generates a sorted list of completion suggestions for the given command invocation by filtering
+   * and invoking the appropriate {@link CompletionProvider} instances and sorting the results.
+   *
+   * @param commandInvocation The current state of the command invocation.
+   * @return An unmodifiable and sorted list of completion suggestions.
+   */
   @Override
   public @NotNull @Unmodifiable List<String> completeSorted(@NotNull CommandInvocation commandInvocation) {
     List<String> completions = new ArrayList<>(complete(commandInvocation));

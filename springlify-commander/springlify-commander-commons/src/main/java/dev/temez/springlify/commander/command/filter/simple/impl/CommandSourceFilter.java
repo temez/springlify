@@ -10,12 +10,23 @@ import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
-
+/**
+ * A global command filter that restricts command execution based on the command source.
+ *
+ * @since 0.7.0.0-RC1
+ */
 @Global
 @Component
 @RequiredArgsConstructor
 public final class CommandSourceFilter implements SimpleCommandFilter {
 
+  /**
+   * Performs filtering based on the command source.
+   *
+   * @param sender  The sender executing the command.
+   * @param command The command being executed.
+   * @throws CommandFilterException If the command source is not allowed for the given command.
+   */
   @Override
   public void doFilter(@NotNull Sender<?> sender, @NotNull Command command) throws CommandFilterException {
     if (sender.isConsoleSender() && command.getType() == CommandType.INGAME) {

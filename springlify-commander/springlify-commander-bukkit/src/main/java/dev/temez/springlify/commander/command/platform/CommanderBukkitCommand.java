@@ -1,13 +1,14 @@
 package dev.temez.springlify.commander.command.platform;
 
 import dev.temez.springlify.commander.command.Command;
-import dev.temez.springlify.commander.command.execution.BukkitInvocationFactory;
+import dev.temez.springlify.commander.command.filter.CommandFilterService;
+import dev.temez.springlify.commander.command.invocation.BukkitInvocationFactory;
 import dev.temez.springlify.commander.command.invocation.CommandInvocation;
 import dev.temez.springlify.commander.command.invocation.CommandInvocationFactory;
+import dev.temez.springlify.commander.command.sender.BukkitCommandSender;
 import dev.temez.springlify.commander.service.CommandService;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
@@ -18,10 +19,10 @@ import java.util.List;
 
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class CommanderBukkitCommand extends org.bukkit.command.Command implements PlatformCommand {
+public final class CommanderBukkitCommand extends org.bukkit.command.Command {
 
   @NotNull
-  CommandInvocationFactory executionFactory = new BukkitInvocationFactory();
+  CommandInvocationFactory invocationFactory = new BukkitInvocationFactory();
 
   @NotNull
   Command command;
@@ -29,12 +30,17 @@ public class CommanderBukkitCommand extends org.bukkit.command.Command implement
   @NotNull
   CommandService commandService;
 
-  protected CommanderBukkitCommand(
+  @NotNull
+  CommandFilterService commandFilterService;
+
+  public CommanderBukkitCommand(
       @NotNull Command command,
-      @NotNull CommandService commandService
+      @NotNull CommandService commandService,
+      @NotNull CommandFilterService commandFilterService
   ) {
     super(command.getName());
     this.commandService = commandService;
+    this.commandFilterService = commandFilterService;
     setAliases(command.getAlias());
     this.command = command;
   }
@@ -42,7 +48,7 @@ public class CommanderBukkitCommand extends org.bukkit.command.Command implement
   @Override
   public boolean execute(@NotNull CommandSender sender, @NotNull String commandLabel,
                          @NotNull String[] args) {
-    CommandInvocation execution = executionFactory.create(
+    CommandInvocation execution = invocationFactory.create(
         command,
         sender,
         Arrays.stream(args).toList()
@@ -58,7 +64,7 @@ public class CommanderBukkitCommand extends org.bukkit.command.Command implement
       @NotNull String[] args,
       @Nullable Location location
   ) throws IllegalArgumentException {
-    CommandInvocation execution = executionFactory.create(
+    CommandInvocation execution = invocationFactory.create(
         command,
         sender,
         Arrays.stream(args).toList()
@@ -68,10 +74,13 @@ public class CommanderBukkitCommand extends org.bukkit.command.Command implement
 
   /**
    * {@inheritDoc}
+   *
+   * @param target
+   * @return
    */
   @Override
-  public void register(Object @NotNull ... args) {
-    Bukkit.getCommandMap().register("commander", this);
+  public boolean testPermission(@NotNull CommandSender target) {
+    return super.testPermission(target);
   }
 
   /**
@@ -79,6 +88,6 @@ public class CommanderBukkitCommand extends org.bukkit.command.Command implement
    */
   @Override
   public boolean testPermissionSilent(@NotNull CommandSender target) {
-    return true;
+    return commandFilterService.isAccessible(new BukkitCommandSender(target), command);
   }
 }

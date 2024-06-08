@@ -2,11 +2,12 @@ package dev.temez.springlify.commander.command.executor;
 
 import dev.temez.springlify.commander.command.Command;
 import dev.temez.springlify.commander.command.executor.details.SenderDetailsResolver;
-import dev.temez.springlify.commander.command.executor.provider.ArgumentProvider;
+import dev.temez.springlify.commander.command.executor.provider.ParameterProvider;
 import dev.temez.springlify.commander.command.invocation.CommandInvocation;
 import dev.temez.springlify.commander.command.metadata.CommandInvocationMetadata;
 import dev.temez.springlify.commander.command.sender.Sender;
 import dev.temez.springlify.commander.exception.CommandExecutionException;
+import dev.temez.springlify.commander.service.chat.CommanderChatService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -22,17 +23,42 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * A command executor that uses argument providers to parse and execute commands.
+ * <p>
+ * This component resolves the command method and its parameters, retrieves the necessary
+ * arguments from the command invocation, and invokes the command method with the resolved arguments.
+ * </p>
+ *
+ * @see ParameterProvider
+ * @see SenderDetailsResolver
+ * @since 0.7.0.0-RC1
+ */
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class ProviderCommandExecutor implements CommandExecutor {
+public final class ProviderCommandExecutor implements CommandExecutor {
 
   @NotNull
-  List<ArgumentProvider> argumentProviders;
+  List<ParameterProvider> parameterProviders;
 
   @NotNull
   SenderDetailsResolver senderDetailsResolver;
 
+  @NotNull
+  CommanderChatService commanderChatService;
+
+  /**
+   * Executes a command based on the provided {@link CommandInvocation}.
+   * <p>
+   * This method retrieves the command method and its parameters, resolves sender details,
+   * parses the command arguments using argument providers, and invokes the command method
+   * with the resolved arguments.
+   * </p>
+   *
+   * @param commandInvocation The command invocation containing the details of the command to be executed.
+   * @throws CommandExecutionException If an error occurs during command execution.
+   */
   @Override
   @SneakyThrows
   public void execute(@NotNull CommandInvocation commandInvocation) throws CommandExecutionException {
@@ -46,18 +72,18 @@ public class ProviderCommandExecutor implements CommandExecutor {
     }
 
     if (commandInvocation.getArguments().size() < command.getCommandInvocationMetadata().getParameterCount()) {
-      //TODO help messages
+      commanderChatService.sendErrorMessage(sender, "commander.invalid-command-usage");
       return;
     }
 
     List<Object> executionParameters = new ArrayList<>();
-    Object senderDetails = senderDetailsResolver.resolve(commandMethod, sender);
+    Object senderDetails = senderDetailsResolver.resolve(command, sender);
     executionParameters.add(senderDetails);
 
     for (int i = 0; i < invocationMetadata.getParameterCount(); i++) {
       Parameter parameter = invocationMetadata.getParameter(i);
       String rawArgument = commandInvocation.getArguments().get(i);
-      ArgumentProvider argumentProvider = argumentProviders
+      ParameterProvider parameterProvider = parameterProviders
           .stream()
           .filter(provider -> provider.supports(parameter))
           .sorted(Comparator.comparingInt(
@@ -69,7 +95,7 @@ public class ProviderCommandExecutor implements CommandExecutor {
           .limit(1)
           .toList()
           .get(0);
-      executionParameters.add(argumentProvider.parse(sender, rawArgument, parameter));
+      executionParameters.add(parameterProvider.parse(sender, rawArgument, parameter));
     }
     commandMethod.invoke(
         command.getCommandInvocationMetadata().getExecutor(),
