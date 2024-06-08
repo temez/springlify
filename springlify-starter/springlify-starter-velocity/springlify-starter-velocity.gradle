@@ -1,7 +1,0 @@
-dependencies {
-    compileOnly "com.velocitypowered:velocity-api:$velocityPluginVersion"
-
-    api project(":springlify-starter:springlify-starter-commons")
-
-    testImplementation "com.velocitypowered:velocity-api:$velocityPluginVersion"
-}
