@@ -1,5 +1,4 @@
 dependencies {
     api project(":springlify-platform:springlify-platform-bukkit")
     api project(":springlify-commander:springlify-commander-commons")
-
 }

@@ -2,7 +2,6 @@ package dev.temez.springlify.starter.plugin;
 
 import dev.temez.springlify.starter.initializer.SpringlifyInitializer;
 import dev.temez.springlify.starter.initializer.event.ContextPreShutdownEvent;
-import dev.temez.springlify.starter.server.ServerPlatformAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -17,7 +16,6 @@ import java.io.File;
  * components such as the data folder, server platform adapter, and initializer.</p>
  *
  * @see ConfigurableApplicationContext
- * @see ServerPlatformAdapter
  * @see SpringlifyInitializer
  * @since 0.7.0.0-RC1
  */
@@ -67,14 +65,6 @@ public interface SpringlifyPlugin {
    */
   @NotNull
   File getDataFolder();
-
-  /**
-   * Returns the server platform adapter for the plugin.
-   *
-   * @return the server platform adapter
-   */
-  @NotNull
-  ServerPlatformAdapter getServerPlatformAdapter();
 
   /**
    * Returns the Springlify initializer for the plugin.
