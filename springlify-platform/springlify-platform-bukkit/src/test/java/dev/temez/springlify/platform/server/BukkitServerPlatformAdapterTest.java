@@ -1,4 +1,4 @@
-package dev.temez.springlify.starter.server;
+package dev.temez.springlify.platform.server;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -12,7 +12,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
 import java.util.List;
 
@@ -39,7 +38,7 @@ public class BukkitServerPlatformAdapterTest {
 
   @Test
   public void givenBukkitListener_whenUnregisterEventListener_thenUnregister() {
-    try (MockedStatic<HandlerList> handlerList = Mockito.mockStatic(HandlerList.class)) {
+    try (MockedStatic<HandlerList> handlerList = mockStatic(HandlerList.class)) {
       Listener listener = mock(Listener.class);
 
       serverPlatformAdapter.unregisterEventListener(listener);

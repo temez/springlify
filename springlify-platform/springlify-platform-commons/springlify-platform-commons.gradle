@@ -1,5 +1,6 @@
 dependencies {
+    implementation "net.kyori:adventure-text-serializer-legacy:$kyoriVersion"
+    implementation "net.kyori:adventure-text-minimessage:$kyoriVersion"
+
     api project(":springlify-starter:springlify-starter-commons")
-    api "net.kyori:adventure-text-serializer-legacy:$kyoriVersion"
-    api "net.kyori:adventure-text-minimessage:$kyoriVersion"
 }

@@ -1,4 +1,4 @@
-package dev.temez.springlify.starter.annotation;
+package dev.temez.springlify.platform.annotation;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.core.annotation.AliasFor;
