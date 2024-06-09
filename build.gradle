@@ -11,8 +11,8 @@ allprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
-    version = '0.7.0.0-RC1'
-    group = 'dev.temez'
+    version = '0.7.0.0-RC2'
+    group = 'dev.temez.springlify'
 
     compileJava {
         options.encoding = 'UTF-8'
@@ -20,11 +20,16 @@ allprojects {
 
     dependencies {
         annotationProcessor "org.projectlombok:lombok"
+
         compileOnlyApi "org.projectlombok:lombok"
+
+        api 'org.springframework.boot:spring-boot-starter'
         api "org.jetbrains:annotations:$jetbrainsAnnotationsVersion"
 
         testAnnotationProcessor "org.projectlombok:lombok"
+
         testCompileOnly "org.projectlombok:lombok"
+
         testImplementation "org.jetbrains:annotations:$jetbrainsAnnotationsVersion"
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
     }
@@ -63,7 +68,7 @@ publishing {
             url = 'https://repo.star-mc.ru/public'
             credentials {
                 username = System.getenv('STARMC_REPO_USER')
-                password = System.getenv('STARMC_REPO_PASSWORD')
+                password = System.getenv('STARMC_REPO_TOKEN')
             }
         }
     }
