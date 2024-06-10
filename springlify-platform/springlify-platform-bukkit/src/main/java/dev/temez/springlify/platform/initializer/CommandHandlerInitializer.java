@@ -1,7 +1,7 @@
-package dev.temez.springlify.starter.initializer;
+package dev.temez.springlify.platform.initializer;
 
-import dev.temez.springlify.starter.annotation.BukkitCommand;
-import dev.temez.springlify.starter.server.ServerPlatformAdapter;
+import dev.temez.springlify.platform.annotation.BukkitCommand;
+import dev.temez.springlify.platform.server.ServerPlatformAdapter;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;

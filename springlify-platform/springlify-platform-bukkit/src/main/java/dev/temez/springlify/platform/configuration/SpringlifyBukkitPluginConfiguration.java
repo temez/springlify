@@ -1,9 +1,13 @@
-package dev.temez.springlify.starter.configuration;
+package dev.temez.springlify.platform.configuration;
 
+import dev.temez.springlify.platform.server.BukkitServerPlatformAdapter;
+import dev.temez.springlify.platform.server.ServerPlatformAdapter;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -50,4 +54,21 @@ public class SpringlifyBukkitPluginConfiguration {
   ConsoleCommandSender consoleCommandSender() {
     return Bukkit.getConsoleSender();
   }
+
+  /**
+   * Provides the {@link ServerPlatformAdapter} as a Spring bean.
+   *
+   * @param plugin        the Springlify plugin instance
+   * @param pluginManager the plugin manager instance.
+   * @return the server platform adapter
+   */
+  @Bean
+  @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+  ServerPlatformAdapter serverPlatformAdapter(
+      @NotNull JavaPlugin plugin,
+      @NotNull PluginManager pluginManager
+  ) {
+    return new BukkitServerPlatformAdapter(plugin, pluginManager);
+  }
+
 }

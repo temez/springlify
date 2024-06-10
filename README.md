@@ -10,9 +10,9 @@
 
 ````groovy
 dependencies {
-    implementation 'dev.temez.springlify:springlify-platform-<platform>:0.7.0.0-RC1'
-    implementation 'dev.temez.springlify:springlify-commander-<platform>:0.7.0.0-RC1'
-    implementation 'dev.temez.springlify:springlify-starter-<platform>:0.7.0.0-RC1'
+    implementation 'dev.temez.springlify:springlify-platform-<platform>:0.7.0.0-RC2'
+    implementation 'dev.temez.springlify:springlify-commander-<platform>:0.7.0.0-RC2'
+    implementation 'dev.temez.springlify:springlify-starter-<platform>:0.7.0.0-RC2'
 }
 
 repositories {

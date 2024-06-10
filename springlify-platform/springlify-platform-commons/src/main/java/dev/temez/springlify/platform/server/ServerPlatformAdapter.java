@@ -1,4 +1,4 @@
-package dev.temez.springlify.starter.server;
+package dev.temez.springlify.platform.server;
 
 import org.jetbrains.annotations.NotNull;
 
