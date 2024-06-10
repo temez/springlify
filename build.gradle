@@ -74,8 +74,8 @@ publishing {
             name = 'StarMC'
             url = 'https://repo.star-mc.ru/public'
             credentials {
-                username = 'temez'
-                password = 'UqvBesA0E+gRAOuzISs706W9DFG/vZd/Jk9MmiJMjCHsQcuAg6/+rbOZ82Tjg+/a'
+                username = System.getenv('STARMC_REPO_USER')
+                password = System.getenv('STARMC_REPO_TOKEN')
             }
         }
     }
