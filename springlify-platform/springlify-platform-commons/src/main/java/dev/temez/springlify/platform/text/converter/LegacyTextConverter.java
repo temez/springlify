@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 /**
  * Implementation of {@link TextConverter} using legacy format for parsing text into adventure components.
  *
- * <p>This class parses text lines using legacy format (with '&' color codes) into adventure components.
+ * <p>This class parses text lines using legacy format  into adventure components.
  * It is conditionally enabled based on the configuration property {@code springlify.platform.text-converter-mode}
  * being set to 'legacy'.</p>
  *
