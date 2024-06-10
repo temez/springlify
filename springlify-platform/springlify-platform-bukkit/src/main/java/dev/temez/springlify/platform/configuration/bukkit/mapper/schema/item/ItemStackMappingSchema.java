@@ -69,6 +69,7 @@ public final class ItemStackMappingSchema implements MappingSchema<ItemStackConf
       builder
           .lore(itemMetaConfiguration.getLore())
           .enchantments(itemMetaConfiguration.getEnchantments())
+          .attributes(itemMetaConfiguration.getAttributeModifiers())
           .customModelData(itemMetaConfiguration.getModelData())
           .setDurability(itemMetaConfiguration.getDurability())
           .itemFlag(itemMetaConfiguration.getItemFlags())

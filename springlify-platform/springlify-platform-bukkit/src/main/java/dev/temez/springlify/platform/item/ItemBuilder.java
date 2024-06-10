@@ -5,6 +5,7 @@ import com.mojang.authlib.properties.Property;
 import de.tr7zw.changeme.nbtapi.NBTItem;
 import dev.temez.springlify.platform.configuration.bukkit.EnchantmentConfiguration;
 import dev.temez.springlify.platform.configuration.bukkit.SkinTextureConfiguration;
+import dev.temez.springlify.platform.configuration.bukkit.AttributeModifierConfiguration;
 import dev.temez.springlify.platform.text.converter.TextConverter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -16,6 +17,8 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.Color;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.block.banner.PatternType;
 import org.bukkit.enchantments.Enchantment;
@@ -139,8 +142,8 @@ public abstract class ItemBuilder<B extends ItemBuilder<?>> {
     return getThis();
   }
 
-  public @NotNull B enchantment(@NotNull Enchantment enchantment, int level, boolean ignorLevelRestriction) {
-    metaModifications.add(meta -> meta.addEnchant(enchantment, level, ignorLevelRestriction));
+  public @NotNull B enchantment(@NotNull Enchantment enchantment, int level, boolean ignoreLevelRestriction) {
+    metaModifications.add(meta -> meta.addEnchant(enchantment, level, ignoreLevelRestriction));
     return getThis();
   }
 
@@ -154,6 +157,29 @@ public abstract class ItemBuilder<B extends ItemBuilder<?>> {
     return getThis();
   }
 
+  public @NotNull B attribute(@NotNull Attribute attribute, @NotNull AttributeModifier modifier) {
+    metaModifications.add(meta -> meta.addAttributeModifier(attribute, modifier));
+    return getThis();
+  }
+
+  public @NotNull B attribute(@NotNull AttributeModifierConfiguration attribute) {
+    metaModifications.add(meta -> meta.addAttributeModifier(
+            attribute.getAttribute(),
+            new AttributeModifier(
+                    attribute.getUuid(),
+                    attribute.getName(),
+                    attribute.getAmount(),
+                    attribute.getOperation(),
+                    attribute.getSlot()
+            ))
+    );
+    return getThis();
+  }
+
+  public @NotNull B attributes(@NotNull Collection<AttributeModifierConfiguration> attributes) {
+    attributes.forEach(this::attribute);
+    return getThis();
+  }
 
   public @NotNull LeatherArmorBuilder leatherArmorBuilder() {
     return new LeatherArmorBuilder();
