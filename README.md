@@ -8,11 +8,11 @@
 
 ### dependencies
 
+#### Gradle
+
 ````groovy
 dependencies {
-    implementation 'dev.temez.springlify:springlify-platform-<platform>:0.7.0.0-RC3'
-    implementation 'dev.temez.springlify:springlify-commander-<platform>:0.7.0.0-RC3'
-    implementation 'dev.temez.springlify:springlify-starter-<platform>:0.7.0.0-RC3'
+    implementation 'dev.temez.springlify:springlify-<module>-<platform>:0.7.0.0-RC3'
 }
 
 repositories {
@@ -23,6 +23,21 @@ repositories {
     }
 }
 ````
+#### Maven
+
+```xml
+<dependency>
+  <groupId>dev.temez.springlify</groupId>
+  <artifactId>springlify-<module>-<platform></artifactId>
+  <version>0.7.0.0-RC3</version>
+</dependency>
+
+<repository>
+  <id>starmc-repo-public</id>
+  <name>StarMC repositories</name>
+  <url>https://repo.star-mc.ru/public</url>
+</repository>
+```
 
 This library provides complex solutions for developing on Bukkit/Velocity platforms. It enables usage
 of `Spring Framework` and contains some utilities to make it easier on Minecraft related platforms.
