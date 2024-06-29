@@ -5,7 +5,6 @@ import dev.temez.springlify.commander.command.executor.CommandExecutor;
 import dev.temez.springlify.commander.command.filter.CommandFilterService;
 import dev.temez.springlify.commander.command.invocation.CommandInvocation;
 import dev.temez.springlify.commander.command.preprocessor.ExecutionPreprocessorService;
-import dev.temez.springlify.commander.exception.CommanderException;
 import dev.temez.springlify.commander.exception.handler.CommanderExceptionHandler;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -66,7 +65,7 @@ public class CommandServiceImpl implements CommandService {
     try {
       commandFilterService.filter(commandInvocation.getSender(), commandInvocation.getCommand());
       commandExecutor.execute(commandInvocation);
-    } catch (CommanderException exception) {
+    } catch (Exception exception) {
       exceptionHandler.handle(commandInvocation, exception);
     }
   }
