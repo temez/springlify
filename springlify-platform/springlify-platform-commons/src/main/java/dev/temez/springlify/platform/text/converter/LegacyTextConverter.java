@@ -29,7 +29,6 @@ import java.util.stream.Collectors;
  */
 @Log4j2
 @Service
-@SuppressWarnings("all")
 @ConditionalOnExpression(
     "'${springlify.platform.text-converter-mode}'.equalsIgnoreCase('legacy')"
 )
