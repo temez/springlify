@@ -57,7 +57,7 @@ public class ItemStackMappingSchema implements MappingSchema<ItemStackConfigurat
    */
   @Override
   public @NotNull ItemStack map(@NotNull ItemStackConfiguration source) {
-    ItemBuilder.MaterialItemBuilder builder = itemBuilderFactory.newBuilder(source.getMaterial())
+    ItemBuilder.MaterialItemBuilder builder = itemBuilderFactory.fromMaterial(source.getMaterial())
         .amount(source.getAmount());
 
     ItemMetaConfiguration itemMetaConfiguration = source.getItemMeta();

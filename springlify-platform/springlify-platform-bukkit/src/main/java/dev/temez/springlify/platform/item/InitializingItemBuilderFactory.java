@@ -48,7 +48,7 @@ public class InitializingItemBuilderFactory implements ItemBuilderFactory {
    * @return the new item builder
    */
   @Override
-  public @NotNull ItemBuilder.MaterialItemBuilder newBuilder(@NotNull Material material) {
+  public @NotNull ItemBuilder.MaterialItemBuilder fromMaterial(@NotNull Material material) {
     return ItemBuilder.fromMaterial(material);
   }
 
@@ -59,7 +59,7 @@ public class InitializingItemBuilderFactory implements ItemBuilderFactory {
    * @return the new item builder
    */
   @Override
-  public @NotNull ItemBuilder.ItemStackItemBuilder newBuilder(@NotNull ItemStack item) {
+  public @NotNull ItemBuilder.ItemStackItemBuilder fromItemStack(@NotNull ItemStack item) {
     return ItemBuilder.fromItem(item);
   }
 }
