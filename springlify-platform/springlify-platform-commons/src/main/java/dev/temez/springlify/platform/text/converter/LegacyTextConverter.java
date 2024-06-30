@@ -2,6 +2,7 @@ package dev.temez.springlify.platform.text.converter;
 
 import jakarta.annotation.PostConstruct;
 import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
 import net.kyori.adventure.text.Component;
@@ -32,11 +33,12 @@ import java.util.stream.Collectors;
 @ConditionalOnExpression(
     "'${springlify.platform.text-converter-mode}'.equalsIgnoreCase('legacy')"
 )
+@RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public final class LegacyTextConverter implements TextConverter {
 
   @NotNull
-  LegacyComponentSerializer serializer = LegacyComponentSerializer.legacyAmpersand();
+  LegacyComponentSerializer serializer;
 
   /**
    * Logs a debug message upon initialization.
