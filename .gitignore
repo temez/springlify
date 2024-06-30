@@ -38,3 +38,6 @@ out/
 .vscode/
 
 /logs/
+/gradle/wrapper/
+/gradlew
+/gradlew.bat

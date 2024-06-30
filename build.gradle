@@ -2,8 +2,8 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'org.springframework.boot' version "$springBootVersion"
-    id 'io.spring.dependency-management' version "$springDependencyManagementPluginVersion"
+    alias libs.plugins.springframework.boot
+    alias libs.plugins.spring.dependencymanagement
 }
 
 allprojects {
@@ -11,7 +11,7 @@ allprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
-    version = '0.7.0.0'
+    version = '0.7.0.1-SNAPSHOT'
     group = 'dev.temez.springlify'
 
     compileJava {
@@ -26,19 +26,17 @@ allprojects {
     }
 
     dependencies {
-        annotationProcessor "org.projectlombok:lombok"
+        annotationProcessor libs.projectlombok.lombok
 
-        compileOnlyApi "org.projectlombok:lombok"
+        compileOnlyApi libs.projectlombok.lombok
+        compileOnlyApi libs.jetbrains.annotations
 
-        api 'org.springframework.boot:spring-boot-starter'
-        api "org.jetbrains:annotations:$jetbrainsAnnotationsVersion"
+        testAnnotationProcessor libs.projectlombok.lombok
 
-        testAnnotationProcessor "org.projectlombok:lombok"
+        testCompileOnly libs.projectlombok.lombok
+        testCompileOnly libs.jetbrains.annotations
 
-        testCompileOnly "org.projectlombok:lombok"
-
-        testImplementation "org.jetbrains:annotations:$jetbrainsAnnotationsVersion"
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testImplementation libs.spring.boot.starter.test
     }
 
     test {
@@ -74,8 +72,8 @@ publishing {
             name = 'StarMC'
             url = 'https://repo.star-mc.ru/public'
             credentials {
-                username = System.getenv('STARMC_REPO_USER')
-                password = System.getenv('STARMC_REPO_TOKEN')
+                username = 'temez'
+                password = 'UqvBesA0E+gRAOuzISs706W9DFG/vZd/Jk9MmiJMjCHsQcuAg6/+rbOZ82Tjg+/a'
             }
         }
     }
