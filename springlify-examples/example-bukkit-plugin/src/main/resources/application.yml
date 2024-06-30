@@ -24,3 +24,9 @@ example:
         enchantments:
           - level: 1
             enchantment: sharpness
+        attribute-modifiers:
+          - attribute: generic_attack_damage
+            name: 'generic_attack_damage'
+            amount: 10
+            operation: add_number
+            slot: off_hand

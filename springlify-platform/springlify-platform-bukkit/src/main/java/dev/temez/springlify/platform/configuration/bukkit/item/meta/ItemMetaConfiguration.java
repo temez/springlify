@@ -1,5 +1,6 @@
 package dev.temez.springlify.platform.configuration.bukkit.item.meta;
 
+import dev.temez.springlify.platform.configuration.bukkit.AttributeModifierConfiguration;
 import dev.temez.springlify.platform.configuration.bukkit.EnchantmentConfiguration;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -88,4 +89,12 @@ public final class ItemMetaConfiguration {
   @Nullable
   @NestedConfigurationProperty
   SkullItemMetaConfiguration skullMeta;
+
+  /**
+   * The set of attribute modifiers applied to the item.
+   */
+  @NotNull
+  @NestedConfigurationProperty
+  Set<AttributeModifierConfiguration> attributeModifiers = new HashSet<>();
+
 }
