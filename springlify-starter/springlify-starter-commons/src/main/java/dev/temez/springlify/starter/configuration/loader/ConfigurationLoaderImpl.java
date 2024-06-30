@@ -25,7 +25,7 @@ import java.util.*;
 @Slf4j
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class ConfigurationLoaderImpl implements ConfigurationLoader {
+public class ConfigurationLoaderImpl implements ConfigurationLoader {
 
   @NotNull
   YamlPropertiesFactoryBean propertiesFactory = new YamlPropertiesFactoryBean();

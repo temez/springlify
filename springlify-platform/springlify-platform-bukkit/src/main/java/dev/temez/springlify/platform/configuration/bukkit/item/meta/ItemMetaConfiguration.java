@@ -27,7 +27,7 @@ import java.util.Set;
 @Setter
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public final class ItemMetaConfiguration {
+public class ItemMetaConfiguration {
 
   /**
    * The display name of the item.

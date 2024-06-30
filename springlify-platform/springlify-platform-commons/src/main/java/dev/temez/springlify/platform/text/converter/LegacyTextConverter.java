@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 )
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class LegacyTextConverter implements TextConverter {
+public class LegacyTextConverter implements TextConverter {
 
   @NotNull
   LegacyComponentSerializer serializer;

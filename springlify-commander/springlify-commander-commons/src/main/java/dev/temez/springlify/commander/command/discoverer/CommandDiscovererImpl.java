@@ -25,7 +25,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class CommandDiscovererImpl implements CommandDiscoverer {
+public class CommandDiscovererImpl implements CommandDiscoverer {
 
   /**
    * The subcommand discoverer to discover subcommands.

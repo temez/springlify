@@ -22,7 +22,7 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 @Setter
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public final class ItemStackConfiguration {
+public class ItemStackConfiguration {
 
   /**
    * The material of the ItemStack.

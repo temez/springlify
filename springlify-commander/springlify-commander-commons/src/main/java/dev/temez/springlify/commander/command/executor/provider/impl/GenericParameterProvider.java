@@ -29,7 +29,7 @@ import java.lang.reflect.Parameter;
 @Order(0)
 @Component
 @RequiredArgsConstructor
-public final class GenericParameterProvider implements ParameterProvider {
+public class GenericParameterProvider implements ParameterProvider {
 
   /**
    * The resolver for parameter adapters.

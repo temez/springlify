@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class BukkitCommandFactory implements PlatformCommandFactory<CommanderBukkitCommand> {
+public class BukkitCommandFactory implements PlatformCommandFactory<CommanderBukkitCommand> {
 
   @NotNull
   CommandService commandService;

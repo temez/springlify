@@ -37,7 +37,7 @@ import java.util.Optional;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class ProviderCommandExecutor implements CommandExecutor {
+public class ProviderCommandExecutor implements CommandExecutor {
 
   @NotNull
   List<ParameterProvider> parameterProviders;

@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class InitializingItemBuilderFactory implements ItemBuilderFactory {
+public class InitializingItemBuilderFactory implements ItemBuilderFactory {
 
   /**
    * The text converter used by item builders.

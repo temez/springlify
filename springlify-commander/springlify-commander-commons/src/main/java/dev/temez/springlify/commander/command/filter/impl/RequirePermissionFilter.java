@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  * @since 0.7.0.0-RC1
  */
 @Component
-public final class RequirePermissionFilter implements CommandFilter<RequirePermission> {
+public class RequirePermissionFilter implements CommandFilter<RequirePermission> {
 
   /**
    * Performs the filtering logic based on the {@link RequirePermission} annotation.

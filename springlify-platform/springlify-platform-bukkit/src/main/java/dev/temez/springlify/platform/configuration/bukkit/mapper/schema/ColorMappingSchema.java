@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  * @since 0.7.0.0-RC1
  */
 @Component
-public final class ColorMappingSchema implements MappingSchema<ColorConfiguration, Color> {
+public class ColorMappingSchema implements MappingSchema<ColorConfiguration, Color> {
 
   /**
    * Maps a ColorConfiguration instance to a Color instance.

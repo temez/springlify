@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  * @since 0.7.0.0-RC1
  */
 @Component
-public final class GenericSenderDetailsProvider implements SenderDetailsProvider {
+public class GenericSenderDetailsProvider implements SenderDetailsProvider {
 
   /**
    * Determines whether this provider supports the given command.

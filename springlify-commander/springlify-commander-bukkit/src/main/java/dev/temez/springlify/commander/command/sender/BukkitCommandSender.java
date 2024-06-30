@@ -20,7 +20,7 @@ import java.util.UUID;
 @Getter
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class BukkitCommandSender implements Sender<CommandSender> {
+public class BukkitCommandSender implements Sender<CommandSender> {
 
   /**
    * The underlying platform-specific command sender.

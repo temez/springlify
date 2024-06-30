@@ -34,7 +34,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class SubCommandCompletionProvider implements CompletionProvider {
+public class SubCommandCompletionProvider implements CompletionProvider {
 
   @NotNull
   CommandFilterService commandFilterService;

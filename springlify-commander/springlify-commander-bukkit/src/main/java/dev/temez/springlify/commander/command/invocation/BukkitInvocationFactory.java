@@ -21,7 +21,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class BukkitInvocationFactory implements CommandInvocationFactory {
+public class BukkitInvocationFactory implements CommandInvocationFactory {
 
   /**
    * Creates a new {@link CommandInvocation} instance for the given command and arguments.

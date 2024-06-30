@@ -17,7 +17,7 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public final class ColorConfiguration {
+public class ColorConfiguration {
 
   /**
    * The red component of the color.

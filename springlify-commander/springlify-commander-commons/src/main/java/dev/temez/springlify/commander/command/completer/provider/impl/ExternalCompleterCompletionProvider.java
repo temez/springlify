@@ -37,7 +37,7 @@ import java.util.List;
 @Order(1)
 @Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class ExternalCompleterCompletionProvider extends MethodParameterCompletionProvider {
+public class ExternalCompleterCompletionProvider extends MethodParameterCompletionProvider {
 
   @NotNull
   ApplicationContext applicationContext;

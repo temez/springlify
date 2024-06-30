@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * @since 0.7.0.0-RC1
  */
 @Component
-public final class BukkitCommandInitializer extends AbstractCommandInitializer<CommanderBukkitCommand> {
+public class BukkitCommandInitializer extends AbstractCommandInitializer<CommanderBukkitCommand> {
 
   /**
    * Constructs a {@code BukkitCommandInitializer} with the specified dependencies.

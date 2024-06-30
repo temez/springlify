@@ -35,7 +35,7 @@ import java.util.List;
 @Order(0)
 @Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class GenericCompletionProvider extends MethodParameterCompletionProvider {
+public class GenericCompletionProvider extends MethodParameterCompletionProvider {
 
   @NotNull
   ParameterAdapterResolver argumentAdapter;

@@ -20,7 +20,7 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 @Setter
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public final class SkullItemMetaConfiguration {
+public class SkullItemMetaConfiguration {
 
   /**
    * The owner of the skull.

@@ -17,7 +17,7 @@ import java.util.List;
  * @since 0.7.0.0-RC1
  */
 @Component
-public final class OfflinePlayerParameterAdapter implements ParameterAdapter<OfflinePlayer> {
+public class OfflinePlayerParameterAdapter implements ParameterAdapter<OfflinePlayer> {
 
   /**
    * Provides a list of all player names (online and offline) for completion.

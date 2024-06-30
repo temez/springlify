@@ -21,7 +21,7 @@ import java.time.Duration;
 @Setter
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public final class PotionEffectConfiguration {
+public class PotionEffectConfiguration {
 
   /**
    * The type of potion effect.

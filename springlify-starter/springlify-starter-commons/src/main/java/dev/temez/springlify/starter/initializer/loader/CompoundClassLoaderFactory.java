@@ -18,7 +18,7 @@ import java.util.List;
  * @see SpringlifyPlugin
  * @since 0.7.0.0-RC1
  */
-public final class CompoundClassLoaderFactory implements ClassLoaderFactory {
+public class CompoundClassLoaderFactory implements ClassLoaderFactory {
 
   /**
    * {@inheritDoc}

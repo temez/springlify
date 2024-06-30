@@ -34,7 +34,7 @@ import java.util.stream.Collectors;
 )
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class MiniMessageTextConverter implements TextConverter {
+public class MiniMessageTextConverter implements TextConverter {
 
   @NotNull
   MiniMessage serializer;

@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @ConfigurationPropertiesBinding
-public final class StringEnchantmentConverter implements Converter<String, Enchantment> {
+public class StringEnchantmentConverter implements Converter<String, Enchantment> {
 
   /**
    * Converts the given string representation of an enchantment to an Enchantment object.

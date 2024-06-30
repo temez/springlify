@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class IntegerParameterAdapter implements ParameterAdapter<Integer> {
+public class IntegerParameterAdapter implements ParameterAdapter<Integer> {
 
   /**
    * Parses the raw command parameter into an {@code Integer}.

@@ -19,7 +19,7 @@ import java.util.Optional;
  * @since 0.7.0.0-RC1
  */
 @Component
-public final class PlayerParameterAdapter implements ParameterAdapter<Player> {
+public class PlayerParameterAdapter implements ParameterAdapter<Player> {
 
   /**
    * Provides a list of online player names for completion.
