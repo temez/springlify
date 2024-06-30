@@ -2,7 +2,6 @@ package dev.temez.springlify.platform.registry;
 
 import dev.temez.springlify.platform.exception.RegistryException;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +37,7 @@ public interface MapRegistry<T extends RegistryEntry<I>, I> {
    * @throws RegistryException if the entry with the specified identifier is not found
    */
   default @NotNull T get(@NotNull I id) throws RegistryException {
-    return Optional.ofNullable(getRegistry().get(id))
+    return getOptional(id)
         .orElseThrow(() -> new RegistryException("Entry in %s with id %s not found".formatted(getClass().getSimpleName(), id)));
   }
 
@@ -48,8 +47,8 @@ public interface MapRegistry<T extends RegistryEntry<I>, I> {
    * @param id the identifier of the entry to retrieve
    * @return an optional containing the entry with the specified identifier, or empty if not found
    */
-  default @Nullable T getOrNull(@NotNull I id) {
-    return getRegistry().get(id);
+  default @NotNull Optional<T> getOptional(@NotNull I id) {
+    return Optional.ofNullable(getRegistry().get(id));
   }
 
   /**
@@ -58,13 +57,13 @@ public interface MapRegistry<T extends RegistryEntry<I>, I> {
    * @param entry the current entry
    * @return the next entry after the specified entry, or null if the specified entry is the last one
    */
-  default @Nullable T next(@NotNull T entry) {
+  default @NotNull Optional<T> next(@NotNull T entry) {
     List<T> registry = new ArrayList<>(getRegistry().values());
     int index = registry.indexOf(entry);
-    if (index == -1 || index == registry.size() - 1) {
-      return null;
+    if (index == -1 || index == getRegistry().size() - 1) {
+      return Optional.empty();
     }
-    return registry.get(index + 1);
+    return Optional.of(registry.get(index + 1));
   }
 
   /**
