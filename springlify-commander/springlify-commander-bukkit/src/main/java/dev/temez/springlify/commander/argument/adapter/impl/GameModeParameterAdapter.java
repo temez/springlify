@@ -17,7 +17,7 @@ import java.util.List;
  * @since 0.7.0.0-RC1
  */
 @Component
-public final class GameModeParameterAdapter implements ParameterAdapter<GameMode> {
+public class GameModeParameterAdapter implements ParameterAdapter<GameMode> {
 
   /**
    * Provides a list of game mode names and their respective numeric values for completion.

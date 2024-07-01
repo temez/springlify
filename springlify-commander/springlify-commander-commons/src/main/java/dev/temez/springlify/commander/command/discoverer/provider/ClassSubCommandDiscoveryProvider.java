@@ -29,7 +29,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class ClassSubCommandDiscoveryProvider implements SubcommandDiscoveryProvider {
+public class ClassSubCommandDiscoveryProvider implements SubcommandDiscoveryProvider {
 
   /**
    * The application context.

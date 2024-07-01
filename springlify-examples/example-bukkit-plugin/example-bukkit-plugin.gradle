@@ -1,10 +1,13 @@
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection DependencyNotationArgument
 plugins {
-    id 'com.github.johnrengelman.shadow' version "$shadowPluginVersion"
+    alias libs.plugins.johnrengelman.shadow
 }
 
 dependencies {
 
-    compileOnly "com.destroystokyo.paper:paper-api:$paperVersion"
+    compileOnly libs.paper.paperapi
+
     implementation project(":springlify-starter:springlify-starter-bukkit")
     implementation project(":springlify-platform:springlify-platform-bukkit")
     implementation project(":springlify-commander:springlify-commander-bukkit")

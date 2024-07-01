@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class FloatParameterAdapter implements ParameterAdapter<Float> {
+public class FloatParameterAdapter implements ParameterAdapter<Float> {
 
   /**
    * Parses the raw command parameter into a {@code Float}.

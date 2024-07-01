@@ -1,13 +1,13 @@
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection DependencyNotationArgument
 dependencies {
-    compileOnly "com.destroystokyo.paper:paper-api:$paperVersion"
-    compileOnly "com.mojang:authlib:$authlibVersion"
+    compileOnly libs.paper.paperapi
+    compileOnly libs.mojang.authlib
 
-    implementation "de.tr7zw:item-nbt-api:$nbtApiVersion"
-
+    api libs.tr7zw.item.nbt.api
     api project(":springlify-starter:springlify-starter-bukkit")
     api project(":springlify-platform:springlify-platform-commons")
 
-    testImplementation "com.destroystokyo.paper:paper-api:$paperVersion"
-    testImplementation "com.mojang:authlib:$authlibVersion"
-    testImplementation "de.tr7zw:item-nbt-api:$nbtApiVersion"
+    testImplementation libs.paper.paperapi
+    testImplementation libs.mojang.authlib
 }

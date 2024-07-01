@@ -26,7 +26,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class ContextParameterAdapterResolver implements ParameterAdapterResolver {
+public class ContextParameterAdapterResolver implements ParameterAdapterResolver {
 
   /**
    * The Spring application context used to locate parameter adapters.

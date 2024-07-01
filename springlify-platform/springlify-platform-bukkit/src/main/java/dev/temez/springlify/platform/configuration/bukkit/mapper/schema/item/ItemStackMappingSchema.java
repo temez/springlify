@@ -29,7 +29,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class ItemStackMappingSchema implements MappingSchema<ItemStackConfiguration, ItemStack> {
+public class ItemStackMappingSchema implements MappingSchema<ItemStackConfiguration, ItemStack> {
 
   /**
    * The mapping schema for ColorConfiguration to Color.
@@ -57,7 +57,7 @@ public final class ItemStackMappingSchema implements MappingSchema<ItemStackConf
    */
   @Override
   public @NotNull ItemStack map(@NotNull ItemStackConfiguration source) {
-    ItemBuilder.MaterialItemBuilder builder = itemBuilderFactory.newBuilder(source.getMaterial())
+    ItemBuilder.MaterialItemBuilder builder = itemBuilderFactory.fromMaterial(source.getMaterial())
         .amount(source.getAmount());
 
     ItemMetaConfiguration itemMetaConfiguration = source.getItemMeta();

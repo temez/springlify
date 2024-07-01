@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @ConfigurationPropertiesBinding
-public final class StringPotionEffectTypeConverter implements Converter<String, PotionEffectType> {
+public class StringPotionEffectTypeConverter implements Converter<String, PotionEffectType> {
 
   /**
    * Converts the given string representation of a potion effect type to a PotionEffectType object.

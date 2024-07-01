@@ -31,7 +31,7 @@ import java.util.*;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class ProviderCommandCompleter implements CommandCompleter {
+public class ProviderCommandCompleter implements CommandCompleter {
 
   @NotNull
   List<CompletionProvider> providers;

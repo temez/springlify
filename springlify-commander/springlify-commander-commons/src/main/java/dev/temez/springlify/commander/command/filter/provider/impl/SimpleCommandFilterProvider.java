@@ -29,7 +29,7 @@ import java.util.Arrays;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class SimpleCommandFilterProvider implements CommandFilterProvider {
+public class SimpleCommandFilterProvider implements CommandFilterProvider {
 
   @NotNull
   ApplicationContext applicationContext;

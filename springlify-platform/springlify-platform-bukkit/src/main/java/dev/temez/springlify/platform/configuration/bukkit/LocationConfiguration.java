@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 @Setter
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public final class LocationConfiguration {
+public class LocationConfiguration {
 
   /**
    * The world name.

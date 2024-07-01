@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 @Setter
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public final class EnchantmentConfiguration {
+public class EnchantmentConfiguration {
 
   /**
    * The enchantment.

@@ -26,7 +26,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class MethodSubcommandDiscoveryProvider implements SubcommandDiscoveryProvider {
+public class MethodSubcommandDiscoveryProvider implements SubcommandDiscoveryProvider {
 
   /**
    * {@inheritDoc}

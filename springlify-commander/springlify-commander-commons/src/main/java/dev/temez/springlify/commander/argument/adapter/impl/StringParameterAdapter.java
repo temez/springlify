@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class StringParameterAdapter implements ParameterAdapter<String> {
+public class StringParameterAdapter implements ParameterAdapter<String> {
 
   /**
    * Parses the raw command parameter into a {@code String}.

@@ -32,7 +32,7 @@ import java.util.Optional;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class AnnotationBasedCommandFilterProvider implements CommandFilterProvider {
+public class AnnotationBasedCommandFilterProvider implements CommandFilterProvider {
 
   @NotNull
   CommandFilterResolver commandFilterResolver;

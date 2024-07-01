@@ -29,7 +29,7 @@ import java.lang.reflect.Parameter;
 @Order(2)
 @Component
 @RequiredArgsConstructor
-public final class ExternalParameterProvider implements ParameterProvider {
+public class ExternalParameterProvider implements ParameterProvider {
 
   /**
    * The application context for retrieving external parameter adapters.

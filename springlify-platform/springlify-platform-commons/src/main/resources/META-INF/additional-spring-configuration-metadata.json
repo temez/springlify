@@ -1,0 +1,10 @@
+{
+  "properties": [
+    {
+      "name": "springlify.platform.text-converter-mode",
+      "type": "java.lang.String",
+      "description": "Specifies which text converter should be used.",
+      "defaultValue": "mini_message"
+    }
+  ]
+}

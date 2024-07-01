@@ -28,7 +28,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class GlobalFilterProvider implements CommandFilterProvider {
+public class GlobalFilterProvider implements CommandFilterProvider {
 
   @NotNull
   List<SimpleCommandFilter> filters;

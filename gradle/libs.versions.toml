@@ -1,0 +1,28 @@
+[versions]
+spring-boot = '3.2.4'
+spring-dependencymanagement = '1.1.4'
+jetbrains-annotations = '24.1.0'
+johnrengelman-shadow = '8.1.0'
+kyori-adventure = '4.14.0'
+paper-paperapi = '1.16.5-R0.1-SNAPSHOT'
+reflections-reflections = '0.10.2'
+mojang-authlib = '1.5.25'
+tr7zw-item-nbt-api = '2.12.4'
+
+[libraries]
+projectlombok-lombok = { module = "org.projectlombok:lombok" }
+jetbrains-annotations = { module = 'org.jetbrains:annotations', version.ref = 'jetbrains-annotations' }
+spring-boot-starter-test = { module = 'org.springframework.boot:spring-boot-starter-test' }
+spring-boot-starter = { module = 'org.springframework.boot:spring-boot-starter' }
+spring-boot-configuration-processor = { module = 'org.springframework.boot:spring-boot-configuration-processor' }
+kyori-adventure-text-minimessage = { module = "net.kyori:adventure-text-minimessage", version.ref = 'kyori-adventure' }
+kyori-adventure-text-serializer-legacy = { module = "net.kyori:adventure-text-serializer-legacy", version.ref = 'kyori-adventure' }
+paper-paperapi = { module = 'com.destroystokyo.paper:paper-api', version.ref = 'paper-paperapi' }
+mojang-authlib = { module = 'com.mojang:authlib', version.ref = 'mojang-authlib' }
+tr7zw-item-nbt-api = { module = 'de.tr7zw:item-nbt-api', version.ref = 'tr7zw-item-nbt-api' }
+reflections-reflections = { module = "org.reflections:reflections", version.ref = 'reflections-reflections' }
+
+[plugins]
+springframework-boot = { id = 'org.springframework.boot', version.ref = 'spring-boot' }
+spring-dependencymanagement = { id = 'io.spring.dependency-management', version.ref = 'spring-dependencymanagement' }
+johnrengelman-shadow = { id = 'com.github.johnrengelman.shadow', version.ref = 'johnrengelman-shadow' }

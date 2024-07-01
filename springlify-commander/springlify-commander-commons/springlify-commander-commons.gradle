@@ -1,3 +1,5 @@
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection DependencyNotationArgument
 dependencies {
     api project(":springlify-platform:springlify-platform-commons")
 }

@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class ExecutionPreprocessorServiceImpl implements ExecutionPreprocessorService {
+public class ExecutionPreprocessorServiceImpl implements ExecutionPreprocessorService {
 
   @NotNull
   List<InvocationPreprocessor> invocationPreprocessors;

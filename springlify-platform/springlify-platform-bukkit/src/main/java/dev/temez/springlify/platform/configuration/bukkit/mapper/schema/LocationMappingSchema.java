@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * @since 0.7.0.0-RC1
  */
 @Component
-public final class LocationMappingSchema implements MappingSchema<LocationConfiguration, Location> {
+public class LocationMappingSchema implements MappingSchema<LocationConfiguration, Location> {
 
   /**
    * Maps a LocationConfiguration instance to a Location instance.

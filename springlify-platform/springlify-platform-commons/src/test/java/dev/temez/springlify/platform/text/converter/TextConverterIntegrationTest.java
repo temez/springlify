@@ -1,6 +1,5 @@
 package dev.temez.springlify.platform.text.converter;
 
-import dev.temez.springlify.platform.configuration.SpringlifyPlatformConfigurationProperties;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.junit.jupiter.api.Nested;
@@ -15,7 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(classes = {
     LegacyTextConverter.class,
     MiniMessageTextConverter.class,
-    SpringlifyPlatformConfigurationProperties.class
 })
 class TextConverterIntegrationTest {
 

@@ -2,7 +2,6 @@ package dev.temez.springlify.platform.registry;
 
 import dev.temez.springlify.platform.exception.RegistryException;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,7 +33,7 @@ public interface Registry<T extends RegistryEntry<I>, I> {
    * @throws RegistryException if the entry with the specified identifier is not found
    */
   default @NotNull T get(@NotNull I id) throws RegistryException {
-    return Optional.ofNullable(getOrNull(id))
+    return getOptional(id)
         .orElseThrow(() -> new RegistryException("Entry in %s with id %s not found".formatted(getClass().getSimpleName(), id)));
   }
 
@@ -42,27 +41,26 @@ public interface Registry<T extends RegistryEntry<I>, I> {
    * Retrieves the entry with the specified identifier from the registry, or null if not found.
    *
    * @param id the identifier of the entry to retrieve
-   * @return the entry with the specified identifier, or null if not found
+   * @return the entry optional with the specified identifier
    */
-  default @Nullable T getOrNull(@NotNull I id) {
+  default @NotNull Optional<T> getOptional(@NotNull I id) {
     return getRegistry()
         .stream().filter(entry -> entry.getId().equals(id))
-        .findFirst()
-        .orElse(null);
+        .findFirst();
   }
 
   /**
    * Retrieves the next entry in the registry after the specified entry.
    *
    * @param entry the current entry
-   * @return the next entry after the specified entry, or null if the specified entry is the last one
+   * @return the next entry optional after the specified entry.
    */
-  default @Nullable T next(@NotNull T entry) {
+  default @NotNull Optional<T> next(@NotNull T entry) {
     int index = getRegistry().indexOf(entry);
     if (index == -1 || index == getRegistry().size() - 1) {
-      return null;
+      return Optional.empty();
     }
-    return getRegistry().get(index + 1);
+    return Optional.of(getRegistry().get(index + 1));
   }
 
   /**

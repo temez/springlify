@@ -26,7 +26,7 @@ import java.util.List;
 @Setter
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public final class PotionItemMetaConfiguration {
+public class PotionItemMetaConfiguration {
 
   /**
    * The list of potion effects applied to the potion.

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class CommandHandlerInitializer implements BeanPostProcessor {
+public class CommandHandlerInitializer implements BeanPostProcessor {
 
   @NotNull
   ServerPlatformAdapter serverPlatformAdapter;

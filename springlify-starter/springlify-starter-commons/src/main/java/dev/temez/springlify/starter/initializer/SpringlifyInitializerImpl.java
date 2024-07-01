@@ -30,7 +30,7 @@ import org.springframework.core.io.DefaultResourceLoader;
 @Slf4j
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class SpringlifyInitializerImpl implements SpringlifyInitializer {
+public class SpringlifyInitializerImpl implements SpringlifyInitializer {
 
   @NotNull
   ClassLoaderFactory classLoaderFactory;

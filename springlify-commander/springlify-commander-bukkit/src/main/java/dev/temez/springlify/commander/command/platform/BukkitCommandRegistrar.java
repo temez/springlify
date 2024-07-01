@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class BukkitCommandRegistrar implements PlatformCommandRegistrar<CommanderBukkitCommand> {
+public class BukkitCommandRegistrar implements PlatformCommandRegistrar<CommanderBukkitCommand> {
 
   /**
    * Registers a Bukkit command with the Bukkit command map.

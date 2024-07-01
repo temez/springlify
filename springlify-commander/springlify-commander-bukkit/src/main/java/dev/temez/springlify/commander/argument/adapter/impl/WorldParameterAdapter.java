@@ -18,7 +18,7 @@ import java.util.Optional;
  * @since 0.7.0.0-RC1
  */
 @Component
-public final class WorldParameterAdapter implements ParameterAdapter<World> {
+public class WorldParameterAdapter implements ParameterAdapter<World> {
 
   /**
    * Provides a list of world names for completion.

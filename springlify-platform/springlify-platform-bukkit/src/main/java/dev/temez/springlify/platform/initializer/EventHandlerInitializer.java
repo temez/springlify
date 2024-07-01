@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class EventHandlerInitializer implements DestructionAwareBeanPostProcessor {
+public class EventHandlerInitializer implements DestructionAwareBeanPostProcessor {
 
   @NotNull
   ServerPlatformAdapter platformAdapter;

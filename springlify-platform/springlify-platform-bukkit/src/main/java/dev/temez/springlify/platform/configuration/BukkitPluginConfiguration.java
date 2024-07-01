@@ -7,6 +7,7 @@ import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitScheduler;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +24,7 @@ import org.springframework.context.annotation.Configuration;
  * @since 0.7.0.0-RC1
  */
 @Configuration
-public class SpringlifyBukkitPluginConfiguration {
+public class BukkitPluginConfiguration {
 
   /**
    * Provides the Bukkit {@link PluginManager} as a Spring bean.
@@ -53,6 +54,16 @@ public class SpringlifyBukkitPluginConfiguration {
   @Bean
   ConsoleCommandSender consoleCommandSender() {
     return Bukkit.getConsoleSender();
+  }
+
+  /**
+   * Provides the {@link BukkitScheduler} as a Spring bean.
+   *
+   * @return the BukkitScheduler
+   */
+  @Bean
+  BukkitScheduler bukkitScheduler() {
+    return Bukkit.getScheduler();
   }
 
   /**

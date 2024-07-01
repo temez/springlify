@@ -21,7 +21,7 @@ import java.util.Comparator;
  */
 @Order
 @Component
-public final class SubcommandPreprocessor implements InvocationPreprocessor {
+public class SubcommandPreprocessor implements InvocationPreprocessor {
 
   /**
    * Processes the command invocation by handling subcommands.

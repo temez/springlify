@@ -20,7 +20,7 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 @Setter
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public final class LeatherArmorItemMetaConfiguration {
+public class LeatherArmorItemMetaConfiguration {
 
   /**
    * The color configuration for the leather armor.

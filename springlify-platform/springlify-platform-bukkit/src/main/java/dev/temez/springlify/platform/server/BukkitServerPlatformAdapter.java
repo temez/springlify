@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 @Slf4j
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class BukkitServerPlatformAdapter implements ServerPlatformAdapter {
+public class BukkitServerPlatformAdapter implements ServerPlatformAdapter {
 
   @NotNull
   JavaPlugin plugin;

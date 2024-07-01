@@ -1,7 +1,9 @@
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection DependencyNotationArgument
 dependencies {
-    compileOnly "com.destroystokyo.paper:paper-api:$paperVersion"
+    compileOnly libs.paper.paperapi
 
     api project(":springlify-starter:springlify-starter-commons")
 
-    testImplementation "com.destroystokyo.paper:paper-api:$paperVersion"
+    testImplementation libs.paper.paperapi
 }

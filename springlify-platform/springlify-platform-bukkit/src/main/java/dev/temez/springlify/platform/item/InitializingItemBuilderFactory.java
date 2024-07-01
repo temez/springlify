@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class InitializingItemBuilderFactory implements ItemBuilderFactory {
+public class InitializingItemBuilderFactory implements ItemBuilderFactory {
 
   /**
    * The text converter used by item builders.
@@ -48,7 +48,7 @@ public final class InitializingItemBuilderFactory implements ItemBuilderFactory 
    * @return the new item builder
    */
   @Override
-  public @NotNull ItemBuilder.MaterialItemBuilder newBuilder(@NotNull Material material) {
+  public @NotNull ItemBuilder.MaterialItemBuilder fromMaterial(@NotNull Material material) {
     return ItemBuilder.fromMaterial(material);
   }
 
@@ -59,7 +59,7 @@ public final class InitializingItemBuilderFactory implements ItemBuilderFactory 
    * @return the new item builder
    */
   @Override
-  public @NotNull ItemBuilder.ItemStackItemBuilder newBuilder(@NotNull ItemStack item) {
+  public @NotNull ItemBuilder.ItemStackItemBuilder fromItemStack(@NotNull ItemStack item) {
     return ItemBuilder.fromItem(item);
   }
 }

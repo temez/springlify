@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Global
 @Component
 @RequiredArgsConstructor
-public final class CommandSourceFilter implements SimpleCommandFilter {
+public class CommandSourceFilter implements SimpleCommandFilter {
 
   /**
    * Performs filtering based on the command source.

@@ -10,7 +10,7 @@ import java.util.*;
  * finds everything it's looking for.
  */
 @SuppressWarnings("all")
-public final class CompoundClassLoader extends ClassLoader {
+public class CompoundClassLoader extends ClassLoader {
 
   /**
    * Загрузчики которые чекаем в первую очередь, так же отсюда можем тянуть ресурсы

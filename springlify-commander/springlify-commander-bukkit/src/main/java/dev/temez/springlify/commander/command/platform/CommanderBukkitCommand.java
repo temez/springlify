@@ -19,7 +19,7 @@ import java.util.List;
 
 
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class CommanderBukkitCommand extends org.bukkit.command.Command {
+public class CommanderBukkitCommand extends org.bukkit.command.Command {
 
   @NotNull
   CommandInvocationFactory invocationFactory = new BukkitInvocationFactory();

@@ -30,7 +30,7 @@ import java.lang.reflect.Method;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class AnnotationSenderDetailsProvider implements SenderDetailsProvider {
+public class AnnotationSenderDetailsProvider implements SenderDetailsProvider {
 
   /**
    * The Spring application context for retrieving sender details factories.

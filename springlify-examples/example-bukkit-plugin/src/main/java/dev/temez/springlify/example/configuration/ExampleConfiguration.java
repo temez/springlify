@@ -5,21 +5,21 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-@Getter
-@Setter
-@Component
-@ConfigurationProperties("example.plugin")
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@Configuration
 public class ExampleConfiguration {
 
-  @NotNull
-  @NestedConfigurationProperty
-  ItemStackConfiguration itemStackConfiguration;
+  @Bean
+  MiniMessage miniMessage() {
+    return MiniMessage.miniMessage();
+  }
 
 
 }

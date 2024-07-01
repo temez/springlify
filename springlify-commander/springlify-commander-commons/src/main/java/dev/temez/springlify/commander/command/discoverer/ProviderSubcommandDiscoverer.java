@@ -20,7 +20,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public final class ProviderSubcommandDiscoverer implements SubcommandDiscoverer {
+public class ProviderSubcommandDiscoverer implements SubcommandDiscoverer {
 
   /**
    * List of subcommand discovery providers.
