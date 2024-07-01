@@ -3,7 +3,8 @@
 dependencies {
     compileOnly libs.velocitypowered.velocitiyapi
 
-    api project(":springlify-starter:springlify-starter-commons")
+    api project(":springlify-starter:springlify-starter-velocity")
+    api project(":springlify-platform:springlify-platform-commons")
 
     testImplementation libs.velocitypowered.velocitiyapi
 }
