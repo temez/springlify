@@ -1,6 +1,9 @@
 //file:noinspection DependencyNotationArgument
 //file:noinspection GroovyAssignabilityCheck
 dependencies {
+    annotationProcessor libs.spring.boot.configuration.processor
+
+    api libs.spring.boot.configuration.processor
     api libs.kyori.adventure.text.serializer.legacy
     api libs.kyori.adventure.text.minimessage
     api project(":springlify-starter:springlify-starter-commons")

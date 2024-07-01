@@ -14,6 +14,7 @@ projectlombok-lombok = { module = "org.projectlombok:lombok" }
 jetbrains-annotations = { module = 'org.jetbrains:annotations', version.ref = 'jetbrains-annotations' }
 spring-boot-starter-test = { module = 'org.springframework.boot:spring-boot-starter-test' }
 spring-boot-starter = { module = 'org.springframework.boot:spring-boot-starter' }
+spring-boot-configuration-processor = { module = 'org.springframework.boot:spring-boot-configuration-processor' }
 kyori-adventure-text-minimessage = { module = "net.kyori:adventure-text-minimessage", version.ref = 'kyori-adventure' }
 kyori-adventure-text-serializer-legacy = { module = "net.kyori:adventure-text-serializer-legacy", version.ref = 'kyori-adventure' }
 paper-paperapi = { module = 'com.destroystokyo.paper:paper-api', version.ref = 'paper-paperapi' }
