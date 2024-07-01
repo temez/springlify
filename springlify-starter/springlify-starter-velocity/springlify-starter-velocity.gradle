@@ -1,0 +1,9 @@
+//file:noinspection GroovyAssignabilityCheck
+//file:noinspection DependencyNotationArgument
+dependencies {
+    compileOnly libs.velocitypoweder.velocitiyapi
+
+    api project(":springlify-starter:springlify-starter-commons")
+
+    testImplementation libs.velocitypoweder.velocitiyapi
+}

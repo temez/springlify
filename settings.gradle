@@ -30,6 +30,7 @@ rootProject.name = 'springlify'
         'springlify-commander:springlify-commander-commons',
 
         'springlify-starter:springlify-starter-bukkit',
+        'springlify-starter:springlify-starter-velocity',
         'springlify-starter:springlify-starter-commons',
 
         'springlify-platform:springlify-platform-bukkit',
