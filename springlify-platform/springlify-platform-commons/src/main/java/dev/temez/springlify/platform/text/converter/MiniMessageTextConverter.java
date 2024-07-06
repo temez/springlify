@@ -81,4 +81,9 @@ public class MiniMessageTextConverter implements TextConverter {
     return serializer.deserialize("<reset>")
         .decoration(TextDecoration.ITALIC, TextDecoration.State.FALSE);
   }
+
+  @Override
+  public @NotNull String revert(@NotNull Component component) {
+    return serializer.serialize(component);
+  }
 }
