@@ -32,12 +32,6 @@ public class PlayerParameterAdapter implements ParameterAdapter<Player> {
   public @NotNull List<String> complete(@NotNull Sender<?> commandSender) {
     return Bukkit.getOnlinePlayers()
         .stream()
-        .filter(player -> {
-          if (commandSender.getPlatformSender() instanceof Player playerSender) {
-            return playerSender.canSee(player);
-          }
-          return true;
-        })
         .map(Player::getName)
         .toList();
   }
