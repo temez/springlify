@@ -60,4 +60,12 @@ public abstract class SpringlifyBukkitPlugin extends JavaPlugin implements Sprin
   public void onDisable() {
     shutdown();
   }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public ClassLoader getPluginClassLoader() {
+    return getClassLoader();
+  }
 }

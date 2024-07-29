@@ -54,6 +54,9 @@ public class SpringlifyInitializerImpl implements SpringlifyInitializer {
       throw new IllegalStateException("Missing @SpringlifyApplication annotation!");
     }
 
+    // issue #32: ctx cl must be overridden to plugin cl
+    Thread.currentThread().setContextClassLoader(plugin.getPluginClassLoader());
+
     log.debug("Initializing application context for {}", annotation.springApplicationClass().getName());
     SpringApplicationBuilder builder = new SpringApplicationBuilder(annotation.springApplicationClass())
         .bannerMode(Banner.Mode.OFF)
