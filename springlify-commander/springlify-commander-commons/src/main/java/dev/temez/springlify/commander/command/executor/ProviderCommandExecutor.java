@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
@@ -60,8 +61,8 @@ public class ProviderCommandExecutor implements CommandExecutor {
    * @throws CommandExecutionException If an error occurs during command execution.
    */
   @Override
-  @SneakyThrows
-  public void execute(@NotNull CommandInvocation commandInvocation) throws CommandExecutionException {
+  @SneakyThrows(IllegalAccessException.class)
+  public void execute(@NotNull CommandInvocation commandInvocation) throws CommandExecutionException, InvocationTargetException {
     Command command = commandInvocation.getCommand();
     Sender<?> sender = commandInvocation.getSender();
     CommandInvocationMetadata invocationMetadata = command.getCommandInvocationMetadata();

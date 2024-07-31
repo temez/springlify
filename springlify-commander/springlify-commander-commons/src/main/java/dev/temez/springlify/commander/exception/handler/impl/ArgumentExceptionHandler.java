@@ -24,7 +24,8 @@ public class ArgumentExceptionHandler implements CommandExceptionHandler {
   }
 
   @Override
-  public boolean supports(@NotNull Class<? extends Exception> exceptionClass) {
-    return exceptionClass.equals(ArgumentException.class);
+  public boolean supports(@NotNull Exception exception) {
+    return exception.getClass().equals(ArgumentException.class);
   }
 }
+

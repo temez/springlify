@@ -7,5 +7,5 @@ public interface CommandExceptionHandler {
 
   void handle(@NotNull CommandInvocation invocation, @NotNull Exception exception);
 
-  boolean supports(@NotNull Class<? extends Exception> exceptionClass);
+  boolean supports(@NotNull Exception exception);
 }

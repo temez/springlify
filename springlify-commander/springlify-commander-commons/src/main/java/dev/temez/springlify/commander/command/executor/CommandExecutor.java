@@ -4,6 +4,8 @@ import dev.temez.springlify.commander.command.invocation.CommandInvocation;
 import dev.temez.springlify.commander.exception.CommandExecutionException;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * An interface representing a command executor responsible for executing commands.
  * <p>
@@ -24,6 +26,6 @@ public interface CommandExecutor {
    * @param commandInvocation The command invocation containing the details of the command to be executed.
    * @throws CommandExecutionException If an error occurs during command execution.
    */
-  void execute(@NotNull CommandInvocation commandInvocation) throws CommandExecutionException;
+  void execute(@NotNull CommandInvocation commandInvocation) throws CommandExecutionException, InvocationTargetException;
 
 }
