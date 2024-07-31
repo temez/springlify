@@ -1,5 +1,6 @@
 package dev.temez.springlify.commander.command.executor.details.provider.impl;
 
+import dev.temez.springlify.commander.annotation.SenderDetailsSource;
 import dev.temez.springlify.commander.command.Command;
 import dev.temez.springlify.commander.command.executor.details.provider.SenderDetailsProvider;
 import dev.temez.springlify.commander.command.sender.Sender;
@@ -27,7 +28,7 @@ public class GenericSenderDetailsProvider implements SenderDetailsProvider {
    */
   @Override
   public boolean supports(@NotNull Command command) {
-    return true;
+    return !command.getCommandInvocationMetadata().getCommandMethod().isAnnotationPresent(SenderDetailsSource.class);
   }
 
   /**
