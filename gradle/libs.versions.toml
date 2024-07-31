@@ -8,6 +8,7 @@ paper-paperapi = '1.16.5-R0.1-SNAPSHOT'
 reflections-reflections = '0.10.2'
 mojang-authlib = '1.5.25'
 tr7zw-item-nbt-api = '2.12.4'
+velocitypowered-velocitiyapi = '3.3.0-SNAPSHOT'
 
 [libraries]
 projectlombok-lombok = { module = "org.projectlombok:lombok" }
@@ -18,6 +19,7 @@ spring-boot-configuration-processor = { module = 'org.springframework.boot:sprin
 kyori-adventure-text-minimessage = { module = "net.kyori:adventure-text-minimessage", version.ref = 'kyori-adventure' }
 kyori-adventure-text-serializer-legacy = { module = "net.kyori:adventure-text-serializer-legacy", version.ref = 'kyori-adventure' }
 paper-paperapi = { module = 'com.destroystokyo.paper:paper-api', version.ref = 'paper-paperapi' }
+velocitypowered-velocitiyapi = { module = 'com.velocitypowered:velocity-api', version.ref = 'velocitypowered-velocitiyapi' }
 mojang-authlib = { module = 'com.mojang:authlib', version.ref = 'mojang-authlib' }
 tr7zw-item-nbt-api = { module = 'de.tr7zw:item-nbt-api', version.ref = 'tr7zw-item-nbt-api' }
 reflections-reflections = { module = "org.reflections:reflections", version.ref = 'reflections-reflections' }

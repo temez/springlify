@@ -20,7 +20,7 @@ public class CommanderExceptionHandlerImpl implements CommanderExceptionHandler 
   @Override
   public void handle(@NotNull CommandInvocation invocation, @NotNull Exception exception) throws RuntimeException {
     List<CommandExceptionHandler> handlers = exceptionHandlers.stream()
-        .filter(commandExceptionHandler -> commandExceptionHandler.supports(exception.getClass()))
+        .filter(commandExceptionHandler -> commandExceptionHandler.supports(exception))
         .toList();
     if (handlers.isEmpty()) {
       throw new RuntimeException(exception.getMessage(), exception);

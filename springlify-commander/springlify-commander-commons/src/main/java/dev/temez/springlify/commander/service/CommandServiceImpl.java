@@ -12,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -65,6 +66,8 @@ public class CommandServiceImpl implements CommandService {
     try {
       commandFilterService.filter(commandInvocation.getSender(), commandInvocation.getCommand());
       commandExecutor.execute(commandInvocation);
+    } catch (InvocationTargetException exception) {
+      exceptionHandler.handle(commandInvocation, (Exception) exception.getCause());
     } catch (Exception exception) {
       exceptionHandler.handle(commandInvocation, exception);
     }

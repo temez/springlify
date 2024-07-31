@@ -1,5 +1,9 @@
 package dev.temez.springlify.starter.plugin;
 
+import com.google.common.eventbus.Subscribe;
+import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
+import com.velocitypowered.api.event.proxy.ProxyShutdownEvent;
+import com.velocitypowered.api.proxy.ProxyServer;
 import dev.temez.springlify.starter.configuration.loader.ConfigurationLoader;
 import dev.temez.springlify.starter.configuration.loader.ConfigurationLoaderImpl;
 import dev.temez.springlify.starter.initializer.SpringlifyInitializer;
@@ -11,27 +15,15 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.ConfigurableApplicationContext;
 
-/**
- * Base class for Bukkit plugins using the Springlify.
- *
- * <p>This abstract class extends {@link JavaPlugin} and implements {@link SpringlifyPlugin}.
- * It initializes necessary components for integrating Spring with Bukkit {@link ClassLoaderFactory}, and {@link ConfigurationLoader}.
- * It also provides lifecycle management methods for enabling and disabling the plugin.</p>
- *
- * @see JavaPlugin
- * @see SpringlifyPlugin
- * @see ClassLoaderFactory
- * @see ConfigurationLoader
- * @since 0.7.0.0-RC1
- */
+import java.nio.file.Path;
+
 @Setter
 @Getter
 @FieldDefaults(makeFinal = true, level = AccessLevel.PROTECTED)
-public abstract class SpringlifyBukkitPlugin extends JavaPlugin implements SpringlifyPlugin {
+public class SpringlifyVelocityPlugin implements SpringlifyPlugin {
 
   @NotNull
   ClassLoaderFactory classLoaderFactory = new CompoundClassLoaderFactory();
@@ -45,19 +37,24 @@ public abstract class SpringlifyBukkitPlugin extends JavaPlugin implements Sprin
   @NonFinal
   ConfigurableApplicationContext context;
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void onEnable() {
+  @NotNull
+  ProxyServer server;
+
+  @NotNull
+  Path dataFolder;
+
+  public SpringlifyVelocityPlugin(@NotNull ProxyServer server, @NotNull Path dataFolder) {
+    this.server = server;
+    this.dataFolder = dataFolder;
+  }
+
+  @Subscribe
+  public void onProxyInitialization(@NotNull ProxyInitializeEvent event) {
     initialize();
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void onDisable() {
+  @Subscribe
+  public void onProxyShutdown(@NotNull ProxyShutdownEvent event) {
     shutdown();
   }
 
@@ -66,6 +63,7 @@ public abstract class SpringlifyBukkitPlugin extends JavaPlugin implements Sprin
    */
   @Override
   public ClassLoader getPluginClassLoader() {
-    return getClassLoader();
+    // if this don't work, try to refactor this to return the actual class loader
+    return this.getClass().getClassLoader();
   }
 }

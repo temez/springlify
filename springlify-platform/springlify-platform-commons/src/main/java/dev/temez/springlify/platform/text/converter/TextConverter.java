@@ -42,4 +42,7 @@ public interface TextConverter {
    */
   @NotNull
   Component getResetComponent();
+
+  @NotNull
+  String revert(@NotNull Component component);
 }
