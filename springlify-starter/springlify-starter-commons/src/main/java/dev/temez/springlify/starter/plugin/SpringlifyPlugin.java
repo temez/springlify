@@ -73,4 +73,11 @@ public interface SpringlifyPlugin {
    */
   @NotNull
   SpringlifyInitializer getInitializer();
+
+  /**
+   * Returns the <code>org.bukkit.plugin.java.JavaClassLoader</code> for the plugin or another <code>ClassLoader</code>.
+   *
+   * @return the plugin class loader for the plugin.
+   */
+  ClassLoader getPluginClassLoader();
 }

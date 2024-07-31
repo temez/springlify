@@ -57,4 +57,13 @@ public class SpringlifyVelocityPlugin implements SpringlifyPlugin {
   public void onProxyShutdown(@NotNull ProxyShutdownEvent event) {
     shutdown();
   }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public ClassLoader getPluginClassLoader() {
+    // if this don't work, try to refactor this to return the actual class loader
+    return this.getClass().getClassLoader();
+  }
 }
