@@ -18,6 +18,7 @@ import lombok.experimental.NonFinal;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.io.File;
 import java.nio.file.Path;
 
 @Setter
@@ -65,5 +66,9 @@ public class SpringlifyVelocityPlugin implements SpringlifyPlugin {
   public ClassLoader getPluginClassLoader() {
     // if this don't work, try to refactor this to return the actual class loader
     return this.getClass().getClassLoader();
+  }
+  
+  public @NotNull File getDataFolder() {
+    return dataFolder.toFile();
   }
 }
