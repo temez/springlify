@@ -64,7 +64,7 @@ public class ItemStackMappingSchema implements MappingSchema<ItemStackConfigurat
     if (itemMetaConfiguration != null) {
 
       if (itemMetaConfiguration.getDisplayName() != null) {
-        itemMetaConfiguration.setDisplayName(itemMetaConfiguration.getDisplayName());
+        builder.setName(itemMetaConfiguration.getDisplayName());
       }
       builder
           .lore(itemMetaConfiguration.getLore())

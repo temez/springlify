@@ -12,7 +12,7 @@
 
 ````groovy
 dependencies {
-    implementation 'dev.temez.springlify:springlify-<module>-<platform>:0.7.2.0-SNAPSHOT'
+    implementation 'dev.temez.springlify:springlify-<module>-<platform>:0.7.2.1-SNAPSHOT'
 }
 
 repositories {
